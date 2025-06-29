@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <div class=" flex min-h-screen">
         <aside class="bg-simipa-6 w-60 text-gray-100 flex-shrink-0 fixed inset-y-0 overflow-y-auto bg-simipa-5">
 
@@ -18,10 +19,11 @@
 
                 <div>
                     <a wire:navigate href="/admin/dashboard"
-                        class="py-3 mb-10 flex gap-2 justify-start px-5 items-cente hover:cursor-pointer">
+                        class="py-3 my-6 flex gap-2 justify-center px-5 items-cente hover:cursor-pointer">
                         <img src="{{ asset('img/logo-1.PNG') }}" alt="logo.png" width="130">
 
                     </a>
+
                     <a wire:navigate href="/admin/teacher"
                         class="text-simipa-3 font-semibold transition-colors hover:text-simipa-5 block py-3 px-4 rounded-lg hover:bg-simipa-2 group">
                         <div class="flex ml-1">

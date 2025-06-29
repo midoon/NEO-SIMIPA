@@ -22,7 +22,6 @@ class AdminTeacherList extends Component
     public function render()
     {
         try {
-            $query = request()->query();
             $teacherQuery = Teacher::query();
             if ($this->search) {
                 $teacherQuery->where(function ($q) {

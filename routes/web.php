@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Admin\AdminDashboard;
+use App\Livewire\Admin\Teacher\AdminTeacherList;
 use App\Livewire\Auth\AdminLogin;
 use App\Livewire\Auth\TeacherLogin;
 use App\Livewire\Auth\TeacherRegister;
@@ -13,7 +14,7 @@ Route::get('/', function () {
 
 Route::get('/admin/login', AdminLogin::class);
 Route::get('/admin/dashboard', AdminDashboard::class);;
-
+Route::get('/admin/teacher', AdminTeacherList::class);
 
 Route::get('/teacher/login', TeacherLogin::class);
 Route::get('/teacher/register', TeacherRegister::class);

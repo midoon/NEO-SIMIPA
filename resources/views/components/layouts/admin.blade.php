@@ -11,18 +11,18 @@
 
 <body>
     <div class=" flex min-h-screen">
-        <aside class="bg-simipa-6 w-64 text-gray-100 flex-shrink-0 fixed inset-y-0 overflow-y-auto ">
+        <aside class="bg-simipa-6 w-64 text-gray-100 flex-shrink-0 fixed inset-y-0 overflow-y-auto bg-simipa-5">
 
 
             <nav class=" flex flex-col justify-between h-dvh">
 
                 <div>
-                    <a href="/admin/dashboard"
+                    <a wire:navigate href="/admin/dashboard"
                         class="py-3 mb-10 flex gap-2 justify-start px-5 items-cente hover:cursor-pointer">
                         <img src="{{ asset('img/logo-1.PNG') }}" alt="logo.png" width="130">
 
                     </a>
-                    <a href="/admin/teacher"
+                    <a wire:navigate href="/admin/teacher"
                         class="text-simipa-3 font-semibold transition-colors hover:text-simipa-5 block py-3 px-4 rounded-lg hover:bg-simipa-2 group">
                         <div class="flex ml-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -57,12 +57,12 @@
                             </svg>
                         </button>
                         <div x-show="studentShip" x-transition class="ml-10 mt-1 space-y-1">
-                            <a href="/admin/grade"
+                            <a wire:navigate href="/admin/grade"
                                 class="block py-2 px-4 text-sm text-simipa-3 hover:bg-simipa-2 hover:text-white rounded">Kelas</a>
-                            <a href="/admin/group"
+                            <a wire:navigate href="/admin/group"
                                 class="block py-2 px-4 text-sm text-simipa-3 hover:bg-simipa-2 hover:text-white rounded">Rombongan
                                 Belajar</a>
-                            <a href="/admin/student"
+                            <a wire:navigate href="/admin/student"
                                 class="block py-2 px-4 text-sm text-simipa-3 hover:bg-simipa-2 hover:text-white rounded">Siswa</a>
                         </div>
                     </div>
@@ -89,13 +89,13 @@
                             </svg>
                         </button>
                         <div x-show="openAcademyc" x-transition class="ml-10 mt-1 space-y-1">
-                            <a href="/admin/subject"
+                            <a wire:navigate href="/admin/subject"
                                 class="block py-2 px-4 text-sm text-simipa-3 hover:bg-simipa-2 hover:text-white rounded">Mata
                                 Pelajaran</a>
-                            <a href="/admin/schedule"
+                            <a wire:navigate href="/admin/schedule"
                                 class="block py-2 px-4 text-sm text-simipa-3 hover:bg-simipa-2 hover:text-white rounded">Jadwal
                                 Pelajaran</a>
-                            <a href="/admin/activity"
+                            <a wire:navigate href="/admin/activity"
                                 class="block py-2 px-4 text-sm text-simipa-3 hover:bg-simipa-2 hover:text-white rounded">Kegiatan</a>
                         </div>
                     </div>
@@ -120,10 +120,10 @@
                             </svg>
                         </button>
                         <div x-show="openPayment" x-transition class="ml-10 mt-1 space-y-1">
-                            <a href="/admin/payment/type"
+                            <a wire:navigate href="/admin/payment/type"
                                 class="block py-2 px-4 text-sm text-simipa-3 hover:bg-simipa-2 hover:text-white rounded">Tipe
                                 Pembayaran</a>
-                            <a href="/admin/payment/fee"
+                            <a wire:navigate href="/admin/payment/fee"
                                 class="block py-2 px-4 text-sm text-simipa-3 hover:bg-simipa-2 hover:text-white rounded">Tagihan
                                 Kelas</a>
                         </div>
@@ -180,7 +180,7 @@
 
         {{-- main --}}
         <div class="flex-1 ml-64">
-            <main class="p-8 bg-simipa-5 min-h-screen">
+            <main class="p-8  min-h-screen">
                 {{ $slot }}
             </main>
         </div>

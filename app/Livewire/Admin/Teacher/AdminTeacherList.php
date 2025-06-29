@@ -7,26 +7,38 @@ use Exception;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class AdminTeacherList extends Component
 {
+
+    use WithPagination;
+
     #[Layout('components.layouts.admin')]
     #[Title('Admin Dashboard')]
+
+    public $search;
+
     public function render()
     {
         try {
             $query = request()->query();
             $teacherQuery = Teacher::query();
-            $teacherQuery->when(isset($query['name']), function ($q) use ($query) {
-                $q->where('name', 'like', '%' . $query['name'] . '%');
-            });
-            $teacherQuery->when(isset($query['nik']), function ($q) use ($query) {
-                $q->where('nik', 'like', '%' . $query['nik'] . '%');
-            });
-
-            $teachers = $teacherQuery->orderBy('name')->paginate(10)->withQueryString();
+            if ($this->search) {
+                $teacherQuery->where(function ($q) {
+                    $q->where('name', 'like', '%' . $this->search . '%')
+                        ->orWhere('nik', 'like', '%' . $this->search . '%');
+                });
+            }
+            $teachers = $teacherQuery->orderBy('name')->paginate(12)->withQueryString();
             return view('livewire.admin.teacher.admin-teacher-list', ['teachers' => $teachers]);
         } catch (Exception $e) {
         }
+    }
+
+    // untuk mengatur ulang halaman ketika pencarian berubah {bug pencarian tidak mengatur ulang halaman}
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 }

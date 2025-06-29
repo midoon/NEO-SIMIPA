@@ -1,11 +1,18 @@
 <div>
-    <h1 class="font-bold text-simipa-2 ">Daftar Guru</h1>
+    <h1 class="font-bold text-simipa-3 text-2xl mb-5">Daftar Guru</h1>
 
 
 
 
-    <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 border border-simipa-4">
+    <div class="relative overflow-x-auto border border-simipa-4">
+
+        <div class="p-4">
+            <input type="text"
+                class="block w-1/3 p-2.5 text-sm text-simipa-2 bg-simipa-5 rounded-sm border border-simipa-4 focus:ring-simipa-1 focus:border-simipa-1"
+                placeholder="Cari berdasarkan nama atau NIK" wire:model.live.debounce.300ms="search">
+        </div>
+
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 border ">
             <thead class="text-xs text-simipa-2 uppercase bg-gray-50 ">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -78,9 +85,10 @@
 
             </tbody>
         </table>
-        <div class="mt-4">
-            {{ $teachers->links() }}
-        </div>
+
+    </div>
+    <div class="mt-4">
+        {{ $teachers->links() }}
     </div>
 
 

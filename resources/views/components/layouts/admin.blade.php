@@ -11,7 +11,7 @@
 
 <body>
     <div class=" flex min-h-screen">
-        <aside class="bg-simipa-6 w-64 text-gray-100 flex-shrink-0 fixed inset-y-0 overflow-y-auto bg-simipa-5">
+        <aside class="bg-simipa-6 w-60 text-gray-100 flex-shrink-0 fixed inset-y-0 overflow-y-auto bg-simipa-5">
 
 
             <nav class=" flex flex-col justify-between h-dvh">
@@ -179,8 +179,8 @@
         </aside>
 
         {{-- main --}}
-        <div class="flex-1 ml-64">
-            <main class="p-8  min-h-screen">
+        <div class="flex-1 ml-60">
+            <main class="p-5  min-h-screen">
                 {{ $slot }}
             </main>
         </div>

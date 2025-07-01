@@ -8,12 +8,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Teacher extends Model
 {
+
+    use HasFactory;
+
     protected $guarded = ['id'];
     protected $casts = [
         'role' => 'array',
     ];
+    protected $hidden = ['password'];
 
-    use HasFactory;
+
 
 
     public function schedules(): HasMany

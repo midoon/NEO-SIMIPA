@@ -10,8 +10,11 @@
 </head>
 
 <body>
+    <div class="md:hidden fixed inset-0 flex items-center justify-center bg-simipa-5 text-simipa-2 Z-10">
+        <p>Please open admin page in laptop or desktop device</p>
+    </div>
 
-    <div class=" flex min-h-screen">
+    <div class="hidden md:flex min-h-screen">
         <aside class="bg-simipa-6 w-60 text-gray-100 flex-shrink-0 fixed inset-y-0 overflow-y-auto bg-simipa-5">
 
 

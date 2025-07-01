@@ -4,6 +4,7 @@
 
 
 
+    {{-- tabel --}}
     <div class="relative overflow-x-auto border border-simipa-4">
 
         <div class="p-4 flex items-center justify-between gap-4">
@@ -14,8 +15,7 @@
             <div class="flex items-center gap-4">
                 <button
                     class="px-4 py-2 border border-simipa-2 rounded-sm hover:cursor-pointer hover:border-simipa-1 hover:text-simipa-1">Upload</button>
-                <button
-                    class="px-4 py-2 border border-simipa-2 rounded-sm hover:cursor-pointer hover:border-simipa-1 hover:text-simipa-1">Create</button>
+                <livewire:admin.teacher.admin-teacher-create />
             </div>
         </div>
 
@@ -98,6 +98,11 @@
     <div class="mt-4">
         {{ $teachers->links() }}
     </div>
+
+
+
+
+
 
 
 </div>

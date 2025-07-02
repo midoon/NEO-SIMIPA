@@ -64,7 +64,7 @@
                                 </span>
                             @else
                                 <span class="px-2 py-1 text-xs text-red-600 bg-red-200 rounded-md">
-                                    Tidak Terdaftar
+                                    Belum Terdaftar
                                 </span>
                             @endif
                         </td>

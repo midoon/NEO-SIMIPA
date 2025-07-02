@@ -18,6 +18,7 @@ class AdminTeacherList extends Component
     #[Title('Admin Dashboard')]
 
     public $search;
+    protected $listeners = ['teacherCreated' => 'refreshTeachers'];
 
     public function render()
     {
@@ -39,5 +40,11 @@ class AdminTeacherList extends Component
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function refreshTeachers()
+    {
+        $this->resetPage();
+        $this->dispatch('refreshTeachers');
     }
 }

@@ -37,7 +37,7 @@
                         <label for="gender" class="block font-semibold mb-1">Gender</label>
                         <select wire:model="gender" id="gender" class="border w-full rounded-sm px-2 py-1.5"
                             required>
-                            <option selected disabled>Pilih Gender</option>
+                            <option value="" selected disabled>Pilih Gender</option>
                             <option value="laki-laki">Laki-laki</option>
                             <option value="perempuan">Perempuan</option>
                         </select>

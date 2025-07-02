@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Teacher;
 
+use App\Models\Teacher;
 use Livewire\Component;
 
 class AdminTeacherCreate extends Component
@@ -29,19 +30,22 @@ class AdminTeacherCreate extends Component
 
     public function store()
     {
-        // $this->validate();
 
-        // Teacher::create([
-        //     'name' => $this->name,
-        //     'nik' => $this->nik,
-        //     'gender' => $this->gender,
-        //     'role' => $this->roles,
-        // ]);
 
-        // session()->flash('message', 'Guru berhasil ditambahkan.');
-        // $this->showModal = false;
-        // $this->resetInputFields();
-        // $this->emit('teacherCreated'); // bisa dipakai untuk refresh list di komponen parent
+
+        $this->validate();
+
+        Teacher::create([
+            'name' => $this->name,
+            'nik' => $this->nik,
+            'gender' => $this->gender,
+            'role' => $this->roles,
+        ]);
+
+        session()->flash('message', 'Guru berhasil ditambahkan.');
+        $this->showModal = false;
+        $this->resetInputFields();
+        return $this->redirect('/admin/teacher', navigate: true);
     }
 
     private function resetInputFields()

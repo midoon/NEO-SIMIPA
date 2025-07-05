@@ -30,30 +30,40 @@ class AdminTeacherEdit extends Component
     #[On('openModalEditEvent')]
     public function openModalEdit($id)
     {
-        $teacher = Teacher::findOrFail($id);
-        $this->teacherId = $teacher->id;
-        $this->name = $teacher->name;
-        $this->nik = $teacher->nik;
-        $this->gender = $teacher->gender;
-        $this->roles = $teacher->role;
+        try {
+            $teacher = Teacher::findOrFail($id);
+            $this->teacherId = $teacher->id;
+            $this->name = $teacher->name;
+            $this->nik = $teacher->nik;
+            $this->gender = $teacher->gender;
+            $this->roles = $teacher->role;
 
-        $this->showModalEdit = true;
+            $this->showModalEdit = true;
+        } catch (\Exception $e) {
+            session()->flash('error', 'Gagal update data: ' . $e->getMessage());
+            return $this->redirect('/admin/teacher', navigate: true);
+        }
     }
 
     public function update()
     {
-        $this->validate();
+        try {
+            $this->validate();
 
-        $teacher = Teacher::findOrFail($this->teacherId);
-        $teacher->update([
-            'name' => $this->name,
-            'nik' => $this->nik,
-            'gender' => $this->gender,
-            'role' => $this->roles,
-        ]);
+            $teacher = Teacher::findOrFail($this->teacherId);
+            $teacher->update([
+                'name' => $this->name,
+                'nik' => $this->nik,
+                'gender' => $this->gender,
+                'role' => $this->roles,
+            ]);
 
-        session()->flash('message', 'Data guru berhasil diupdate.');
-        $this->showModalEdit = false;
-        $this->emit('teacherUpdated'); // untuk refresh list di komponen parent jika diperlukan
+            session()->flash('message', 'Data guru berhasil diupdate.');
+            $this->showModalEdit = false;
+            return $this->redirect('/admin/teacher', navigate: true);
+        } catch (\Exception $e) {
+            session()->flash('error', 'Gagal update data: ' . $e->getMessage());
+            return $this->redirect('/admin/teacher', navigate: true);
+        }
     }
 }

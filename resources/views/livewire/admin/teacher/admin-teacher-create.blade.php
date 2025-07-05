@@ -67,9 +67,9 @@
                     <!-- Tombol Aksi -->
                     <div class="flex justify-end">
                         <button type="button" wire:click="$set('showModal', false)"
-                            class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400 mr-2">Batal</button>
+                            class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400 mr-2 hover:cursor-pointer">Batal</button>
                         <button type="submit"
-                            class="px-4 py-2 bg-simipa-1 text-white rounded hover:bg-simipa-2">Simpan</button>
+                            class="px-4 py-2 bg-simipa-1 text-white rounded hover:bg-simipa-2 hover:cursor-pointer">Simpan</button>
                     </div>
                 </form>
             </div>

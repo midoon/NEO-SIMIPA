@@ -5,7 +5,9 @@
             <div class="bg-white rounded-md w-1/3 p-6">
                 <h2 class="text-xl font-semibold text-simipa-2 mb-4">Tambah Data Guru</h2>
 
-                <form wire:submit.prevent="upload">
+                <form action="/admin/teacher/upload" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
                     <div class="mb-5 ">
                         <label for="file" class="block text-simipa-3 font-medium mb-2">Pilih file CSV</label>
                         <input type="file" wire:model="file" name="file" id="file" required
@@ -18,7 +20,7 @@
 
                     <!-- Tombol Aksi -->
                     <div class="flex justify-end">
-                        <button type="button" wire:click="$set('showModal', false)"
+                        <button type="button" wire:click="batalUpload"
                             class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400 hover:cursor-pointer mr-2">Batal</button>
                         <button type="submit"
                             class="px-4 py-2 bg-simipa-1 text-white rounded hover:bg-simipa-2 hover:cursor-pointer">Upload</button>

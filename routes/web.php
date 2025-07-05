@@ -18,5 +18,8 @@ Route::get('/admin/dashboard', AdminDashboard::class);;
 Route::get('/admin/teacher', AdminTeacherList::class);
 Route::get('/admin/grade', AdminGradeList::class);
 
+// file upload route
+Route::post('/admin/teacher/upload', [App\Http\Controllers\AdminTeacherController::class, 'uploadFile']);
+
 Route::get('/teacher/login', TeacherLogin::class);
 Route::get('/teacher/register', TeacherRegister::class);

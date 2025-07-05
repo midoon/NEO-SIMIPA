@@ -50,6 +50,12 @@ class AdminTeacherEdit extends Component
         try {
             $this->validate();
 
+            // Check if NIK already exists
+            if (Teacher::where('nik', $this->nik)->exists() && Teacher::where('nik', $this->nik)->first()->id !== $this->teacherId) {
+                session()->flash('error', 'NIK sudah terdaftar.');
+                return $this->redirect('/admin/teacher', navigate: true);
+            }
+
             $teacher = Teacher::findOrFail($this->teacherId);
             $teacher->update([
                 'name' => $this->name,

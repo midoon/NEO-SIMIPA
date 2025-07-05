@@ -35,6 +35,12 @@ class AdminTeacherCreate extends Component
         try {
             $this->validate();
 
+            // Check if NIK already exists
+            if (Teacher::where('nik', $this->nik)->exists()) {
+                session()->flash('error', 'NIK sudah terdaftar.');
+                return $this->redirect('/admin/teacher', navigate: true);
+            }
+
             Teacher::create([
                 'name' => $this->name,
                 'nik' => $this->nik,

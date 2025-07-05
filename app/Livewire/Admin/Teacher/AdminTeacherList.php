@@ -53,6 +53,11 @@ class AdminTeacherList extends Component
         $this->dispatch('refreshTeachers');
     }
 
+    public function triggerModalCreate()
+    {
+        $this->dispatch('openModalCreateEvent');
+    }
+
     public function triggerModalEdit($id)
     {
         $this->dispatch('openModalEditEvent', id: $id);

@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Teacher;
 
 use App\Models\Teacher;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class AdminTeacherCreate extends Component
@@ -22,6 +23,7 @@ class AdminTeacherCreate extends Component
         return view('livewire.admin.teacher.admin-teacher-create');
     }
 
+    #[On('openModalCreateEvent')]
     public function createModalTeacher()
     {
         $this->resetInputFields();

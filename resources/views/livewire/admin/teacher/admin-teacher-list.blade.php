@@ -6,7 +6,8 @@
     </div> --}}
 
     @if (session()->has('message'))
-        <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 500);" x-show="show"
+        <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 500);
+        setTimeout(() => show = false, 10500)" x-show="show"
             x-transition:enter="transform transition ease-out duration-300"
             x-transition:enter-start="translate-x-full opacity-0" x-transition:enter-end="translate-x-0 opacity-100"
             x-transition:leave="transform transition ease-in duration-300"
@@ -20,7 +21,8 @@
     @endif
 
     @if (session()->has('error'))
-        <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 500);" x-show="show"
+        <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 500);
+        setTimeout(() => show = false, 10500)" x-show="show"
             x-transition:enter="transform transition ease-out duration-300"
             x-transition:enter-start="translate-x-full opacity-0" x-transition:enter-end="translate-x-0 opacity-100"
             x-transition:leave="transform transition ease-in duration-300"
@@ -50,7 +52,10 @@
             <div class="flex items-center gap-4">
                 <button
                     class="px-4 py-2 border border-simipa-2 rounded-sm hover:cursor-pointer hover:border-simipa-1 hover:text-simipa-1">Upload</button>
-                <livewire:admin.teacher.admin-teacher-create />
+                <button wire:click="triggerModalCreate"
+                    class="px-4 py-2 border border-simipa-2 rounded-sm hover:border-simipa-1 hover:text-simipa-1 hover:cursor-pointer">
+                    Create
+                </button>
             </div>
         </div>
 
@@ -134,6 +139,7 @@
         {{ $teachers->links() }}
     </div>
 
+    <livewire:admin.teacher.admin-teacher-create />
     <livewire:admin.teacher.admin-teacher-edit />
     <livewire:admin.teacher.admin-teacher-delete />
 

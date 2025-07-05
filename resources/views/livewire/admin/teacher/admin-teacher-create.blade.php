@@ -1,9 +1,6 @@
 <div>
     <!-- Button to open modal -->
-    <button wire:click="createModalTeacher"
-        class="px-4 py-2 border border-simipa-2 rounded-sm hover:border-simipa-1 hover:text-simipa-1 hover:cursor-pointer">
-        Create
-    </button>
+
 
     <!-- Modal -->
     @if ($showModal)

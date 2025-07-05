@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Grade;
 
+use App\Models\Grade;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -18,6 +19,18 @@ class AdminGradeList extends Component
 
     public function render()
     {
-        return view('livewire.admin.grade.admin-grade-list');
+        try {
+            $gradeQuery = Grade::query();
+            if ($this->search) {
+                $gradeQuery->where(function ($q) {
+                    $q->where('name', 'like', '%' . $this->search . '%');
+                });
+            }
+            $grades = $gradeQuery->orderBy('name')->paginate(12)->withQueryString();
+            return view('livewire.admin.grade.admin-grade-list', ['grades' => $grades]);
+        } catch (\Exception $e) {
+            session()->flash('error', 'Gagal memuat data: ' . $e->getMessage());
+            return $this->redirect('/admin/dashboard', navigate: true);
+        }
     }
 }

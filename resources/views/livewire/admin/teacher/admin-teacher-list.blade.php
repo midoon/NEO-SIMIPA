@@ -47,7 +47,7 @@
                 placeholder="Cari berdasarkan nama atau NIK" wire:model.live.debounce.300ms="search">
 
             <div class="flex items-center gap-4">
-                <button
+                <button wire:click="triggerModalUpload"
                     class="px-4 py-2 border border-simipa-2 rounded-sm hover:cursor-pointer hover:border-simipa-1 hover:text-simipa-1">Upload</button>
                 <button wire:click="triggerModalCreate"
                     class="px-4 py-2 border border-simipa-2 rounded-sm hover:border-simipa-1 hover:text-simipa-1 hover:cursor-pointer">
@@ -139,6 +139,7 @@
     <livewire:admin.teacher.admin-teacher-create />
     <livewire:admin.teacher.admin-teacher-edit />
     <livewire:admin.teacher.admin-teacher-delete />
+    <livewire:admin.teacher.admin-teacher-upload />
 
 
 

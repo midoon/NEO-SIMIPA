@@ -61,4 +61,9 @@ class AdminTeacherList extends Component
     {
         $this->dispatch('openModalDeleteEvent', id: $id);
     }
+
+    public function triggerModalUpload()
+    {
+        $this->dispatch('openModalUploadEvent');
+    }
 }

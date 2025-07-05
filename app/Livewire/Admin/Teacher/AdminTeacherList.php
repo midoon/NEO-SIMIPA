@@ -15,10 +15,9 @@ class AdminTeacherList extends Component
     use WithPagination;
 
     #[Layout('components.layouts.admin')]
-    #[Title('Admin Dashboard')]
+    #[Title('Admin Guru')]
 
     public $search;
-    protected $listeners = ['teacherCreated' => 'refreshTeachers'];
 
     public function render()
     {
@@ -47,11 +46,6 @@ class AdminTeacherList extends Component
         $this->resetPage();
     }
 
-    public function refreshTeachers()
-    {
-        $this->resetPage();
-        $this->dispatch('refreshTeachers');
-    }
 
     public function triggerModalCreate()
     {

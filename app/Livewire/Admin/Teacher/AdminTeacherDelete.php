@@ -31,7 +31,7 @@ class AdminTeacherDelete extends Component
     {
         try {
             Teacher::findOrFail($this->teacherId)->delete();
-            session()->flash('message', 'Data guru berhasil dihapus.');
+            session()->flash('success', 'Data guru berhasil dihapus.');
             $this->showModal = false;
             return $this->redirect('/admin/teacher', navigate: true);
         } catch (\Exception $e) {

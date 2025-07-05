@@ -48,7 +48,7 @@ class AdminTeacherCreate extends Component
                 'role' => $this->roles,
             ]);
 
-            session()->flash('message', 'Guru berhasil ditambahkan.');
+            session()->flash('success', 'Guru berhasil ditambahkan.');
             $this->showModal = false;
             $this->resetInputFields();
             return $this->redirect('/admin/teacher', navigate: true);

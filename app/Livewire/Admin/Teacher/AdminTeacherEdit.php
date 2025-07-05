@@ -64,7 +64,7 @@ class AdminTeacherEdit extends Component
                 'role' => $this->roles,
             ]);
 
-            session()->flash('message', 'Data guru berhasil diupdate.');
+            session()->flash('success', 'Data guru berhasil diupdate.');
             $this->showModalEdit = false;
             return $this->redirect('/admin/teacher', navigate: true);
         } catch (\Exception $e) {

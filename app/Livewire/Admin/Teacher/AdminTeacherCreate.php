@@ -30,22 +30,24 @@ class AdminTeacherCreate extends Component
 
     public function store()
     {
+        try {
+            $this->validate();
 
+            Teacher::create([
+                'name' => $this->name,
+                'nik' => $this->nik,
+                'gender' => $this->gender,
+                'role' => $this->roles,
+            ]);
 
-
-        $this->validate();
-
-        Teacher::create([
-            'name' => $this->name,
-            'nik' => $this->nik,
-            'gender' => $this->gender,
-            'role' => $this->roles,
-        ]);
-
-        session()->flash('message', 'Guru berhasil ditambahkan.');
-        $this->showModal = false;
-        $this->resetInputFields();
-        return $this->redirect('/admin/teacher', navigate: true);
+            session()->flash('message', 'Guru berhasil ditambahkan.');
+            $this->showModal = false;
+            $this->resetInputFields();
+            return $this->redirect('/admin/teacher', navigate: true);
+        } catch (\Exception $e) {
+            session()->flash('error', 'Gagal menyimpan data: ' . $e->getMessage());
+            return $this->redirect('/admin/teacher', navigate: true);
+        }
     }
 
     private function resetInputFields()

@@ -23,7 +23,7 @@ class AdminTeacherList extends Component
     public function render()
     {
         try {
-            $teacherQuery = Teacher::query();
+            $teacherQuery = Teacher::query()->select('id', 'name', 'nik', 'gender', 'role', 'account');;
             if ($this->search) {
                 $teacherQuery->where(function ($q) {
                     $q->where('name', 'like', '%' . $this->search . '%')
@@ -31,8 +31,13 @@ class AdminTeacherList extends Component
                 });
             }
             $teachers = $teacherQuery->orderBy('name')->paginate(12)->withQueryString();
+            $teachers->getCollection()->transform(function ($teacher) {
+                return $teacher->makeHidden('password');
+            });
             return view('livewire.admin.teacher.admin-teacher-list', ['teachers' => $teachers]);
         } catch (Exception $e) {
+            session()->flash('error', 'Gagal menyimpan data: ' . $e->getMessage());
+            return $this->redirect('/admin/dashboard', navigate: true);
         }
     }
 
@@ -46,5 +51,10 @@ class AdminTeacherList extends Component
     {
         $this->resetPage();
         $this->dispatch('refreshTeachers');
+    }
+
+    public function triggerModalEdit($id)
+    {
+        $this->dispatch('openModalEditEvent', id: $id);
     }
 }

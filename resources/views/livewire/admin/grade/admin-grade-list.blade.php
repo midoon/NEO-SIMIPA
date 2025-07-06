@@ -118,7 +118,7 @@
     </div>
 
     <livewire:admin.grade.admin-grade-create />
-    <livewire:admin.teacher.admin-teacher-edit />
+    <livewire:admin.grade.admin-grade-edit />
     <livewire:admin.teacher.admin-teacher-delete />
     <livewire:admin.teacher.admin-teacher-upload />
 

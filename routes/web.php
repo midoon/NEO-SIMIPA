@@ -2,6 +2,7 @@
 
 use App\Livewire\Admin\AdminDashboard;
 use App\Livewire\Admin\Grade\AdminGradeList;
+use App\Livewire\Admin\Group\AdminGroupList;
 use App\Livewire\Admin\Teacher\AdminTeacherList;
 use App\Livewire\Auth\AdminLogin;
 use App\Livewire\Auth\TeacherLogin;
@@ -17,6 +18,7 @@ Route::get('/admin/login', AdminLogin::class);
 Route::get('/admin/dashboard', AdminDashboard::class);;
 Route::get('/admin/teacher', AdminTeacherList::class);
 Route::get('/admin/grade', AdminGradeList::class);
+Route::get('/admin/group', AdminGroupList::class);
 
 // file upload route
 Route::post('/admin/teacher/upload', [App\Http\Controllers\AdminTeacherController::class, 'uploadFile']);

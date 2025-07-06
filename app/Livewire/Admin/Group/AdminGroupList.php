@@ -45,4 +45,24 @@ class AdminGroupList extends Component
         $this->resetPage();
         $this->reset('grade_id');
     }
+
+    public function triggerModalCreate()
+    {
+        $this->dispatch('openModalCreateEvent');
+    }
+
+    public function triggerModalEdit($id)
+    {
+        $this->dispatch('openModalEditEvent', id: $id);
+    }
+
+    public function triggerModalDelete($id)
+    {
+        $this->dispatch('openModalDeleteEvent', id: $id);
+    }
+
+    public function triggerModalUpload()
+    {
+        $this->dispatch('openModalUploadEvent');
+    }
 }

@@ -116,10 +116,10 @@
         {{ $groups->links() }}
     </div>
 
-    {{-- <livewire:admin.grade.admin-grade-create />
+    <livewire:admin.group.admin-group-create />
     <livewire:admin.grade.admin-grade-edit />
     <livewire:admin.grade.admin-grade-delete />
-    <livewire:admin.grade.admin-grade-upload /> --}}
+    <livewire:admin.grade.admin-grade-upload />
 
 
 

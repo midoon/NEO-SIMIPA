@@ -42,7 +42,7 @@ class AdminGradeCreate extends Component
             $this->name = '';
             return $this->redirect('/admin/grade', navigate: true);
         } catch (\Exception $e) {
-            session()->flash('error', 'Error sistem : ' . $e->getMessage());
+            session()->flash('error', 'Error sistem store: ' . $e->getMessage());
             return $this->redirect('/admin/grade', navigate: true);
         }
     }

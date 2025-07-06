@@ -13,8 +13,6 @@ class AdminTeacherDelete extends Component
     public $showModal = false;
     public $teacherId;
 
-    protected $listeners = ['deleteTeacher' => 'openModal'];
-
     public function render()
     {
         return view('livewire.admin.teacher.admin-teacher-delete');

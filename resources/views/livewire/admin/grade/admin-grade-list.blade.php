@@ -119,7 +119,7 @@
 
     <livewire:admin.grade.admin-grade-create />
     <livewire:admin.grade.admin-grade-edit />
-    <livewire:admin.teacher.admin-teacher-delete />
+    <livewire:admin.grade.admin-grade-delete />
     <livewire:admin.teacher.admin-teacher-upload />
 
 

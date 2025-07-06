@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teacher;
+use App\Models\Grade;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
-class AdminTeacherController extends Controller
+class AdminGradeController extends Controller
 {
     public function uploadFile(Request $request)
     {
@@ -24,46 +24,40 @@ class AdminTeacherController extends Controller
             while ($row = fgetcsv($file)) {
                 $data[] = [
                     'name' => $row[0],
-                    'nik' => $row[1],
-                    'gender' => strtolower($row[2]),
-                    'role' => ['guru'],
                 ];
             }
             fclose($file);
 
 
-
             // filter for duplicate nik and gender validation
 
-            foreach ($data as $teacher) {
-                $validator = Validator::make($teacher, [
+            foreach ($data as $grade) {
+                $validator = Validator::make($grade, [
                     'name' => 'required',
-                    'nik' => 'required|numeric',
-                    'gender' => 'required|in:perempuan,laki-laki'
                 ]);
 
                 if ($validator->fails()) {
-                    session()->flash('error', 'Gagal unggah data guru, ada data yang tidak valid: ' . implode(', ', $validator->errors()->all()));
-                    return redirect('/admin/teacher');
+                    session()->flash('error', 'Gagal unggah data kelas, ada data yang tidak valid: ' . implode(', ', $validator->errors()->all()));
+                    return redirect('/admin/grade');
                 }
 
-                if (Teacher::where('nik', $teacher['nik'])->exists()) {
-                    session()->flash('error', 'Gagal unggah data guru, NIK ' . $teacher['nik'] . ' sudah ada');
-                    return redirect('/admin/teacher');
+                if (Grade::where('name', $grade['name'])->exists()) {
+                    session()->flash('error', 'Gagal upload data kelas: ' . $grade['name'] . ' sudah ada');
+                    return redirect('/admin/grade');
                 }
             }
 
             DB::transaction(function () use ($data) {
                 foreach ($data as $teacher) {
-                    Teacher::create($teacher);
+                    Grade::create($teacher);
                 }
             });
 
             session()->flash('success', 'Berhasil mengunggah data guru');
-            return redirect('/admin/teacher');
+            return redirect('/admin/grade');
         } catch (Exception $e) {
-            session()->flash('error', 'Error sistem upload teacher: ' . $e->getMessage());
-            return redirect('/admin/teacher');
+            session()->flash('error', 'Error sistem upload grade: ' . $e->getMessage());
+            return redirect('/admin/grade');
         }
     }
 }

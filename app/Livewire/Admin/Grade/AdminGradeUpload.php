@@ -1,26 +1,22 @@
 <?php
 
-namespace App\Livewire\Admin\Teacher;
+namespace App\Livewire\Admin\Grade;
 
-use App\Models\Teacher;
 use Exception;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class AdminTeacherUpload extends Component
+class AdminGradeUpload extends Component
 {
     use WithFileUploads;
 
     public $showModal = false;
     public $file;
 
-
     public function render()
     {
-        return view('livewire.admin.teacher.admin-teacher-upload');
+        return view('livewire.admin.grade.admin-grade-upload');
     }
 
     #[On('openModalUploadEvent')]
@@ -34,10 +30,10 @@ class AdminTeacherUpload extends Component
         try {
             $headers = [
                 "Content-Type" => "text/csv",
-                "Content-Disposition" => "attachment; filename=teacher_template.csv"
+                "Content-Disposition" => "attachment; filename=grade_template.csv"
             ];
 
-            $columns = ['name', 'nik', 'gender',];
+            $columns = ['name',];
 
             $callback = function () use ($columns) {
                 $file = fopen('php://output', 'w');
@@ -47,8 +43,8 @@ class AdminTeacherUpload extends Component
 
             return response()->stream($callback, 200, $headers);
         } catch (Exception $e) {
-            session()->flash('error', 'Error sistem download template teacher: ' . $e->getMessage());
-            return $this->redirect('/admin/teacher', navigate: true);
+            session()->flash('error', 'Error sistem download template grade: ' . $e->getMessage());
+            return $this->redirect('/admin/grade', navigate: true);
         }
     }
 

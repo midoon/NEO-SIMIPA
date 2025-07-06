@@ -53,7 +53,7 @@ class AdminTeacherCreate extends Component
             $this->resetInputFields();
             return $this->redirect('/admin/teacher', navigate: true);
         } catch (\Exception $e) {
-            session()->flash('error', 'Gagal menyimpan data: ' . $e->getMessage());
+            session()->flash('error', 'Error sistem teacher store: ' . $e->getMessage());
             return $this->redirect('/admin/teacher', navigate: true);
         }
     }

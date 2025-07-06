@@ -1,5 +1,5 @@
 <div>
-    <h1 class="font-bold text-simipa-3 text-2xl mb-5">Daftar Guru</h1>
+    <h1 class="font-bold text-simipa-3 text-2xl mb-5">Daftar Kelas</h1>
 
     {{-- notifikasi --}}
     @if (session()->has('success'))
@@ -120,7 +120,7 @@
     <livewire:admin.grade.admin-grade-create />
     <livewire:admin.grade.admin-grade-edit />
     <livewire:admin.grade.admin-grade-delete />
-    <livewire:admin.teacher.admin-teacher-upload />
+    <livewire:admin.grade.admin-grade-upload />
 
 
 

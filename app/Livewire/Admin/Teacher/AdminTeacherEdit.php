@@ -68,7 +68,7 @@ class AdminTeacherEdit extends Component
             $this->showModalEdit = false;
             return $this->redirect('/admin/teacher', navigate: true);
         } catch (\Exception $e) {
-            session()->flash('error', 'Gagal update data: ' . $e->getMessage());
+            session()->flash('error', 'Error sistem teacher update: ' . $e->getMessage());
             return $this->redirect('/admin/teacher', navigate: true);
         }
     }

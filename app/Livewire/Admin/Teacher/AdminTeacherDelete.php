@@ -33,7 +33,7 @@ class AdminTeacherDelete extends Component
             $this->showModal = false;
             return $this->redirect('/admin/teacher', navigate: true);
         } catch (\Exception $e) {
-            session()->flash('error', 'Gagal menghapus data: ' . $e->getMessage());
+            session()->flash('error', 'Error sistem teacher delete: ' . $e->getMessage());
             return $this->redirect('/admin/teacher', navigate: true);
         }
     }

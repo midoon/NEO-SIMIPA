@@ -3,9 +3,9 @@
     @if ($showModal)
         <div class="fixed inset-0 bg-black/40 flex items-center justify-center">
             <div class="bg-white rounded-md w-1/3 p-6">
-                <h2 class="text-xl font-semibold text-simipa-2 mb-4">Upload Data Guru</h2>
+                <h2 class="text-xl font-semibold text-simipa-2 mb-4">Upload Data Kelas</h2>
 
-                <form action="/admin/teacher/upload" method="POST" enctype="multipart/form-data">
+                <form action="/admin/grade/upload" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <div class="mb-5 ">

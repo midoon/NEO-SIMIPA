@@ -34,6 +34,11 @@ class AdminGradeList extends Component
         }
     }
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function triggerModalCreate()
     {
         $this->dispatch('openModalCreateEvent');

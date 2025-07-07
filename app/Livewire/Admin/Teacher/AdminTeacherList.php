@@ -47,8 +47,9 @@ class AdminTeacherList extends Component
         $this->resetPage();
     }
 
-    public function updatingSelectAll($value)
+    public function updatedSelectAll($value)
     {
+
         if ($value) {
             // Select all student IDs
             $this->selected = Teacher::pluck('id')->toArray();
@@ -57,26 +58,6 @@ class AdminTeacherList extends Component
             $this->selected = [];
         }
     }
-
-    public function deleteSelected()
-    {
-
-        if (count($this->selected) > 0) {
-            try {
-                Teacher::destroy($this->selected);
-                $this->selected = [];
-                $this->selectAll = false;
-                session()->flash('success', 'Berhasil menghapus data guru.');
-                return $this->redirect('/admin/teacher', navigate: true);
-            } catch (Exception $e) {
-                session()->flash('error', 'Gagal menghapus data: ' . $e->getMessage());
-            }
-        } else {
-            session()->flash('error', 'Tidak ada data yang dipilih untuk dihapus.');
-            return $this->redirect('/admin/teacher', navigate: true);
-        }
-    }
-
 
     public function triggerModalCreate()
     {
@@ -96,5 +77,15 @@ class AdminTeacherList extends Component
     public function triggerModalUpload()
     {
         $this->dispatch('openModalUploadEvent');
+    }
+
+    public function triggerModalDeleteMultiple()
+    {
+        if (count($this->selected) === 0) {
+            session()->flash('error', 'Tidak ada data yang dipilih untuk dihapus.');
+            return $this->redirect('/admin/teacher', navigate: true);
+        }
+
+        $this->dispatch('openModalDeleteMultipleEvent', selected: $this->selected);
     }
 }

@@ -1,3 +1,5 @@
 # TECHNICAL DEBT
 Bug Section:
+    - change confirmation delete selected row to independent component
+    - checking if selected data for deleted is already used in other data
     - change csv template columnn name

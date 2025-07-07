@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('group_id')->constrained(
                 table: 'groups',
                 indexName: 'student_group_id'
-            );
+            )->onDelete('cascade');;
             $table->string('name');
             $table->string('nisn')->unique();
             $table->enum('gender', ['laki-laki', 'perempuan'])->default('laki-laki');

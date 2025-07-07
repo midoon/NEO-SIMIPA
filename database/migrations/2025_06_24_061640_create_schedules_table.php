@@ -16,15 +16,15 @@ return new class extends Migration
             $table->foreignId('group_id')->constrained(
                 table: 'groups',
                 indexName: 'schedule_group_id'
-            );
+            )->onDelete('cascade');
             $table->foreignId('subject_id')->constrained(
                 table: 'subjects',
                 indexName: 'schedule_subject_id'
-            );
+            )->onDelete('cascade');
             $table->foreignId('teacher_id')->constrained(
                 table: 'teachers',
                 indexName: 'schedule_teacher_id'
-            );
+            )->onDelete('cascade');
             $table->enum('day_of_week', ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu']);
             $table->time('start_time');
             $table->time('end_time');

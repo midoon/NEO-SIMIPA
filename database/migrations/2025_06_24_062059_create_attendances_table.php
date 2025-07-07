@@ -16,15 +16,15 @@ return new class extends Migration
             $table->foreignId('student_id')->constrained(
                 table: 'students',
                 indexName: 'presence_student_id'
-            );
+            )->onDelete('cascade');
             $table->foreignId('activity_id')->constrained(
                 table: 'activities',
                 indexName: 'presence_presence_activity_id'
-            );
+            )->onDelete('cascade');
             $table->foreignId('group_id')->constrained(
                 table: 'groups',
                 indexName: 'presence_group_id'
-            );
+            )->onDelete('cascade');
             $table->date('day');
             $table->enum('status', ['hadir', 'sakit', 'izin', 'alpha']);
             $table->timestamps();

@@ -19,6 +19,9 @@ class AdminTeacherList extends Component
 
     public $search;
 
+    public $selected = [];
+    public $selectAll = false;
+
     public function render()
     {
         try {
@@ -30,9 +33,7 @@ class AdminTeacherList extends Component
                 });
             }
             $teachers = $teacherQuery->orderBy('name')->paginate(12)->withQueryString();
-            $teachers->getCollection()->transform(function ($teacher) {
-                return $teacher->makeHidden('password');
-            });
+
             return view('livewire.admin.teacher.admin-teacher-list', ['teachers' => $teachers]);
         } catch (Exception $e) {
             session()->flash('error', 'Gagal menyimpan data: ' . $e->getMessage());
@@ -44,6 +45,36 @@ class AdminTeacherList extends Component
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function updatingSelectAll($value)
+    {
+        if ($value) {
+            // Select all student IDs
+            $this->selected = Teacher::pluck('id')->toArray();
+        } else {
+            // Unselect all
+            $this->selected = [];
+        }
+    }
+
+    public function deleteSelected()
+    {
+
+        if (count($this->selected) > 0) {
+            try {
+                Teacher::destroy($this->selected);
+                $this->selected = [];
+                $this->selectAll = false;
+                session()->flash('success', 'Berhasil menghapus data guru.');
+                return $this->redirect('/admin/teacher', navigate: true);
+            } catch (Exception $e) {
+                session()->flash('error', 'Gagal menghapus data: ' . $e->getMessage());
+            }
+        } else {
+            session()->flash('error', 'Tidak ada data yang dipilih untuk dihapus.');
+            return $this->redirect('/admin/teacher', navigate: true);
+        }
     }
 
 

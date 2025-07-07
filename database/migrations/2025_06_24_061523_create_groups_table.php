@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('grade_id')->constrained(
                 table: 'grades',
                 indexName: 'group_grade_id'
-            );
+            )->onDelete('cascade');
             $table->string('name')->unique();
             $table->timestamps();
         });

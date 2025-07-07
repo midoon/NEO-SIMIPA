@@ -16,11 +16,11 @@ return new class extends Migration
             $table->foreignId('fee_id')->constrained(
                 table: 'fees',
                 indexName: 'payment_fee_id'
-            )->onDelete('cascade');
+            )->onDelete('cascade')->onDelete('cascade');
             $table->foreignId('student_id')->constrained(
                 table: 'students',
                 indexName: 'payment_student_id'
-            )->onDelete('cascade');
+            )->onDelete('cascade')->onDelete('cascade');
             $table->float('amount');
             $table->date('payment_date');
             $table->longText('description');

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('fee_id')->constrained(
                 table: 'fees',
                 indexName: 'receipt_fee_id'
-            );
+            )->onDelete('cascade');
             $table->string('receipt_number')->unique();
             $table->timestamps();
         });

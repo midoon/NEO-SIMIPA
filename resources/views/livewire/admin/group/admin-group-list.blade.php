@@ -118,7 +118,7 @@
 
     <livewire:admin.group.admin-group-create />
     <livewire:admin.group.admin-group-edit />
-    <livewire:admin.grade.admin-grade-delete />
+    <livewire:admin.group.admin-group-delete />
     <livewire:admin.grade.admin-grade-upload />
 
 

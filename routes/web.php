@@ -23,6 +23,7 @@ Route::get('/admin/group', AdminGroupList::class);
 // file upload route
 Route::post('/admin/teacher/upload', [App\Http\Controllers\AdminTeacherController::class, 'uploadFile']);
 Route::post('/admin/grade/upload', [App\Http\Controllers\AdminGradeController::class, 'uploadFile']);
+Route::post('/admin/group/upload', [App\Http\Controllers\AdminGroupController::class, 'uploadFile']);
 
 Route::get('/teacher/login', TeacherLogin::class);
 Route::get('/teacher/register', TeacherRegister::class);

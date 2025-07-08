@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Livewire\Admin\Teacher;
+namespace App\Livewire\Admin\Grade;
 
-use App\Models\Teacher;
+use App\Models\Grade;
 use Exception;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class AdminTeacherDeleteMultiple extends Component
+class AdminGradeDeleteMultiple extends Component
 {
     public $showModal = false;
     public $selected = [];
 
     public function render()
     {
-        return view('livewire.admin.teacher.admin-teacher-delete-multiple', [
+        return view('livewire.admin.grade.admin-grade-delete-multiple', [
             'selectedCount' => count($this->selected),
         ]);
     }
@@ -35,13 +35,13 @@ class AdminTeacherDeleteMultiple extends Component
     public function deleteSelected()
     {
         try {
-            Teacher::destroy($this->selected);
+            Grade::destroy($this->selected);
             $this->selected = [];
-            session()->flash('success', 'Berhasil menghapus data guru.');
-            return $this->redirect('/admin/teacher', navigate: true);
+            session()->flash('success', 'Berhasil menghapus data kelas.');
+            return $this->redirect('/admin/grade', navigate: true);
         } catch (Exception $e) {
             session()->flash('error', 'Gagal menghapus data: ' . $e->getMessage());
-            return $this->redirect('/admin/teacher', navigate: true);
+            return $this->redirect('/admin/grade', navigate: true);
         }
     }
 }

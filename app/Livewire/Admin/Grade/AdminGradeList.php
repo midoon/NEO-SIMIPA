@@ -17,6 +17,9 @@ class AdminGradeList extends Component
 
     public $search;
 
+    public $selected = [];
+    public $selectAll = false;
+
     public function render()
     {
         try {
@@ -39,6 +42,18 @@ class AdminGradeList extends Component
         $this->resetPage();
     }
 
+    public function updatedSelectAll($value)
+    {
+
+        if ($value) {
+            // Select all student IDs
+            $this->selected = Grade::pluck('id')->toArray();
+        } else {
+            // Unselect all
+            $this->selected = [];
+        }
+    }
+
     public function triggerModalCreate()
     {
         $this->dispatch('openModalCreateEvent');
@@ -57,5 +72,15 @@ class AdminGradeList extends Component
     public function triggerModalUpload()
     {
         $this->dispatch('openModalUploadEvent');
+    }
+
+    public function triggerModalDeleteMultiple()
+    {
+        if (count($this->selected) === 0) {
+            session()->flash('error', 'Tidak ada data yang dipilih untuk dihapus.');
+            return $this->redirect('/admin/grade', navigate: true);
+        }
+
+        $this->dispatch('openModalDeleteMultipleEvent', selected: $this->selected);
     }
 }

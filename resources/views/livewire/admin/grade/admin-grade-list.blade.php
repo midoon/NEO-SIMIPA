@@ -53,12 +53,18 @@
                     class="px-4 py-2 border border-simipa-2 rounded-sm hover:border-simipa-1 hover:text-simipa-1 hover:cursor-pointer">
                     Create
                 </button>
+                <button wire:click="triggerModalDeleteMultiple"
+                    class="px-4 py-2 border border-simipa-2 rounded-sm hover:border-red-500 hover:text-red-500 hover:cursor-pointer">Delete
+                    Selected</button>
             </div>
         </div>
 
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 border ">
             <thead class="text-xs text-simipa-2 uppercase bg-gray-50 ">
                 <tr>
+                    <th scope="col" class="px-6 py-3">
+                        <input type="checkbox" wire:model="selectAll">
+                    </th>
                     <th scope="col" class="px-6 py-3">
                         Nama
                     </th>
@@ -76,6 +82,10 @@
             <tbody>
                 @foreach ($grades as $grade)
                     <tr class="bg-white ">
+                        <td class="px-6 py-4">
+                            <input type="checkbox" wire:key="{{ $grade->id }}" wire:model="selected"
+                                value="{{ $grade->id }}">
+                        </td>
                         <td class="px-6 py-4 text-simipa-2">
                             {{ $grade->name }}
                         </td>
@@ -121,6 +131,7 @@
     <livewire:admin.grade.admin-grade-edit />
     <livewire:admin.grade.admin-grade-delete />
     <livewire:admin.grade.admin-grade-upload />
+    <livewire:admin.grade.admin-grade-delete-multiple />
 
 
 

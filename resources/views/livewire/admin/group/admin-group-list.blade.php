@@ -33,11 +33,6 @@
     @endif
 
 
-
-
-
-
-
     {{-- tabel --}}
     <div class="relative overflow-x-auto border border-simipa-4">
 
@@ -53,12 +48,18 @@
                     class="px-4 py-2 border border-simipa-2 rounded-sm hover:border-simipa-1 hover:text-simipa-1 hover:cursor-pointer">
                     Create
                 </button>
+                <button wire:click="triggerModalDeleteMultiple"
+                    class="px-4 py-2 border border-simipa-2 rounded-sm hover:border-red-500 hover:text-red-500 hover:cursor-pointer">Delete
+                    Selected</button>
             </div>
         </div>
 
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 border ">
             <thead class="text-xs text-simipa-2 uppercase bg-gray-50 ">
                 <tr>
+                    <th scope="col" class="px-6 py-3">
+                        <input type="checkbox" wire:model="selectAll">
+                    </th>
                     <th scope="col" class="px-6 py-3">
                         Nama
                     </th>
@@ -76,6 +77,10 @@
             <tbody>
                 @foreach ($groups as $group)
                     <tr class="bg-white ">
+                        <td class="px-6 py-4">
+                            <input type="checkbox" wire:key="{{ $group->id }}" wire:model="selected"
+                                value="{{ $group->id }}">
+                        </td>
                         <td class="px-6 py-4 text-simipa-2">
                             {{ $group->name }}
                         </td>
@@ -120,6 +125,7 @@
     <livewire:admin.group.admin-group-edit />
     <livewire:admin.group.admin-group-delete />
     <livewire:admin.group.admin-group-upload />
+    <livewire:admin.group.admin-group-delete-multiple />
 
 
 

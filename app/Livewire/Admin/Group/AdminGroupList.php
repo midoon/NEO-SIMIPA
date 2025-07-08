@@ -19,6 +19,9 @@ class AdminGroupList extends Component
     #[Url()]
     public $grade_id;
 
+    public $selected = [];
+    public $selectAll = false;
+
     public $search;
     public function render()
     {
@@ -46,6 +49,18 @@ class AdminGroupList extends Component
         $this->reset('grade_id');
     }
 
+    public function updatedSelectAll($value)
+    {
+
+        if ($value) {
+            // Select all student IDs
+            $this->selected = Group::pluck('id')->toArray();
+        } else {
+            // Unselect all
+            $this->selected = [];
+        }
+    }
+
     public function triggerModalCreate()
     {
         $this->dispatch('openModalCreateEvent');
@@ -64,5 +79,15 @@ class AdminGroupList extends Component
     public function triggerModalUpload()
     {
         $this->dispatch('openModalUploadEvent');
+    }
+
+    public function triggerModalDeleteMultiple()
+    {
+        if (count($this->selected) === 0) {
+            session()->flash('error', 'Tidak ada data yang dipilih untuk dihapus.');
+            return $this->redirect('/admin/group', navigate: true);
+        }
+
+        $this->dispatch('openModalDeleteMultipleEvent', selected: $this->selected);
     }
 }

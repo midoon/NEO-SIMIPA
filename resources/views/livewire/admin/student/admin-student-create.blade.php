@@ -43,7 +43,7 @@
                         <label for="groupId" class="block font-semibold mb-1">Rombongan Belajar</label>
                         <select wire:model="groupId" id="groupId" class="border w-full rounded-sm px-2 py-1.5"
                             required>
-                            <option value="" selected disabled>Pilih group</option>
+                            <option value="" selected>Pilih group</option>
                             @foreach ($groups as $group)
                                 <option value="{{ $group->id }}">{{ $group->name }}</option>
                             @endforeach

@@ -131,11 +131,11 @@
         {{ $students->links() }}
     </div>
 
-    {{-- <livewire:admin.teacher.admin-teacher-create />
+    <livewire:admin.teacher.admin-teacher-create />
     <livewire:admin.teacher.admin-teacher-edit />
     <livewire:admin.teacher.admin-teacher-delete />
     <livewire:admin.teacher.admin-teacher-upload />
-    <livewire:admin.teacher.admin-teacher-delete-multiple /> --}}
+    <livewire:admin.student.admin-student-delete-multiple />
 
 
 

@@ -133,7 +133,7 @@
 
     <livewire:admin.student.admin-student-create />
     <livewire:admin.teacher.admin-teacher-edit />
-    <livewire:admin.teacher.admin-teacher-delete />
+    <livewire:admin.student.admin-student-delete />
     <livewire:admin.teacher.admin-teacher-upload />
     <livewire:admin.student.admin-student-delete-multiple />
 

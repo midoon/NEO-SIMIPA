@@ -26,7 +26,7 @@ class AdminStudentCreate extends Component
     }
 
     #[On('openModalCreateEvent')]
-    public function createModalTeacher()
+    public function createModal()
     {
         $this->resetInputFields();
         $this->showModal = true;

@@ -43,18 +43,18 @@ class AdminGroupController extends Controller
                 ]);
 
                 if ($validator->fails()) {
-                    session()->flash('error', 'Gagal unggah data kelas, ada data yang tidak valid: ' . implode(', ', $validator->errors()->all()));
+                    session()->flash('error', 'Gagal unggah data rombel, ada data yang tidak valid: ' . implode(', ', $validator->errors()->all()));
                     return redirect('/admin/group');
                 }
                 if (Group::where('name', $group['name'])->exists()) {
 
-                    session()->flash('error', 'Gagal upload data kelas: ' . $group['name'] . ' sudah ada');
+                    session()->flash('error', 'Gagal upload data rombel: ' . $group['name'] . ' sudah ada');
                     return redirect('/admin/group');
                 }
 
                 $grade = Grade::where('name', $group['grade'])->first();
                 if (!$grade) {
-                    session()->flash('error', 'Gagal upload data kelas: ' . $group['grade'] . ' tidak ditemukan');
+                    session()->flash('error', 'Gagal upload data rombel: ' . $group['grade'] . ' tidak ditemukan');
                     return redirect('/admin/group');
                 }
 

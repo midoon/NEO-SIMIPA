@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Livewire\Admin\Student;
+namespace App\Livewire\Admin\Subject;
 
-use App\Models\Student;
+use App\Models\Subject;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class AdminStudentList extends Component
+class AdminSubjectList extends Component
 {
     use WithPagination;
 
@@ -18,57 +18,28 @@ class AdminStudentList extends Component
 
     public $search;
 
-    #[Url()] // mengambil nilai dari query param dan ditaruh langsung ke $grade_id
-    public $grade_id;
-
-    #[Url()]
-    public $group_id;
-
-
     public $selected = [];
     public $selectAll = false;
-
     public function render()
     {
         try {
-            $studentQuery = Student::query()
-                ->leftJoin('groups', 'students.group_id', '=', 'groups.id')
-                ->select('students.*', 'groups.name as group_name');
-
-            if ($this->grade_id) {
-                $studentQuery->where(function ($q) {
-                    $q->whereHas('group.grade', function ($subQuery) {
-                        $subQuery->where('id', $this->grade_id);
-                    });
-                });
-            }
-            if ($this->group_id) {
-                $studentQuery->where('students.group_id', $this->group_id);
-            }
+            $subjectQuery = Subject::query();
             if ($this->search) {
-                $studentQuery->where(function ($q) {
-                    $q->where('students.name', 'like', '%' . $this->search . '%')
-                        ->orWhere('students.nisn', 'like', '%' . $this->search . '%');
+                $subjectQuery->where(function ($q) {
+                    $q->where('name', 'like', '%' . $this->search . '%');
                 });
             }
-
-            $students = $studentQuery
-                ->orderBy('groups.name')
-                ->orderBy('students.name')
-                ->paginate(20)
-                ->withQueryString();
-            return view('livewire.admin.student.admin-student-list', ['students' => $students]);
+            $subjects = $subjectQuery->orderBy('name')->paginate(12)->withQueryString();
+            return view('livewire.admin.subject.admin-subject-list', ['subjects' => $subjects]);
         } catch (\Exception $e) {
-            session()->flash('error', 'Error sistem siswa load data: ' . $e->getMessage());
+            session()->flash('error', 'Error sistem mata pelajaran load data: ' . $e->getMessage());
             return $this->redirect('/admin/dashboard', navigate: true);
         }
     }
 
     public function updatingSearch()
     {
-        $this->resetPage();
-        $this->reset('grade_id');
-        $this->reset('group_id');
+        $this->resetPage(); // fungsi bawaan livewire
     }
 
     public function updatedSelectAll($value)
@@ -76,7 +47,7 @@ class AdminStudentList extends Component
 
         if ($value) {
             // Select all student IDs
-            $this->selected = Student::pluck('id')->toArray();
+            $this->selected = Subject::pluck('id')->toArray();
         } else {
             // Unselect all
             $this->selected = [];

@@ -1,6 +1,5 @@
 # TECHNICAL DEBT
 Bug Section:
-    - admin-student-create: rombel harus diselect yang lain dulu baru terdeteksi groupId nya
     - checking if selected data for deleted is already used in other data
     - change csv template columnn name
     - Bug error message upload file [session not detected]

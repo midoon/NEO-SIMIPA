@@ -121,11 +121,11 @@
         {{ $subjects->links() }}
     </div>
 
-    {{-- <livewire:admin.group.admin-group-create />
+    <livewire:admin.subject.admin-subject-create />
     <livewire:admin.group.admin-group-edit />
     <livewire:admin.group.admin-group-delete />
     <livewire:admin.group.admin-group-upload />
-    <livewire:admin.group.admin-group-delete-multiple /> --}}
+    <livewire:admin.group.admin-group-delete-multiple />
 
 
 

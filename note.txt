@@ -4,3 +4,5 @@ Bug Section:
     - change csv template columnn name
     - Bug error message upload file [session not detected]
 
+Feature:
+- Attendance: persentase attendance, [harian] => ditaruh di halaman lihat presensi, || [bulanan or tahunan] => ditaruh di bagian rekap

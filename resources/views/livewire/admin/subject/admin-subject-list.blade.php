@@ -122,7 +122,7 @@
     </div>
 
     <livewire:admin.subject.admin-subject-create />
-    <livewire:admin.group.admin-group-edit />
+    <livewire:admin.subject.admin-subject-edit />
     <livewire:admin.subject.admin-subject-delete />
     <livewire:admin.group.admin-group-upload />
     <livewire:admin.group.admin-group-delete-multiple />

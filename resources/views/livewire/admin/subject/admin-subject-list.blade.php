@@ -124,7 +124,7 @@
     <livewire:admin.subject.admin-subject-create />
     <livewire:admin.subject.admin-subject-edit />
     <livewire:admin.subject.admin-subject-delete />
-    <livewire:admin.group.admin-group-upload />
+    <livewire:admin.subject.admin-subject-upload />
     <livewire:admin.subject.admin-subject-delete-multiple />
 
 

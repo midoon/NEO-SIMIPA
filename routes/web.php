@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminGradeController;
+use App\Http\Controllers\AdminGroupController;
+use App\Http\Controllers\AdminStudentController;
+use App\Http\Controllers\AdminSubjectController;
+use App\Http\Controllers\AdminTeacherController;
 use App\Livewire\Admin\AdminDashboard;
 use App\Livewire\Admin\Grade\AdminGradeList;
 use App\Livewire\Admin\Group\AdminGroupList;
@@ -9,7 +14,7 @@ use App\Livewire\Admin\Teacher\AdminTeacherList;
 use App\Livewire\Auth\AdminLogin;
 use App\Livewire\Auth\TeacherLogin;
 use App\Livewire\Auth\TeacherRegister;
-use App\Livewire\CreatePost;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,10 +30,12 @@ Route::get('/admin/student', AdminStudentList::class);
 Route::get('/admin/subject', AdminSubjectList::class);
 
 // file upload route
-Route::post('/admin/teacher/upload', [App\Http\Controllers\AdminTeacherController::class, 'uploadFile']);
-Route::post('/admin/grade/upload', [App\Http\Controllers\AdminGradeController::class, 'uploadFile']);
-Route::post('/admin/group/upload', [App\Http\Controllers\AdminGroupController::class, 'uploadFile']);
-Route::post('/admin/student/upload', [App\Http\Controllers\AdminStudentController::class, 'uploadFile']);
+Route::post('/admin/teacher/upload', [AdminTeacherController::class, 'uploadFile']);
+Route::post('/admin/grade/upload', [AdminGradeController::class, 'uploadFile']);
+Route::post('/admin/group/upload', [AdminGroupController::class, 'uploadFile']);
+Route::post('/admin/student/upload', [AdminStudentController::class, 'uploadFile']);
+Route::post('/admin/subject/upload', [AdminSubjectController::class, 'uploadFile']);
+
 
 Route::get('/teacher/login', TeacherLogin::class);
 Route::get('/teacher/register', TeacherRegister::class);

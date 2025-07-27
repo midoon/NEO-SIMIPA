@@ -38,16 +38,17 @@ class AdminScheduleList extends Component
             }
 
             if ($this->search) {
+
                 $scheduleQuery->where(function ($q) {
-                    $q->where('schedules.day_of_week', 'like', '%' . $this->search . '%')
+                    $q->where('schedules.day', 'like', '%' . $this->search . '%')
                         ->orWhere('subjects.name', 'like', '%' . $this->search . '%')
                         ->orWhere('teachers.name', 'like', '%' . $this->search . '%')
-                        ->orWhere('groups.name', 'like', '%', $this->search . '%');
+                        ->orWhere('groups.name', 'like', '%' . $this->search . '%');
                 });
             }
 
             $schedules = $scheduleQuery
-                ->orderByRaw("FIELD(day, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu)")
+                ->orderByRaw("FIELD(day, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu')")
                 ->orderBy('groups.name')
                 ->orderBy('start_time')
                 ->paginate(20)
@@ -64,8 +65,7 @@ class AdminScheduleList extends Component
     public function updatingSearch()
     {
         $this->resetPage();
-        $this->reset('grade_id');
-        $this->reset('group_id');
+        $this->reset('subject_id');
     }
 
     public function updatedSelectAll($value)

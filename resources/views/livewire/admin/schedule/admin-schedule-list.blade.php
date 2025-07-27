@@ -1,5 +1,5 @@
 <div>
-    <h1 class="font-bold text-simipa-3 text-2xl mb-5">Daftar Siswa</h1>
+    <h1 class="font-bold text-simipa-3 text-2xl mb-5">Jadwal Pelajaran</h1>
 
     {{-- notifikasi --}}
     @if (session()->has('success'))
@@ -76,6 +76,9 @@
                         Guru
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Mata Pelajaran
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Mulai
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -101,6 +104,9 @@
                         </td>
                         <td class="px-6 py-4">
                             {{ $schedule->teacher_name }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $schedule->subject_name }}
                         </td>
                         <td class="px-6 py-4">
                             {{ $schedule->start_time }}
@@ -138,11 +144,11 @@
         {{ $schedules->links() }}
     </div>
 
-    {{-- <livewire:admin.student.admin-student-create />
+    <livewire:admin.schedule.admin-schedule-create />
     <livewire:admin.student.admin-student-edit />
     <livewire:admin.student.admin-student-delete />
     <livewire:admin.student.admin-student-upload />
-    <livewire:admin.student.admin-student-delete-multiple /> --}}
+    <livewire:admin.student.admin-student-delete-multiple />
 
 
 

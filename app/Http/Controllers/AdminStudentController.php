@@ -13,7 +13,6 @@ class AdminStudentController extends Controller
 {
     public function uploadFile(Request $request)
     {
-
         try {
             $request->validate([
                 'file' => 'required|mimes:csv,txt'
@@ -86,7 +85,7 @@ class AdminStudentController extends Controller
             return redirect('/admin/student');
         } catch (Exception $e) {
             session()->flash('error', 'Error sistem upload siswa: ' . $e->getMessage());
-            return redirect('/admin/siswa');
+            return redirect('/admin/student');
         }
     }
 }

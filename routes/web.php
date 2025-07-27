@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminGradeController;
 use App\Http\Controllers\AdminGroupController;
+use App\Http\Controllers\AdminScheduleController;
 use App\Http\Controllers\AdminStudentController;
 use App\Http\Controllers\AdminSubjectController;
 use App\Http\Controllers\AdminTeacherController;
@@ -37,6 +38,7 @@ Route::post('/admin/grade/upload', [AdminGradeController::class, 'uploadFile']);
 Route::post('/admin/group/upload', [AdminGroupController::class, 'uploadFile']);
 Route::post('/admin/student/upload', [AdminStudentController::class, 'uploadFile']);
 Route::post('/admin/subject/upload', [AdminSubjectController::class, 'uploadFile']);
+Route::post('/admin/schedule/upload', [AdminScheduleController::class, 'uploadFile']);
 
 
 Route::get('/teacher/login', TeacherLogin::class);

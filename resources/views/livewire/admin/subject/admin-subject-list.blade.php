@@ -39,7 +39,7 @@
         <div class="p-4 flex items-center justify-between gap-4">
             <input type="text"
                 class="block w-1/3 p-2.5 text-sm text-simipa-2 bg-simipa-5 rounded-sm border border-simipa-4 focus:ring-simipa-1 focus:border-simipa-1"
-                placeholder="Cari berdasarkan nama atau NIK" wire:model.live.debounce.300ms="search">
+                placeholder="Cari berdasarkan nama " wire:model.live.debounce.300ms="search">
 
             <div class="flex items-center gap-4">
                 <button wire:click="triggerModalUpload"

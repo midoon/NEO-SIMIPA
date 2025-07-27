@@ -146,7 +146,7 @@
 
     <livewire:admin.schedule.admin-schedule-create />
     <livewire:admin.student.admin-student-edit />
-    <livewire:admin.student.admin-student-delete />
+    <livewire:admin.schedule.admin-schedule-delete />
     <livewire:admin.student.admin-student-upload />
     <livewire:admin.student.admin-student-delete-multiple />
 

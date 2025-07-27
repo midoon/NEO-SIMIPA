@@ -47,7 +47,7 @@ class AdminScheduleList extends Component
             }
 
             $schedules = $scheduleQuery
-                ->orderByRaw("FIELD(day_of_week, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu')")
+                ->orderByRaw("FIELD(day, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu)")
                 ->orderBy('groups.name')
                 ->orderBy('start_time')
                 ->paginate(20)

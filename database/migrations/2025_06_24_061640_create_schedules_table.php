@@ -25,7 +25,7 @@ return new class extends Migration
                 table: 'teachers',
                 indexName: 'schedule_teacher_id'
             )->onDelete('cascade');
-            $table->enum('day_of_week', ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu']);
+            $table->enum('day', ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu']);
             $table->time('start_time');
             $table->time('end_time');
             $table->timestamps();

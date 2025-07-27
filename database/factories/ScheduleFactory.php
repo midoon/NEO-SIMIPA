@@ -20,7 +20,7 @@ class ScheduleFactory extends Factory
             'teacher_id' => null, // Akan diisi dalam Seeder
             'subject_id' => null, // Akan diisi dalam Seeder
             'group_id' => null, // Akan diisi dalam Seeder
-            'day_of_week' => $this->faker->randomElement(['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']),
+            'day' => $this->faker->randomElement(['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']),
             'start_time' => $this->faker->time('H:i'),
             'end_time' => $this->faker->time('H:i'),
         ];

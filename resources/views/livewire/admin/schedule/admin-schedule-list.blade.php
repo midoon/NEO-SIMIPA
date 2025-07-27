@@ -38,6 +38,7 @@
 
 
 
+
     {{-- tabel --}}
     <div class="relative overflow-x-auto border border-simipa-4">
 
@@ -63,7 +64,7 @@
             <thead class="text-xs text-simipa-2 uppercase bg-gray-50 ">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        <input type="checkbox" wire:model="selectAll">
+                        <input type="checkbox" wire:model.live="selectAll">
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Hari
@@ -89,11 +90,11 @@
                 @foreach ($schedules as $schedule)
                     <tr class="bg-white ">
                         <td class="px-6 py-4">
-                            <input type="checkbox" wire:key="{{ $schedule->id }}" wire:model="selected"
+                            <input type="checkbox" wire:key="{{ $schedule->id }}" wire:model.live="selected"
                                 value="{{ $schedule->id }}">
                         </td>
                         <td class="px-6 py-4 text-simipa-2">
-                            {{ $schedule->day_of_week }}
+                            {{ $schedule->day }}
                         </td>
                         <td class="px-6 py-4">
                             {{ $schedule->group_name }}

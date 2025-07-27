@@ -25,7 +25,7 @@ return new class extends Migration
                 table: 'groups',
                 indexName: 'presence_group_id'
             )->onDelete('cascade');
-            $table->date('day');
+            $table->date('date');
             $table->enum('status', ['hadir', 'sakit', 'izin', 'alpha']);
             $table->timestamps();
         });

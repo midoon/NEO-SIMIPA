@@ -63,7 +63,7 @@
             <thead class="text-xs text-simipa-2 uppercase bg-gray-50 ">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        <input type="checkbox" wire:model="selectAll">
+                        <input type="checkbox" wire:model.live="selectAll">
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Nama
@@ -83,7 +83,7 @@
                 @foreach ($grades as $grade)
                     <tr class="bg-white ">
                         <td class="px-6 py-4">
-                            <input type="checkbox" wire:key="{{ $grade->id }}" wire:model="selected"
+                            <input type="checkbox" wire:key="{{ $grade->id }}" wire:model.live="selected"
                                 value="{{ $grade->id }}">
                         </td>
                         <td class="px-6 py-4 text-simipa-2">

@@ -32,7 +32,7 @@ class AdminSubjectUpload extends Component
                 "Content-Disposition" => "attachment; filename=subject_template.csv"
             ];
 
-            $columns = ['name', 'description'];
+            $columns = ['name', 'code'];
 
             $callback = function () use ($columns) {
                 $file = fopen('php://output', 'w');

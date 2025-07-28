@@ -10,7 +10,7 @@ class AdminSubjectEdit extends Component
 {
     public $showModal = false;
     public $name;
-    public $description;
+    public $code;
     public $subjectId;
 
     public function render()
@@ -22,14 +22,14 @@ class AdminSubjectEdit extends Component
     public function openModal($id)
     {
         $this->name = '';
-        $this->description = '';
+        $this->code = '';
         $this->subjectId = $id;
         $this->showModal = true;
 
         $subject = Subject::find($id);
         if ($subject) {
             $this->name = $subject->name;
-            $this->description = $subject->description;
+            $this->code = $subject->code;
         } else {
             session()->flash('error', 'Mata pelajaran tidak ditemukan.');
             return $this->redirect('/admin/subject', navigate: true);
@@ -44,19 +44,21 @@ class AdminSubjectEdit extends Component
             ]);
 
             // Check if grade already exists
+            if (Subject::where('code', $this->code)->exists() && Subject::where('code', $this->code)->first()->id !== $this->subjectId) {
+                session()->flash('error', "Kode mata pelajaran sudah terdaftar.");
+                return $this->redirect('/admin/subject', navigate: true);
+            }
             if (Subject::where('name', $this->name)->exists() && Subject::where('name', $this->name)->first()->id !== $this->subjectId) {
                 session()->flash('error', "Mata pelajaran sudah terdaftar.");
                 return $this->redirect('/admin/subject', navigate: true);
             }
 
-            if ($this->description == "") {
-                $this->description = $this->name;
-            }
+
 
 
             $subject = Subject::find($this->subjectId);
             if ($subject) {
-                $subject->update(['name' => $this->name, 'description' => $this->description]);
+                $subject->update(['name' => $this->name, 'code' => $this->code]);
                 session()->flash('success', 'Mata pelajaran berhasil diperbarui.');
             } else {
                 session()->flash('error', 'Mata pelajaran tidak ditemukan.');
@@ -65,7 +67,7 @@ class AdminSubjectEdit extends Component
             $this->showModal = false;
             $this->name = '';
             $this->subjectId = null;
-            $this->description = '';
+            $this->code = '';
             return $this->redirect('/admin/subject', navigate: true);
         } catch (\Exception $e) {
             session()->flash('error', 'Error sistem update: ' . $e->getMessage());

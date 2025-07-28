@@ -26,7 +26,8 @@ class AdminSubjectList extends Component
             $subjectQuery = Subject::query();
             if ($this->search) {
                 $subjectQuery->where(function ($q) {
-                    $q->where('name', 'like', '%' . $this->search . '%');
+                    $q->where('name', 'like', '%' . $this->search . '%')
+                        ->orWhere('code', 'like', '%' . $this->search . '%');
                 });
             }
             $subjects = $subjectQuery->orderBy('name')->paginate(12)->withQueryString();

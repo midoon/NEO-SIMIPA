@@ -9,11 +9,11 @@ use Livewire\Component;
 class AdminSubjectCreate extends Component
 {
     public $showModal = false;
-    public $name, $description = [];
+    public $name, $code = [];
 
     protected $rules = [
         'name' => 'required|string|max:255',
-        'description' => 'string|max:255',
+        'code' => 'required|string|max:255',
     ];
 
     public function render()
@@ -31,7 +31,7 @@ class AdminSubjectCreate extends Component
     private function resetInputFields()
     {
         $this->name = '';
-        $this->description = '';
+        $this->code = '';
     }
 
     public function store()
@@ -39,19 +39,17 @@ class AdminSubjectCreate extends Component
         try {
             $this->validate();
 
-            // Check if NIK already exists
-            if (Subject::where('name', $this->name)->exists()) {
+            // Check if subject already exists
+            if (Subject::where('name', $this->name)->exists() || Subject::where('code', $this->code)->exists()) {
                 session()->flash('error', 'Mata pelajaran sudah terdaftar.');
                 return $this->redirect('/admin/subject', navigate: true);
             }
 
-            if ($this->description == "") {
-                $this->description = $this->name;
-            }
+
 
             Subject::create([
                 'name' => $this->name,
-                'description' => $this->description,
+                'code' => $this->code,
             ]);
 
             session()->flash('success', 'Siswa berhasil ditambahkan.');

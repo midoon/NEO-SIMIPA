@@ -27,7 +27,7 @@ class SubjectFactory extends Factory
                 'Seni Budaya',
                 'Pendidikan Jasmani, Olahraga, dan Kesehatan'
             ]),
-            'description' => $this->faker->sentence(10),
+            'code' => $this->faker->unique()->regexify('[A-Z]{3}[0-9]{3}'),
         ];
     }
 }

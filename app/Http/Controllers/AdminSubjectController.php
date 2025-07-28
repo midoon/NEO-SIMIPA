@@ -24,7 +24,7 @@ class AdminSubjectController extends Controller
             while ($row = fgetcsv($file)) {
                 $data[] = [
                     'name' => $row[0],
-                    'description' => $row[1]
+                    'code' => $row[1]
                 ];
             }
             fclose($file);
@@ -35,6 +35,7 @@ class AdminSubjectController extends Controller
             foreach ($data as $subject) {
                 $validator = Validator::make($subject, [
                     'name' => 'required',
+                    'code' => 'required',
                 ]);
 
                 if ($validator->fails()) {
@@ -47,14 +48,16 @@ class AdminSubjectController extends Controller
                     return redirect('/admin/subject');
                 }
 
-                $description = $subject['description'];
-                if ($description == null) {
-                    $description = $subject['name'];
+
+
+                if (Subject::where('code', $subject['code'])->exists()) {
+                    session()->flash('error', 'Gagal upload data mata pelajaran: ' . $subject['code'] . ' sudah ada');
+                    return redirect('/admin/subject');
                 }
 
                 $dataSubject[] = [
                     'name' => $subject['name'],
-                    'description' => $description,
+                    'code' => $subject['code'],
                 ];
             }
 

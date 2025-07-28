@@ -64,7 +64,7 @@
                         Nama Mata Pelajaran
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Deskripsi
+                        Kode Mata Pelajaran
                     </th>
                     <th scope="col" class="px-6 py-3">
                         LIhat Jadwal
@@ -85,7 +85,7 @@
                             {{ $subject->name }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $subject->description }}
+                            {{ $subject->code }}
                         </td>
                         <td class="px-6 py-4">
                             <a wire:navigate class="hover:cursor-pointer hover:text-blue-500"

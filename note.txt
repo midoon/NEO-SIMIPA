@@ -3,8 +3,7 @@ Bug Section:
     - checking if selected data for deleted is already used in other data
     - change csv template columnn name
     - Bug error message upload file [session not detected]
-    - change subject description to subject code
-    - change column in upload schedule from teacher name to teacher NIK and subject name to subject code
+
 
 Feature:
 - Attendance: persentase attendance, [harian] => ditaruh di halaman lihat presensi, || [bulanan or tahunan] => ditaruh di bagian rekap

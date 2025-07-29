@@ -32,7 +32,7 @@ class AdminScheduleUpload extends Component
                 "Content-Disposition" => "attachment; filename=schedule_template.csv"
             ];
 
-            $columns = ['group', 'subject', 'teacher', 'day', 'start_time', 'end_time'];
+            $columns = ['group_name', 'subject_code', 'teacher_nik', 'day', 'start_time_HH:MM', 'end_time_HH:MM'];
 
             $callback = function () use ($columns) {
                 $file = fopen('php://output', 'w');

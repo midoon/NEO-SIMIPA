@@ -17,6 +17,7 @@ class AdminScheduleController extends Controller
     {
 
 
+        // ganti cuy buat kode mata pelajaran
         try {
             $request->validate([
                 'file' => 'required|mimes:csv,txt'
@@ -64,23 +65,27 @@ class AdminScheduleController extends Controller
 
 
 
+
                 $group = Group::where('name', $schedule['group'])->first();
 
                 if (!$group) {
                     session()->flash('error', 'Gagal unggah data rombel: ' . $schedule['group'] . ' tidak ditemukan');
                     return redirect('/admin/schedule');
                 }
-                $subject = Subject::where('name', $schedule['subject'])->first();
+
+                $subject = Subject::where('code', $schedule['subject'])->first();
                 if (!$subject) {
                     session()->flash('error', 'Gagal unggah data mata pelajaran: ' . $schedule['subject'] . ' tidak ditemukan');
                     return redirect('/admin/schedule');
                 }
 
-                $teacher = Teacher::where('name', $schedule['teacher'])->first();
+
+                $teacher = Teacher::where('nik', $schedule['teacher'])->first();
                 if (!$teacher) {
                     session()->flash('error', 'Gagal unggah data guru: ' . $schedule['teacher'] . ' tidak ditemukan');
                     return redirect('/admin/schedule');
                 }
+
 
 
 
@@ -93,6 +98,8 @@ class AdminScheduleController extends Controller
                     'end_time' => $schedule['end_time']
                 ];
             }
+
+
 
 
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminScheduleController;
 use App\Http\Controllers\AdminStudentController;
 use App\Http\Controllers\AdminSubjectController;
 use App\Http\Controllers\AdminTeacherController;
+use App\Livewire\Admin\Activity\AdminActivityList;
 use App\Livewire\Admin\AdminDashboard;
 use App\Livewire\Admin\Grade\AdminGradeList;
 use App\Livewire\Admin\Group\AdminGroupList;
@@ -31,6 +32,7 @@ Route::get('/admin/group', AdminGroupList::class);
 Route::get('/admin/student', AdminStudentList::class);
 Route::get('/admin/subject', AdminSubjectList::class);
 Route::get('/admin/schedule', AdminScheduleList::class);
+Route::get('/admin/activity', AdminActivityList::class);
 
 // file upload route
 Route::post('/admin/teacher/upload', [AdminTeacherController::class, 'uploadFile']);

@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Livewire\Admin\Subject;
+namespace App\Livewire\Admin\Activity;
 
-use App\Models\Subject;
+use App\Models\Activity;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class AdminSubjectList extends Component
+class AdminActivityList extends Component
 {
     use WithPagination;
 
     #[Layout('components.layouts.admin')]
-    #[Title('Admin Mata Pelajaran')]
+    #[Title('Admin Kegiatan')]
 
     public $search;
 
@@ -22,17 +22,16 @@ class AdminSubjectList extends Component
     public function render()
     {
         try {
-            $subjectQuery = Subject::query();
+            $activityQuery = Activity::query();
             if ($this->search) {
-                $subjectQuery->where(function ($q) {
-                    $q->where('name', 'like', '%' . $this->search . '%')
-                        ->orWhere('code', 'like', '%' . $this->search . '%');
+                $activityQuery->where(function ($q) {
+                    $q->where('name', 'like', '%' . $this->search . '%');
                 });
             }
-            $subjects = $subjectQuery->orderBy('name')->paginate(12)->withQueryString();
-            return view('livewire.admin.subject.admin-subject-list', ['subjects' => $subjects]);
+            $activities = $activityQuery->orderBy('name')->paginate(12)->withQueryString();
+            return view('livewire.admin.activity.admin-activity-list', ['activities' => $activities]);
         } catch (\Exception $e) {
-            session()->flash('error', 'Error sistem mata pelajaran load data: ' . $e->getMessage());
+            session()->flash('error', 'Error sistem kegiatan load data: ' . $e->getMessage());
             return $this->redirect('/admin/dashboard', navigate: true);
         }
     }
@@ -47,7 +46,7 @@ class AdminSubjectList extends Component
 
         if ($value) {
             // Select all student IDs
-            $this->selected = Subject::pluck('id')->toArray();
+            $this->selected = Activity::pluck('id')->toArray();
         } else {
             // Unselect all
             $this->selected = [];
@@ -78,7 +77,7 @@ class AdminSubjectList extends Component
     {
         if (count($this->selected) === 0) {
             session()->flash('error', 'Tidak ada data yang dipilih untuk dihapus.');
-            return $this->redirect('/admin/subject', navigate: true);
+            return $this->redirect('/admin/activity', navigate: true);
         }
 
         $this->dispatch('openModalDeleteMultipleEvent', selected: $this->selected);

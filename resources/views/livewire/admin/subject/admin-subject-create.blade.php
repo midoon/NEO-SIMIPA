@@ -8,7 +8,7 @@
                     <div class="mb-3">
                         <div class="w-full ">
                             <label for="name" class="block font-semibold mb-1">Nama Mata Pelajaran</label>
-                            <input type="text" wire:model="name" id="name" placeholder="Kelas 1" required
+                            <input type="text" wire:model="name" id="name" placeholder="Fiqih" required
                                 class="w-full border py-1.5 px-3 rounded-sm focus:border-simipa-1 focus:ring-1 focus:ring-simipa-1 focus:outline-none">
                             @error('name')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -17,10 +17,10 @@
                     </div>
                     <div class="mb-5">
                         <div class="w-full ">
-                            <label for="description" class="block font-semibold mb-1">Deskripsi</label>
-                            <textarea type="text" wire:model="description" id="description" placeholder="Kelas 1"
-                                class="w-full border py-1.5 px-3 rounded-sm focus:border-simipa-1 focus:ring-1 focus:ring-simipa-1 focus:outline-none"></textarea>
-                            @error('description')
+                            <label for="code" class="block font-semibold mb-1">Kode mata pelajaran</label>
+                            <input type="text" wire:model="code" id="code" placeholder="FQH1" required
+                                class="w-full border py-1.5 px-3 rounded-sm focus:border-simipa-1 focus:ring-1 focus:ring-simipa-1 focus:outline-none"></input>
+                            @error('code')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
                         </div>

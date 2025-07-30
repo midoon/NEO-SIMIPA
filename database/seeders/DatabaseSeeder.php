@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Activity;
 use App\Models\Grade;
 use App\Models\Group;
+use App\Models\PaymentType;
 use App\Models\Schedule;
 use App\Models\Student;
 use App\Models\Subject;
@@ -27,6 +29,10 @@ class DatabaseSeeder extends Seeder
 
         // Create Subjects
         $subjects = Subject::factory(7)->create();
+
+        //create activities
+        Activity::factory(6)->create();
+        PaymentType::factory(3)->create();
 
         foreach ($grades as $grade) {
             $alphabet = 'A';

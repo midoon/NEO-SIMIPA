@@ -52,7 +52,7 @@ class AdminSubjectCreate extends Component
                 'code' => $this->code,
             ]);
 
-            session()->flash('success', 'Siswa berhasil ditambahkan.');
+            session()->flash('success', 'Mata pelajaran berhasil ditambahkan.');
             $this->showModal = false;
             $this->resetInputFields();
             return $this->redirect('/admin/subject', navigate: true);

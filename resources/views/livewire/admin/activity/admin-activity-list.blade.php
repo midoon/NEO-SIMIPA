@@ -115,10 +115,11 @@
     </div>
 
     <livewire:admin.activity.admin-activity-create />
+    <livewire:admin.activity.admin-activity-delete />
 
     {{--
     <livewire:admin.subject.admin-subject-edit />
-    <livewire:admin.subject.admin-subject-delete />
+
     <livewire:admin.subject.admin-subject-upload />
     <livewire:admin.subject.admin-subject-delete-multiple /> --}}
 

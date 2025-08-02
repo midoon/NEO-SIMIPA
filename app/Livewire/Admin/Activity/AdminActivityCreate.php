@@ -45,7 +45,9 @@ class AdminActivityCreate extends Component
                 return $this->redirect('/admin/activity', navigate: true);
             }
 
-
+            if ($this->description === "") {
+                $this->description = $this->name;
+            }
 
             Activity::create([
                 'name' => $this->name,

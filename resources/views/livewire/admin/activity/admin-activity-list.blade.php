@@ -116,9 +116,10 @@
 
     <livewire:admin.activity.admin-activity-create />
     <livewire:admin.activity.admin-activity-delete />
+    <livewire:admin.activity.admin-activity-edit />
 
     {{--
-    <livewire:admin.subject.admin-subject-edit />
+
 
     <livewire:admin.subject.admin-subject-upload />
     <livewire:admin.subject.admin-subject-delete-multiple /> --}}

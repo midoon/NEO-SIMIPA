@@ -114,7 +114,9 @@
         {{ $paymentTypes->links() }}
     </div>
 
-    {{-- <livewire:admin.activity.admin-activity-create />
+    <livewire:admin.payment-type.admin-payment-type-create />
+
+    {{--
     <livewire:admin.activity.admin-activity-delete />
     <livewire:admin.activity.admin-activity-edit />
     <livewire:admin.activity.admin-activity-delete-multiple />

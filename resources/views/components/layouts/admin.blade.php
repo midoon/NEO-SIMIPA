@@ -131,7 +131,7 @@
                             <a wire:navigate href="/admin/payment/type"
                                 class="block py-2 px-4 text-sm text-simipa-3 hover:bg-simipa-2 hover:text-white rounded">Tipe
                                 Pembayaran</a>
-                            <a wire:navigate href="/admin/payment/fee"
+                            <a wire:navigate href="/admin/fee/grade"
                                 class="block py-2 px-4 text-sm text-simipa-3 hover:bg-simipa-2 hover:text-white rounded">Tagihan
                                 Kelas</a>
                         </div>
@@ -142,7 +142,7 @@
 
                 {{-- nav bawah --}}
                 <div>
-                    <a href="/admin/teacher"
+                    <a href="#"
                         class="text-simipa-3 font-semibold transition-colors hover:text-simipa-5 block py-3 px-4 rounded-lg hover:bg-simipa-2 group">
                         <div class="flex ml-1">
 

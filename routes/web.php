@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminTeacherController;
 use App\Livewire\Admin\Activity\AdminActivityList;
 use App\Livewire\Admin\AdminDashboard;
 use App\Livewire\Admin\Grade\AdminGradeList;
+use App\Livewire\Admin\GradeFee\AdminGradeFeeList;
 use App\Livewire\Admin\Group\AdminGroupList;
 use App\Livewire\Admin\PaymentType\AdminPaymentTypeList;
 use App\Livewire\Admin\Schedule\AdminScheduleList;
@@ -37,6 +38,7 @@ Route::get('/admin/subject', AdminSubjectList::class);
 Route::get('/admin/schedule', AdminScheduleList::class);
 Route::get('/admin/activity', AdminActivityList::class);
 Route::get('/admin/payment/type', AdminPaymentTypeList::class);
+Route::get('/admin/fee/grade', AdminGradeFeeList::class);
 
 // file upload route
 Route::post('/admin/teacher/upload', [AdminTeacherController::class, 'uploadFile']);

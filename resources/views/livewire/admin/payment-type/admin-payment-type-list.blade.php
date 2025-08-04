@@ -116,10 +116,11 @@
 
     <livewire:admin.payment-type.admin-payment-type-create />
     <livewire:admin.payment-type.admin-payment-type-delete />
+    <livewire:admin.payment-type.admin-payment-type-edit />
 
     {{--
 
-    <livewire:admin.activity.admin-activity-edit />
+
     <livewire:admin.activity.admin-activity-delete-multiple />
     <livewire:admin.activity.admin-activity-upload /> --}}
 

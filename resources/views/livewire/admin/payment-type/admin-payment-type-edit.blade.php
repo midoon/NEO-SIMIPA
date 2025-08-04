@@ -2,12 +2,12 @@
     @if ($showModal)
         <div class="fixed inset-0 bg-black/40 flex items-center justify-center">
             <div class="bg-white rounded-md w-1/3 p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Edit Data Jenis Kegiatan</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Edit Data Tipe Pembayaran</h2>
 
                 <form wire:submit.prevent="update">
                     <div class="mb-3">
                         <div class="w-full ">
-                            <label for="name" class="block font-semibold mb-1">Nama Jenis Kegiatan</label>
+                            <label for="name" class="block font-semibold mb-1">Nama Tipe Pembayaran</label>
                             <input type="text" wire:model="name" id="name" placeholder="Kegiatan belajar mengajar"
                                 required
                                 class="w-full border py-1.5 px-3 rounded-sm focus:border-simipa-1 focus:ring-1 focus:ring-simipa-1 focus:outline-none">

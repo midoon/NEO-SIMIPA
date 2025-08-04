@@ -47,7 +47,7 @@ class AdminActivityEdit extends Component
 
             $isExistActivity = Activity::where('name', $this->name)->first();
             if ($isExistActivity && $isExistActivity->id !== $this->activityId) {
-                session()->flash('error', "Kode mata pelajaran sudah terdaftar.");
+                session()->flash('error', "Kegiatan sudah terdaftar.");
                 return $this->redirect('/admin/activity', navigate: true);
             }
             if ($this->description === "") {

@@ -118,18 +118,6 @@
     <livewire:admin.payment-type.admin-payment-type-delete />
     <livewire:admin.payment-type.admin-payment-type-edit />
     <livewire:admin.payment-type.admin-payment-type-delete-multiple />
-
-    {{--
-
-
-
-    <livewire:admin.activity.admin-activity-upload /> --}}
-
-
-
-
-
-
-
+    <livewire:admin.payment-type.admin-payment-type-upload />
 
 </div>

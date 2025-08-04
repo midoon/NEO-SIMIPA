@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminActivityController;
 use App\Http\Controllers\AdminGradeController;
 use App\Http\Controllers\AdminGroupController;
+use App\Http\Controllers\AdminPaymentTypeController;
 use App\Http\Controllers\AdminScheduleController;
 use App\Http\Controllers\AdminStudentController;
 use App\Http\Controllers\AdminSubjectController;
@@ -45,6 +46,7 @@ Route::post('/admin/student/upload', [AdminStudentController::class, 'uploadFile
 Route::post('/admin/subject/upload', [AdminSubjectController::class, 'uploadFile']);
 Route::post('/admin/schedule/upload', [AdminScheduleController::class, 'uploadFile']);
 Route::post('/admin/activity/upload', [AdminActivityController::class, 'uploadFile']);
+Route::post('/admin/payment/type/upload', [AdminPaymentTypeController::class, 'uploadFile']);
 
 
 Route::get('/teacher/login', TeacherLogin::class);

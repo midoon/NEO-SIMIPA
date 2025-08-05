@@ -134,11 +134,13 @@
         {{ $gradeFees->links() }}
     </div>
 
-    <livewire:admin.student.admin-student-create />
+    <livewire:admin.grade-fee.admin-grade-fee-create />
+
+    {{--
     <livewire:admin.student.admin-student-edit />
     <livewire:admin.student.admin-student-delete />
     <livewire:admin.student.admin-student-upload />
-    <livewire:admin.student.admin-student-delete-multiple />
+    <livewire:admin.student.admin-student-delete-multiple /> --}}
 
 
 

@@ -94,7 +94,7 @@ class AdminGradeFeeCreate extends Component
             $this->resetInputFields();
             return $this->redirect('/admin/fee/grade', navigate: true);
         } catch (\Exception $e) {
-            session()->flash('error', 'Error sistem schedule store: ' . $e->getMessage());
+            session()->flash('error', 'Error sistem update: ' . $e->getMessage());
             return $this->redirect('/admin/fee/grade', navigate: true);
         }
     }

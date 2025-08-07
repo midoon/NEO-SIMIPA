@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\GradeFee;
 
+use App\Models\Fee;
 use App\Models\GradeFee;
 use App\Models\PaymentType;
 use App\Models\Student;
@@ -48,7 +49,7 @@ class AdminGradeFeeEdit extends Component
         $this->dueDate = '';
     }
 
-    public function store()
+    public function update()
     {
         try {
             $this->validate([
@@ -57,7 +58,9 @@ class AdminGradeFeeEdit extends Component
                 'dueDate' => 'required|date|after_or_equal:today',
             ]);
 
-            $isGradeFeeExists = GradeFee::where('grade_id', $this->gradeId)
+            $gradeFee = GradeFee::find($this->gradeFeeId);
+
+            $isGradeFeeExists = GradeFee::where('grade_id', $gradeFee->grade_id)
                 ->where('payment_type_id', $this->paymentTypeId)
                 ->first();
             if ($isGradeFeeExists->id != $this->gradeFeeId) {
@@ -66,7 +69,7 @@ class AdminGradeFeeEdit extends Component
             }
 
 
-            $gradeFee = GradeFee::find($this->gradeFeeId);
+
 
             if (!$gradeFee) {
                 session()->flash('error', 'Tagihan kelas tidak ditemukan');
@@ -80,28 +83,23 @@ class AdminGradeFeeEdit extends Component
                     'due_date' => $this->dueDate,
                 ]);
 
-                $students = Student::whereHas('group.grade', function ($q) use ($gradeFee) {
-                    $q->where('id', $gradeFee->grade_id);
-                })->get();
+                $fee = Fee::where('grade_fee_id', $this->gradeFeeId)->get();
 
-                foreach ($students as $s) {
-                    Fee::create([
+                foreach ($fee as $f) {
+                    $f->update([
                         'payment_type_id' => $this->paymentTypeId,
-                        'student_id' => $s->id,
                         'amount' => $this->amount,
                         'due_date' => $this->dueDate,
-                        'status' => 'unpaid',
-                        'paid_amount' => 0,
                     ]);
                 }
             });
 
-            session()->flash('success', 'Tagihan kelas berhasil ditambahkan.');
+            session()->flash('success', 'Tagihan kelas berhasil diubah.');
             $this->showModal = false;
             $this->resetInputFields();
             return $this->redirect('/admin/fee/grade', navigate: true);
         } catch (\Exception $e) {
-            session()->flash('error', 'Error sistem schedule store: ' . $e->getMessage());
+            session()->flash('error', 'Error sistem update: ' . $e->getMessage());
             return $this->redirect('/admin/fee/grade', navigate: true);
         }
     }

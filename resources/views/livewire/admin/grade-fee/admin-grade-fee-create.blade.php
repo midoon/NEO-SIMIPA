@@ -2,7 +2,7 @@
     @if ($showModal)
         <div class="fixed inset-0 bg-black/40 flex items-center justify-center">
             <div class="bg-white rounded-md w-1/3 p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Tambah Jadwal Pelajaran</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Tambah Tagihan Pembayaran</h2>
 
                 <form wire:submit.prevent="store">
                     <div class="mb-3">

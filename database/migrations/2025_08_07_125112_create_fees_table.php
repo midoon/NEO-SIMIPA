@@ -17,6 +17,10 @@ return new class extends Migration
                 table: 'grade_fees',
                 indexName: 'fee_grade_fee_id'
             )->onDelete('cascade');
+            $table->foreignId('payment_type_id')->constrained(
+                table: 'payment_types',
+                indexName: 'fee_payment_type_id'
+            )->onDelete('cascade');
             $table->foreignId('student_id')->constrained(
                 table: 'students',
                 indexName: 'fee_student_id'

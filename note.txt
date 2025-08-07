@@ -3,7 +3,6 @@ Bug Section:
     - checking if selected data for deleted is already used in other data
     - change csv template columnn name
     - Bug error message upload file [session not detected]
-    - add table (grade_fee_id) pada table fee and remove payment_type_id
 
 
 Feature:

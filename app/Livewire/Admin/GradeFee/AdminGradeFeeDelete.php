@@ -36,9 +36,6 @@ class AdminGradeFeeDelete extends Component
 
             DB::transaction(function () use ($gradeFee, $students) {
 
-
-
-
                 foreach ($students as $s) {
                     $fee = Fee::where('student_id', $s->id)->where('payment_type_id', $gradeFee->payment_type_id)->first();
                     $fee->delete();

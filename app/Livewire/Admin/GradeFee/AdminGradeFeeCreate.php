@@ -65,7 +65,7 @@ class AdminGradeFeeCreate extends Component
 
 
             DB::transaction(function () {
-                GradeFee::create([
+                $gradeFee = GradeFee::create([
                     'payment_type_id' => $this->paymentTypeId,
                     'grade_id' => $this->gradeId,
                     'amount' => $this->amount,
@@ -78,6 +78,7 @@ class AdminGradeFeeCreate extends Component
 
                 foreach ($students as $s) {
                     Fee::create([
+                        'grade_fee_id' => $gradeFee->id,
                         'payment_type_id' => $this->paymentTypeId,
                         'student_id' => $s->id,
                         'amount' => $this->amount,

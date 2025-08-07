@@ -15,9 +15,9 @@ class Fee extends Model
         return $this->belongsTo(Student::class);
     }
 
-    public function paymentType(): BelongsTo
+    public function gradeFee(): BelongsTo
     {
-        return $this->belongsTo(PaymentType::class);
+        return $this->belongsTo(gradeFee::class);
     }
 
     public function payments(): HasMany

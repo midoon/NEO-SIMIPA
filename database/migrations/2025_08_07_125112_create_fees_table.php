@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('fees', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('payment_type_id')->constrained(
-                table: 'payment_types',
-                indexName: 'fee_payment_type_id'
+            $table->foreignId('grade_fee_id')->constrained(
+                table: 'grade_fees',
+                indexName: 'fee_grade_fee_id'
             )->onDelete('cascade');
             $table->foreignId('student_id')->constrained(
                 table: 'students',

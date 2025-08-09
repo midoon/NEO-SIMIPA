@@ -137,12 +137,13 @@
     <livewire:admin.grade-fee.admin-grade-fee-create />
     <livewire:admin.grade-fee.admin-grade-fee-delete />
     <livewire:admin.grade-fee.admin-grade-fee-edit />
+    <livewire:admin.grade-fee.admin-grade-fee-delete-multiple />
 
     {{--
 
 
-    <livewire:admin.student.admin-student-upload />
-    <livewire:admin.student.admin-student-delete-multiple /> --}}
+    <livewire:admin.grade-fee.admin-grade-fee-upload />
+     --}}
 
 
 

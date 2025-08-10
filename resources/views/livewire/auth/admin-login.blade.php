@@ -1,12 +1,24 @@
 <div class="bg-gradient-to-r from-simipa-3  to-simipa-4 w-full">
+
+    @if (session()->has('error'))
+        <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 500);
+        setTimeout(() => show = false, 10500)" x-show="show"
+            x-transition:enter="transform transition ease-out duration-300"
+            x-transition:enter-start="translate-x-full opacity-0" x-transition:enter-end="translate-x-0 opacity-100"
+            x-transition:leave="transform transition ease-in duration-300"
+            x-transition:leave-start="translate-x-0 opacity-100" x-transition:leave-end="translate-x-full opacity-0"
+            class="fixed top-4 right-4 z-50 bg-red-500 text-white ml-4 px-4 py-2 rounded shadow flex items-center justify-between space-x-4">
+            <span>{{ session('error') }}</span>
+            <button @click="show = false" class="text-white hover:text-gray-200 font-bold">
+                &times;
+            </button>
+        </div>
+    @endif
+
     <div class="w-full flex justify-center items-center min-h-screen px-8">
         <div class="w-full md:max-w-sm rounded-xl bg-simipa-5 p-10 ">
-            {{-- @if (session('error'))
-                <div id="error-login" class=" text-red-700 bg-red-200 p-4 rounded mb-4 flex justify-between items-center">
-                    {{ session('error') }}
-                    <button class="btn-error-any p-3" onclick="closeErrorBtn('error-login')">&#10006</button>
-                </div>
-            @endif --}}
+
+
             <h1 class="text-center text-3xl font-bold text-simipa-3">Login Admin</h1>
             <form wire:submit.prevent="login" class="mt-10">
 

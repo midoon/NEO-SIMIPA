@@ -21,6 +21,27 @@ class AdminLogin extends Component
 
     public function login()
     {
-        dd($this->username);   // Handle login logic here
+        try {
+            $envUsername = env('DEFAULT_ADMIN_USERNAME');
+            $envPassword = env('DEFAULT_ADMIN_PASSWORD');
+
+            $isCorrectCredentials = $this->username === $envUsername && $this->password === $envPassword;
+
+            if (!$isCorrectCredentials) {
+                session()->flash('error', 'Username atau password salah.');
+                return $this->redirect('/admin/login', navigate: true);
+            }
+
+            $dataSession = [
+                'username' => $this->username,
+                'role' => "admin"
+            ];
+
+            session(['user_admin' => $dataSession]);
+
+            return $this->redirect('/admin/dashboard', navigate: true);
+        } catch (\Exception $e) {
+            session()->flash('error', 'Login failed. Please check your credentials.');
+        }
     }
 }

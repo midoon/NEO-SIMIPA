@@ -3,6 +3,7 @@ Bug Section:
     - checking if selected data for deleted is already used in other data
     - change csv template columnn name
     - Bug error message upload file [session not detected]
+    - event trigger for crate student and fee
 
 
 Feature:

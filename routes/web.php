@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect('/admin/login');
+    return redirect('/teacher/login');
 });
 
 Route::get('/admin/login', AdminLogin::class);

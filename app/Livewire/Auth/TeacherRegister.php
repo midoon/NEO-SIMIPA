@@ -42,7 +42,7 @@ class TeacherRegister extends Component
 
             $teacher = Teacher::where('nik', $this->nik)->first();
             if (!$teacher) {
-                session()->flash('error', 'NIK tidak ditemukan.');
+                session()->flash('error', 'NIK tidak ditemukan, silahkan menghubungi admin untuk menambahkan NIK Anda pada sistem');
                 return $this->redirect('/teacher/register', navigate: true);
             }
 

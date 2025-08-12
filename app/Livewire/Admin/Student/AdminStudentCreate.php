@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Student;
 
+use App\Events\StudentAssignedToGroup;
 use App\Models\Group;
 use App\Models\Student;
 use Livewire\Attributes\On;
@@ -51,12 +52,14 @@ class AdminStudentCreate extends Component
                 return $this->redirect('/admin/student', navigate: true);
             }
 
-            Student::create([
+            $studnet = Student::create([
                 'name' => $this->name,
                 'nisn' => $this->nisn,
                 'gender' => $this->gender,
                 'group_id' => $this->groupId,
             ]);
+
+            StudentAssignedToGroup::dispatch($studnet);
 
             session()->flash('success', 'Siswa berhasil ditambahkan.');
             $this->showModal = false;

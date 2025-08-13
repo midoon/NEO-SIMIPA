@@ -17,7 +17,7 @@ class TeacherLogin extends Component
     public $password = "";
 
     protected $rules = [
-        'nik' => 'required|numeric|digits:16',
+        'nik' => 'required|numeric',
         'password' => 'required|min:8|max:255',
     ];
     public function render()

@@ -11,15 +11,29 @@ use Livewire\Component;
 class TeacherDashboard extends Component
 {
     #[Layout('components.layouts.teacher')]
-    #[Title('Admin Dashboard')]
+    #[Title('Teacher Dashboard')]
+
+    public $selectedDay;
+
+    public function mount()
+    {
+        Carbon::setLocale('id'); // set locale ke bahasa Indonesia
+        $this->selectedDay = strtolower(now()->translatedFormat('l'));
+    }
+
+    public function changeDay($day)
+    {
+        $this->selectedDay = strtolower($day);
+    }
 
     public function render()
     {
+        $days = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
         $teacherId = session('teacher')['teacherId'];
-        $today = Carbon::now()->isoFormat('dddd');
-        $schedules = Schedule::where('day', strtolower($today))->when($teacherId, function ($query, $teacherId) {
+
+        $schedules = Schedule::where('day', $this->selectedDay)->when($teacherId, function ($query, $teacherId) {
             $query->where('teacher_id', $teacherId);
         })->orderBy('start_time', 'asc')->get();
-        return view('livewire.teacher.teacher-dashboard', ['schedules' => $schedules]);
+        return view('livewire.teacher.teacher-dashboard', ['schedules' => $schedules, 'days' => $days]);
     }
 }

@@ -22,7 +22,7 @@
             <nav
                 class="hidden  sm:flex justify-around items-center w-full max-w-[600px] h-16 bg-white rounded-2xl  border border-gray-200">
 
-                <a wire:navigate href="#"
+                <a wire:navigate href="/teacher/dashboard"
                     class="flex-1 flex flex-col items-center justify-center p-2 hover:bg-simipa-4"><svg
                         class="w-6 h-6 text-simipa-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -34,7 +34,7 @@
                         Beranda
                     </p>
                 </a>
-                <a wire:navigate href="#"
+                <a wire:navigate href="/teacher/schedule"
                     class="flex-1 flex flex-col items-center justify-center h-full  p-2 hover:bg-simipa-4"><svg
                         class="w-6 h-6 text-simipa-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -93,7 +93,7 @@
         <nav
             class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] max-w-md h-16 bg-white rounded-2xl shadow-lg border border-gray-200 flex justify-around items-center">
 
-            <a wire:navigate href="#"
+            <a wire:navigate href="/teacher/dashboard"
                 class="flex-1 flex flex-col items-center justify-center p-2 hover:bg-simipa-4"><svg
                     class="w-6 h-6 text-simipa-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" fill="none" viewBox="0 0 24 24">
@@ -105,7 +105,7 @@
                     Beranda
                 </p>
             </a>
-            <a wire:navigate href="#"
+            <a wire:navigate href="/teacher/schedule"
                 class="flex-1 flex flex-col items-center justify-center h-full  p-2 hover:bg-simipa-4"><svg
                     class="w-6 h-6 text-simipa-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" fill="none" viewBox="0 0 24 24">

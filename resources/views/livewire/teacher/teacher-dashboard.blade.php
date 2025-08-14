@@ -4,8 +4,8 @@
     <div class="sm:max-w-[1200px] sm:mx-auto">
         <div class="flex justify-between items-center px-4 border-2 rounded-2xl border-simipa-2 mb-6 sm:px-16 sm:py8">
             <div class="">
-                <h1 class="font-bold text-2xl text-simipa-1 sm:text-4xl">Selamat Datang!</h1>
-                <p class="font-medium sm:text-2xl">{{ session('teacher')['name'] }}</p>
+                <h1 class="font-bold text-md text-simipa-1 sm:text-4xl">Selamat Datang!</h1>
+                <p class="font-medium text-sm sm:text-2xl">{{ session('teacher')['name'] }}</p>
             </div>
 
             <img src="{{ asset('img/book-asset.PNG') }}" alt="logo.png" class="w-30 sm:w-60">
@@ -35,7 +35,7 @@
                             </div>
                             <div
                                 class="bg-simipa-2 p-4 rounded-lg shadow-md w-full flex flex-col justify-between gap-4">
-                                <h2 class="font-bold text-lg text-simipa-4 ">{{ $schedule->subject->name }}</h2>
+                                <h2 class="font-bold text-simipa-4 sm:text-lg">{{ $schedule->subject->name }}</h2>
 
                                 <p class="text-simipa-4">Ruang: {{ $schedule->group->name }}</p>
                             </div>

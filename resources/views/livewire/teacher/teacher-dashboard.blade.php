@@ -8,10 +8,10 @@
                 <p class="font-medium sm:text-2xl">{{ session('teacher')['name'] }}</p>
             </div>
 
-            <img src="{{ asset('img/book-asset.PNG') }}" alt="logo.png" class="w-40 sm:w-60">
+            <img src="{{ asset('img/book-asset.PNG') }}" alt="logo.png" class="w-30 sm:w-60">
         </div>
 
-        <div class="flex justify-between items-center mb-6 gap-2 sm:justify-center sm:gap-4">
+        <div class="flex gap-2 overflow-x-auto whitespace-nowrap mb-6 sm:justify-center sm:gap-4 scrollbar-hide">
             @foreach ($days as $day)
                 <div wire:click="changeDay('{{ $day }}')"
                     class=" font-medium py-1 px-3 rounded-md {{ $selectedDay == $day ? 'bg-simipa-1 text-simipa-5' : 'bg-simipa-4 text-simipa-2' }} hover:cursor-pointer hover:bg-simipa-2 hover:text-simipa-4 sm:px-4 sm:py-2 sm:text-lg ">

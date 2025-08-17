@@ -24,6 +24,7 @@ use App\Livewire\Admin\Teacher\AdminTeacherList;
 use App\Livewire\Auth\AdminLogin;
 use App\Livewire\Auth\TeacherLogin;
 use App\Livewire\Auth\TeacherRegister;
+use App\Livewire\Teacher\Attendance\TeacherAttendanceMenu;
 use App\Livewire\Teacher\Shcedule\TeacherScheduleList;
 use App\Livewire\Teacher\TeacherDashboard;
 use Illuminate\Support\Facades\App;
@@ -61,7 +62,7 @@ Route::middleware(AdminMiddleware::class)->group(function () {
 
 Route::middleware(TeacherMiddleware::class)->group(function () {
     Route::get('/teacher/dashboard', TeacherDashboard::class);
-    Route::get('/teacher/schedule', TeacherScheduleList::class);
+    Route::get('/teacher/attendance', TeacherAttendanceMenu::class);
 });
 
 

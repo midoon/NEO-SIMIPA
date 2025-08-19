@@ -25,7 +25,7 @@
 
             </div>
 
-            <div
+            <div wire:click="triggerFilterCreate"
                 class="border-1 border-slate-200 flex flex-col justify-center items-center p-4 rounded-md gap-2 hover:cursor-pointer hover:bg-simipa-3 sm:py-10 sm:border-slate-300 group">
                 <svg class="w-8 h-8 text-simipa-2 group-hover:text-simipa-5" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -52,4 +52,6 @@
 
         </div>
     </div>
+
+    <livewire:teacher.attendance.create-form-filter />
 </div>

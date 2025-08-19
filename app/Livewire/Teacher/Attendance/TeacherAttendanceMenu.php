@@ -26,4 +26,9 @@ class TeacherAttendanceMenu extends Component
     {
         return view('livewire.teacher.attendance.teacher-attendance-menu');
     }
+
+    public function triggerFilterCreate()
+    {
+        $this->dispatch('openFilterCreate');
+    }
 }

@@ -1,7 +1,7 @@
 <div class="">
     @if ($showModal)
-        <div class="fixed inset-0 bg-black/40 flex items-center justify-center px-4">
-            <div class="bg-white rounded-md w-full p-6">
+        <div class="fixed inset-0 bg-black/40 flex items-center justify-center px-4 z-50">
+            <div class="bg-white rounded-md w-full p-6 sm:w-1/3">
                 <h2 class="text-xl font-semibold text-gray-800 mb-4">Tambah Daftar Kehadiran</h2>
 
                 <form wire:submit.prevent="create">

@@ -32,7 +32,7 @@ class CreateFormFilter extends Component
     #[On('openFilterCreate')]
     public function createModal()
     {
-        $this->resetInputFields();
+        // $this->resetInputFields();
         $this->showModal = true;
     }
 
@@ -45,6 +45,19 @@ class CreateFormFilter extends Component
 
     public function create()
     {
-        dd($this->date);
+        // validasi
+        $this->validate([
+            'groupId' => 'required|exists:groups,id',
+            'activityId' => 'required|exists:activities,id',
+            'date' => 'required|date',
+        ]);
+
+        $params = [
+            'groupId' => $this->groupId,
+            'activityId' => $this->activityId,
+            'date' => $this->date,
+        ];
+
+        return redirect()->to('/teacher/attendance/create?' . http_build_query($params));
     }
 }

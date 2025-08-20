@@ -38,7 +38,7 @@ class AttendanceStudentList extends Component
 
             if ($isCreated) {
                 session()->flash('error', 'Presensi telah dibuat');
-                return $this->redirect('/teacher/attendance', navigate: true);
+                $this->redirect('/teacher/attendance', navigate: true);
             }
 
             $teacherId = session('teacher')['teacherId'];
@@ -49,7 +49,7 @@ class AttendanceStudentList extends Component
 
             if ($correctGroup == 0) {
                 session()->flash('error', 'Anda tidak memiliki akses ke kelas ini');
-                return $this->redirect('/teacher/attendance', navigate: true);
+                $this->redirect('/teacher/attendance', navigate: true);
             }
 
             $students = DB::table('students')->where('group_id', $this->groupId)->orderBy('name')->get();
@@ -66,7 +66,7 @@ class AttendanceStudentList extends Component
             return view('livewire.teacher.attendance.create.attendance-student-list', ['students' => $students, 'group' => $group, 'activity' => $activity]);
         } catch (Exception $e) {
             session()->flash('error', 'Error sistem attendance: ' . $e->getMessage());
-            return $this->redirect('/teacher/attendance', navigate: true);
+            $this->redirect('/teacher/attendance');
         }
     }
 
@@ -80,7 +80,6 @@ class AttendanceStudentList extends Component
             ->where('group_id', $this->groupId)
             ->pluck('id');
 
-        dd($this->statuses);
 
         foreach ($students as $studentId) {
             Attendance::create([
@@ -93,6 +92,6 @@ class AttendanceStudentList extends Component
         }
 
         session()->flash('success', 'Presensi berhasil disimpan');
-        return $this->redirect('/teacher/attendance', navigate: true);
+        $this->redirect('/teacher/attendance', navigate: true);
     }
 }

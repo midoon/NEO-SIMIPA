@@ -1,5 +1,21 @@
 <div class="mx-4">
 
+    {{-- notifikasi --}}
+    @if (session()->has('success'))
+        <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 500);
+        setTimeout(() => show = false, 10500)" x-show="show"
+            x-transition:enter="transform transition ease-out duration-300"
+            x-transition:enter-start="translate-x-full opacity-0" x-transition:enter-end="translate-x-0 opacity-100"
+            x-transition:leave="transform transition ease-in duration-300"
+            x-transition:leave-start="translate-x-0 opacity-100" x-transition:leave-end="translate-x-full opacity-0"
+            class="fixed top-4 right-4 z-50 bg-green-500 text-white ml-4 px-4 py-2 rounded shadow flex items-center justify-between space-x-4">
+            <span>{{ session('success') }}</span>
+            <button @click="show = false" class="text-white hover:text-gray-200 font-bold">
+                &times;
+            </button>
+        </div>
+    @endif
+
     @if (session()->has('error'))
         <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 500);
         setTimeout(() => show = false, 10500)" x-show="show"

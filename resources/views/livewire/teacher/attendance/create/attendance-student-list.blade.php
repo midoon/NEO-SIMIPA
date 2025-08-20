@@ -1,14 +1,63 @@
 <div class="mx-4">
-
-    @foreach ($students as $s)
-        <div class="flex justify-between items-center mb-2">
+    <div class="mb-4  bg-simipa-2 p-4 min-h-[20vh] rounded-md sm:h-[30vh] sm:p-8">
+        <div class="flex  justify-between items-center gap-2 mb-5">
             <div>
-                <p>{{ $s->name }}</p>
-                <p>{{ $s->nisn }}</p>
+                <p class="text-lg font-sans text-simipa-5  sm:text-6xl">{{ $group }}</p>
+                <p class="font-mono text-simipa-5 text-sm ">{{ \Carbon\Carbon::parse($date)->format('d-m-Y') }}</p>
+            </div>
+            <div class="">
+                <button wire:click="save" class="bg-simipa-1 text-white px-4 py-2 rounded-md hover:bg-simipa-3">
+                    Simpan
+                </button>
+            </div>
+        </div>
+
+        {{-- progress presensi --}}
+        <div class="flex
+                    justify-around mb-5">
+            <div>
+                <p class="text-white text-xs font-extralight">Total</p>
+                <p class="text-white text-2xl">35</p>
             </div>
 
             <div>
-                <select wire:model.live="statuses.{{ $s->id }}" class="form-control status p-2 rounded-lg border">
+                <p class="text-white text-xs font-extralight">Hadir</p>
+                <p class="text-white text-2xl">35</p>
+            </div>
+
+            <div>
+                <p class="text-white text-xs font-extralight">Sakit</p>
+                <p class="text-white text-2xl">35</p>
+            </div>
+
+            <div>
+                <p class="text-white text-xs font-extralight">Izin</p>
+                <p class="text-white text-2xl">35</p>
+            </div>
+
+            <div>
+                <p class="text-white text-xs font-extralight">Alpha</p>
+                <p class="text-white text-2xl">35</p>
+            </div>
+
+        </div>
+
+        <div class="flex justify-between items-center">
+            <p class="text-simipa-5">Kehadiran:</p>
+            <p class="text-simipa-5">{{ $activity }}</p>
+        </div>
+
+    </div>
+    @foreach ($students as $s)
+        <div class="flex justify-between items-center mb-3 border-2 border-slate-400 p-2 rounded-md">
+            <div>
+                <p class="font-medium text-simipa-2">{{ $s->name }}</p>
+                <p class="text-xs font-light">{{ $s->nisn }}</p>
+            </div>
+
+            <div>
+                <select wire:model.live="statuses.{{ $s->id }}"
+                    class="form-control status p-2 rounded-lg border border-simipa-1 text-simipa-1">
                     <option value="hadir">Hadir</option>
                     <option value="alpha">Alpha</option>
                     <option value="izin">Izin</option>
@@ -18,9 +67,5 @@
         </div>
     @endforeach
 
-    <div class="mt-4 mb-20">
-        <button wire:click="save" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-            Simpan Presensi
-        </button>
-    </div>
+
 </div>

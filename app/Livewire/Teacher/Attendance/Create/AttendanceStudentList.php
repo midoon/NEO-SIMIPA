@@ -60,8 +60,8 @@ class AttendanceStudentList extends Component
                 }
             }
 
-            $group = Group::find($this->groupId);
-            $activity = Activity::find($this->activityId);
+            $group = Group::find($this->groupId)->value('name');
+            $activity = Activity::find($this->activityId)->value('name');
 
             return view('livewire.teacher.attendance.create.attendance-student-list', ['students' => $students, 'group' => $group, 'activity' => $activity]);
         } catch (Exception $e) {

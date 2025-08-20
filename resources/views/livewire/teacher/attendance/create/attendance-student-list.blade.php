@@ -17,27 +17,27 @@
                     justify-around mb-5">
             <div>
                 <p class="text-white text-xs font-extralight">Total</p>
-                <p class="text-white text-2xl">35</p>
+                <p class="text-white text-2xl">{{ $cStudent }}</p>
             </div>
 
             <div>
                 <p class="text-white text-xs font-extralight">Hadir</p>
-                <p class="text-white text-2xl">35</p>
+                <p class="text-white text-2xl">{{ $cHadir }}</p>
             </div>
 
             <div>
                 <p class="text-white text-xs font-extralight">Sakit</p>
-                <p class="text-white text-2xl">35</p>
+                <p class="text-white text-2xl">{{ $cSakit }}</p>
             </div>
 
             <div>
                 <p class="text-white text-xs font-extralight">Izin</p>
-                <p class="text-white text-2xl">35</p>
+                <p class="text-white text-2xl">{{{ $cIzin }}}</p>
             </div>
 
             <div>
                 <p class="text-white text-xs font-extralight">Alpha</p>
-                <p class="text-white text-2xl">35</p>
+                <p class="text-white text-2xl">{{ $cAlpha }}</p>
             </div>
 
         </div>

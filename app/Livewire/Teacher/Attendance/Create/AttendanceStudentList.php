@@ -21,6 +21,8 @@ class AttendanceStudentList extends Component
     #[Url()] // mengambil nilai dari query param dan ditaruh langsung ke $grade_id
     public $groupId, $activityId, $date;
 
+    public $cStudent = 0, $cHadir = 0, $cSakit = 0, $cIzin = 0, $cAlpha = 0;
+
     public $statuses = [];
 
     protected $rules = [
@@ -60,13 +62,47 @@ class AttendanceStudentList extends Component
                 }
             }
 
-            $group = Group::find($this->groupId)->value('name');
-            $activity = Activity::find($this->activityId)->value('name');
+            // hitung progress
+            $this->updateCounters();
+
+
+            $group = Group::where('id', $this->groupId)->value('name');
+            $activity = Activity::where('id', $this->activityId)->value('name');
 
             return view('livewire.teacher.attendance.create.attendance-student-list', ['students' => $students, 'group' => $group, 'activity' => $activity]);
         } catch (Exception $e) {
             session()->flash('error', 'Error sistem attendance: ' . $e->getMessage());
             $this->redirect('/teacher/attendance');
+        }
+    }
+
+    public function updatedStatuses()
+    {
+        // setiap kali ada perubahan di wire:model statuses, langsung update counter
+        $this->updateCounters();
+    }
+
+    private function updateCounters()
+    {
+        // reset counter sebelum dihitung ulang
+        $this->cStudent = count($this->statuses);
+        $this->cHadir = $this->cSakit = $this->cIzin = $this->cAlpha = 0;
+
+        foreach ($this->statuses as $st) {
+            switch ($st) {
+                case 'hadir':
+                    $this->cHadir++;
+                    break;
+                case 'sakit':
+                    $this->cSakit++;
+                    break;
+                case 'izin':
+                    $this->cIzin++;
+                    break;
+                case 'alpha':
+                    $this->cAlpha++;
+                    break;
+            }
         }
     }
 

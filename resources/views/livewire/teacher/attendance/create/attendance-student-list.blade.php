@@ -48,24 +48,26 @@
         </div>
 
     </div>
-    @foreach ($students as $s)
-        <div class="flex justify-between items-center mb-3 border-2 border-slate-400 p-2 rounded-md">
-            <div>
-                <p class="font-medium text-simipa-2">{{ $s->name }}</p>
-                <p class="text-xs font-light">{{ $s->nisn }}</p>
-            </div>
+    <div class="mb-[15vh]">
+        @foreach ($students as $s)
+            <div class="flex justify-between items-center mb-3 border-2 border-slate-400 p-2 rounded-md">
+                <div>
+                    <p class="font-medium text-simipa-2">{{ $s->name }}</p>
+                    <p class="text-xs font-light">{{ $s->nisn }}</p>
+                </div>
 
-            <div>
-                <select wire:model.live="statuses.{{ $s->id }}"
-                    class="form-control status p-2 rounded-lg border border-simipa-1 text-simipa-1">
-                    <option value="hadir">Hadir</option>
-                    <option value="alpha">Alpha</option>
-                    <option value="izin">Izin</option>
-                    <option value="sakit">Sakit</option>
-                </select>
+                <div>
+                    <select wire:model.live="statuses.{{ $s->id }}"
+                        class="form-control status p-2 rounded-lg border border-simipa-1 text-simipa-1">
+                        <option value="hadir">Hadir</option>
+                        <option value="alpha">Alpha</option>
+                        <option value="izin">Izin</option>
+                        <option value="sakit">Sakit</option>
+                    </select>
+                </div>
             </div>
-        </div>
-    @endforeach
+        @endforeach
+    </div>
 
 
 </div>

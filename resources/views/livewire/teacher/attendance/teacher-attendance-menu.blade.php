@@ -45,7 +45,7 @@
         </div>
         <p class="mb-2 font-medium text-simipa-3 sm:text-2xl">Daftar menu kehadiran siswa</p>
         <div class="grid grid-cols-2 gap-2 items-stretch sm:grid-cols-3 sm:gap-4">
-            <div
+            <div wire:click="triggerFilterRead"
                 class="border-1 border-slate-200 flex flex-col justify-center items-center p-4 rounded-md gap-2 hover:cursor-pointer hover:bg-simipa-3 sm:py-10 sm:border-slate-300 group">
                 <svg class="w-8 h-8 text-simipa-2 group-hover:text-simipa-5" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -85,4 +85,5 @@
     </div>
 
     <livewire:teacher.attendance.create-form-filter />
+    <livewire:teacher.attendance.read-form-filter />
 </div>

@@ -1,4 +1,35 @@
 <div class="mx-4">
+    {{-- notifikasi --}}
+    @if (session()->has('success'))
+        <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 500);
+        setTimeout(() => show = false, 10500)" x-show="show"
+            x-transition:enter="transform transition ease-out duration-300"
+            x-transition:enter-start="translate-x-full opacity-0" x-transition:enter-end="translate-x-0 opacity-100"
+            x-transition:leave="transform transition ease-in duration-300"
+            x-transition:leave-start="translate-x-0 opacity-100" x-transition:leave-end="translate-x-full opacity-0"
+            class="fixed top-4 right-4 z-50 bg-green-500 text-white ml-4 px-4 py-2 rounded shadow flex items-center justify-between space-x-4">
+            <span>{{ session('success') }}</span>
+            <button @click="show = false" class="text-white hover:text-gray-200 font-bold">
+                &times;
+            </button>
+        </div>
+    @endif
+
+    @if (session()->has('error'))
+        <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 500);
+        setTimeout(() => show = false, 10500)" x-show="show"
+            x-transition:enter="transform transition ease-out duration-300"
+            x-transition:enter-start="translate-x-full opacity-0" x-transition:enter-end="translate-x-0 opacity-100"
+            x-transition:leave="transform transition ease-in duration-300"
+            x-transition:leave-start="translate-x-0 opacity-100" x-transition:leave-end="translate-x-full opacity-0"
+            class="fixed top-4 right-4 z-50 bg-red-500 text-white ml-4 px-4 py-2 rounded shadow flex items-center justify-between space-x-4">
+            <span>{{ session('error') }}</span>
+            <button @click="show = false" class="text-white hover:text-gray-200 font-bold">
+                &times;
+            </button>
+        </div>
+    @endif
+
     <div class="sm:max-w-[1200px] sm:mx-auto">
         <div class="mb-4  bg-simipa-2 p-4 min-h-[20vh] rounded-md sm:min-h-[30vh] sm:p-8">
             <div class="flex  justify-between items-center gap-2 mb-5 sm:items-start">
@@ -7,9 +38,13 @@
                     <p class="font-mono text-simipa-5 text-sm sm:text-lg">
                         {{ \Carbon\Carbon::parse($date)->format('d-m-Y') }}</p>
                 </div>
-                <div class="">
+                <div class="flex gap-2">
+                    <button wire:click="destroy"
+                        class="bg-red-600 text-white px-4 py-2 rounded-md sm:px-8  hover:bg-simipa-3">
+                        Delete
+                    </button>
                     <button wire:click="update"
-                        class="bg-simipa-1 text-white px-4 py-2 rounded-md sm:px-8  hover:bg-simipa-3">
+                        class="bg-yellow-500 text-white px-4 py-2 rounded-md sm:px-8  hover:bg-simipa-3">
                         Update
                     </button>
                 </div>

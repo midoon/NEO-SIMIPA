@@ -112,6 +112,62 @@ class AttendanceStudentRead extends Component
 
     public function update()
     {
-        dd($this->statuses);
+        try {
+
+            if (count($this->statuses) == 0) {
+                $params = [
+                    'groupId' => $this->groupId,
+                    'activityId' => $this->activityId,
+                    'date' => $this->date,
+                ];
+                session()->flash('error', 'Tidak ada data presensi');
+                return redirect()->to(
+                    '/teacher/attendance/read?' . http_build_query($params)
+                );
+            }
+
+            DB::transaction(function () {
+                foreach ($this->statuses as  $key => $value) {
+                    Attendance::where('id', $key)->update([
+                        'status' => $value
+                    ]);
+                }
+            });
+
+            session()->flash('success', 'Presensi berhasil disimpan');
+        } catch (Exception $e) {
+            session()->flash('error', 'Error sistem attendance: ' . $e->getMessage());
+            $this->redirect('/teacher/attendance');
+        }
+    }
+
+    public function destroy()
+    {
+        try {
+
+            if (count($this->statuses) == 0) {
+                $params = [
+                    'groupId' => $this->groupId,
+                    'activityId' => $this->activityId,
+                    'date' => $this->date,
+                ];
+                session()->flash('error', 'Tidak ada data presensi');
+                return redirect()->to(
+                    '/teacher/attendance/read?' . http_build_query($params)
+                );
+            }
+
+            DB::transaction(function () {
+                foreach ($this->statuses as  $key => $value) {
+                    DB::table('attendances')->where('id', $key)->delete();
+                }
+            });
+
+            session()->flash('success', 'Presensi berhasil dihapus');
+            $this->redirect('/teacher/attendance');
+        } catch (Exception $e) {
+            session()->flash('error', 'Error sistem attendance: ' . $e->getMessage());
+            $this->redirect('/teacher/attendance');
+        }
     }
 }

@@ -108,26 +108,28 @@ class AttendanceStudentList extends Component
 
     public function save()
     {
-        $this->validate();
+        try {
+
+            $students = DB::table('students')
+                ->where('group_id', $this->groupId)
+                ->pluck('id');
 
 
-        // Pastikan data siswa ada
-        $students = DB::table('students')
-            ->where('group_id', $this->groupId)
-            ->pluck('id');
+            foreach ($students as $studentId) {
+                Attendance::create([
+                    'student_id' => $studentId,
+                    'group_id' => $this->groupId,
+                    'activity_id' => $this->activityId,
+                    'date' => $this->date,
+                    'status' => $this->statuses[$studentId] ?? 'alpha', // default kalau ga dipilih
+                ]);
+            }
 
-
-        foreach ($students as $studentId) {
-            Attendance::create([
-                'student_id' => $studentId,
-                'group_id' => $this->groupId,
-                'activity_id' => $this->activityId,
-                'date' => $this->date,
-                'status' => $this->statuses[$studentId] ?? 'alpha', // default kalau ga dipilih
-            ]);
+            session()->flash('success', 'Presensi berhasil disimpan');
+            $this->redirect('/teacher/attendance', navigate: true);
+        } catch (Exception $e) {
+            session()->flash('error', 'Error sistem attendance: ' . $e->getMessage());
+            $this->redirect('/teacher/attendance');
         }
-
-        session()->flash('success', 'Presensi berhasil disimpan');
-        $this->redirect('/teacher/attendance', navigate: true);
     }
 }

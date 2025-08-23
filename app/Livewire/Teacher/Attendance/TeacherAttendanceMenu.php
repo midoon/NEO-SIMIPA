@@ -36,4 +36,9 @@ class TeacherAttendanceMenu extends Component
     {
         $this->dispatch('openFilterRead');
     }
+
+    public function triggerFilterReport()
+    {
+        $this->dispatch('openFilterReport');
+    }
 }

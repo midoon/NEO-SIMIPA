@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="mb-7">
-                        <label for="date" class="block font-semibold mb-1">Tenggat Waktu</label>
+                        <label for="date" class="block font-semibold mb-1">Tanggal</label>
                         <input type="date" id="date" name="date" class="border w-full rounded-sm px-2 py-1.5"
                             required wire:model="date">
                         @error('date')

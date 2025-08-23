@@ -27,6 +27,7 @@ use App\Livewire\Auth\TeacherRegister;
 use App\Livewire\Teacher\Attendance\Create\AttendanceStudentList;
 use App\Livewire\Teacher\Attendance\Create\StudentList;
 use App\Livewire\Teacher\Attendance\Read\AttendanceStudentRead;
+use App\Livewire\Teacher\Attendance\Report\AttendanceStudentReport;
 use App\Livewire\Teacher\Attendance\TeacherAttendanceMenu;
 use App\Livewire\Teacher\Shcedule\TeacherScheduleList;
 use App\Livewire\Teacher\TeacherDashboard;
@@ -68,6 +69,7 @@ Route::middleware(TeacherMiddleware::class)->group(function () {
     Route::get('/teacher/attendance', TeacherAttendanceMenu::class);
     Route::get('/teacher/attendance/create', AttendanceStudentList::class);
     Route::get('/teacher/attendance/read', AttendanceStudentRead::class);
+    Route::get('/teacher/attendance/report', AttendanceStudentReport::class);
 });
 
 

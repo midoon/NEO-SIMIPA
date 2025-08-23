@@ -56,8 +56,8 @@ class ReportFormFilter extends Component
             'dateStart' => $this->dateStart,
             'dateEnd' => $this->dateEnd,
         ];
-        dd($params);
 
-        return redirect()->to('/teacher/attendance/read?' . http_build_query($params));
+
+        return redirect()->to('/teacher/attendance/report?' . http_build_query($params));
     }
 }

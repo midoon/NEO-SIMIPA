@@ -39,12 +39,12 @@
                         {{ \Carbon\Carbon::parse($date)->format('d-m-Y') }}</p>
                 </div>
                 <div class="flex gap-2">
-                    <button wire:click="destroy"
+                    <button wire:click="triggerConfirmDelete"
                         class="bg-red-600 text-white px-4 py-2 rounded-md sm:px-8  hover:bg-simipa-3">
                         Delete
                     </button>
                     <button wire:click="update"
-                        class="bg-yellow-500 text-white px-4 py-2 rounded-md sm:px-8  hover:bg-simipa-3">
+                        class="bg-simipa-1 text-white px-4 py-2 rounded-md sm:px-8  hover:bg-simipa-3">
                         Update
                     </button>
                 </div>
@@ -107,6 +107,8 @@
             @endforeach
         </div>
     </div>
+
+    <livewire:teacher.attendance.read.delete />
 
 
 </div>

@@ -20,6 +20,8 @@ class AttendanceStudentRead extends Component
     #[Url()] // mengambil nilai dari query param dan ditaruh langsung ke $grade_id
     public $groupId, $activityId, $date;
 
+    public $groupName, $activityName;
+
     public $cStudent = 0, $cHadir = 0, $cSakit = 0, $cIzin = 0, $cAlpha = 0;
 
     public $statuses = [];
@@ -72,6 +74,9 @@ class AttendanceStudentRead extends Component
 
             $group = Group::where('id', $this->groupId)->value('name');
             $activity = Activity::where('id', $this->activityId)->value('name');
+
+            $this->groupName = $group;
+            $this->activityName = $activity;
 
             return view('livewire.teacher.attendance.read.attendance-student-read', ['attendances' => $attendances, 'group' => $group, 'activity' => $activity]);
         } catch (Exception $e) {
@@ -141,33 +146,8 @@ class AttendanceStudentRead extends Component
         }
     }
 
-    public function destroy()
+    public function triggerConfirmDelete()
     {
-        try {
-
-            if (count($this->statuses) == 0) {
-                $params = [
-                    'groupId' => $this->groupId,
-                    'activityId' => $this->activityId,
-                    'date' => $this->date,
-                ];
-                session()->flash('error', 'Tidak ada data presensi');
-                return redirect()->to(
-                    '/teacher/attendance/read?' . http_build_query($params)
-                );
-            }
-
-            DB::transaction(function () {
-                foreach ($this->statuses as  $key => $value) {
-                    DB::table('attendances')->where('id', $key)->delete();
-                }
-            });
-
-            session()->flash('success', 'Presensi berhasil dihapus');
-            $this->redirect('/teacher/attendance');
-        } catch (Exception $e) {
-            session()->flash('error', 'Error sistem attendance: ' . $e->getMessage());
-            $this->redirect('/teacher/attendance');
-        }
+        $this->dispatch('openConfirmDelete', group: $this->groupName, activity: $this->activityName, statuses: $this->statuses);
     }
 }

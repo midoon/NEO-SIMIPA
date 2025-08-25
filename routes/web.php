@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminScheduleController;
 use App\Http\Controllers\AdminStudentController;
 use App\Http\Controllers\AdminSubjectController;
 use App\Http\Controllers\AdminTeacherController;
+use App\Http\Controllers\TeacherAttendanceController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\TeacherMiddleware;
 use App\Livewire\Admin\Activity\AdminActivityList;
@@ -70,6 +71,7 @@ Route::middleware(TeacherMiddleware::class)->group(function () {
     Route::get('/teacher/attendance/create', AttendanceStudentList::class);
     Route::get('/teacher/attendance/read', AttendanceStudentRead::class);
     Route::get('/teacher/attendance/report', AttendanceStudentReport::class);
+    Route::get('/teacher/attendance/report/generate', [TeacherAttendanceController::class, 'generateReport']);
 });
 
 

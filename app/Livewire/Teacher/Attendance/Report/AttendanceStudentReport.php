@@ -5,6 +5,7 @@ namespace App\Livewire\Teacher\Attendance\Report;
 use App\Models\Activity;
 use App\Models\Attendance;
 use App\Models\Group;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
@@ -21,6 +22,8 @@ class AttendanceStudentReport extends Component
     public $groupId, $activityId, $dateStart, $dateEnd;
 
     public $groupName, $activityName;
+
+    public $reportMap = [];
 
     public function render()
     {
@@ -85,6 +88,7 @@ class AttendanceStudentReport extends Component
                 }
             }
 
+            $this->reportMap = $reportMap;
 
 
 
@@ -93,5 +97,19 @@ class AttendanceStudentReport extends Component
             session()->flash('error', $e->getMessage());
             $this->redirect('/teacher/attendance', navigate: true);
         }
+    }
+
+    public function reportDownload()
+    {
+
+        $params = [
+            'groupId' => $this->groupId,
+            'activityId' => $this->activityId,
+            'dateStart' => $this->dateStart,
+            'dateEnd' => $this->dateEnd
+        ];
+        return redirect()->to(
+            '/teacher/attendance/report/generate?' . http_build_query($params)
+        );
     }
 }

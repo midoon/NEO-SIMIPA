@@ -25,4 +25,24 @@ class TeacherPaymentMenu extends Component
     {
         return view('livewire.teacher.payment.teacher-payment-menu');
     }
+
+    public function triggerFilterCreate()
+    {
+        $this->dispatch('openFilterCreate');
+    }
+
+    public function triggerFilterRead()
+    {
+        $this->dispatch('openFilterRead');
+    }
+
+    public function triggerFilterFee()
+    {
+        $this->dispatch('openFilterFee');
+    }
+
+    public function triggerFilterReport()
+    {
+        $this->dispatch('openFilterReport');
+    }
 }

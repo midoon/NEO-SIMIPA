@@ -39,7 +39,7 @@
             </div>
 
             <div class="h-full flex flex-col justify-start items-end">
-                <p class="text-white font-bold">Menu Kehadiran</p>
+                <p class="text-white font-bold sm:text-4xl">Menu Kehadiran</p>
             </div>
 
         </div>

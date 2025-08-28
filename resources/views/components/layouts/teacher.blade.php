@@ -48,7 +48,7 @@
                     </p>
 
                 </a>
-                <a wire:navigate href="#"
+                <a wire:navigate href="/teacher/payment"
                     class="flex-1 flex flex-col items-center justify-center p-2 hover:bg-simipa-4"><svg
                         class="w-6 h-6 text-simipa-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -107,7 +107,7 @@
                 </p>
 
             </a>
-            <a wire:navigate href="#"
+            <a wire:navigate href="/teacher/payment"
                 class="flex-1 flex flex-col items-center justify-center p-2 hover:bg-simipa-4"><svg
                     class="w-6 h-6 text-simipa-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" fill="none" viewBox="0 0 24 24">

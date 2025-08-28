@@ -98,5 +98,9 @@
         </div>
     </div>
 
+    <livewire:teacher.payment.read-form-filter />
+    <livewire:teacher.payment.create-form-filter />
+    <livewire:teacher.payment.fee-form-filter />
+    <livewire:teacher.payment.report-form-filter />
 
 </div>

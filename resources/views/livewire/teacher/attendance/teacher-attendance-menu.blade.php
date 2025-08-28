@@ -34,12 +34,12 @@
     <div class="sm:max-w-[1200px] sm:mx-auto">
         <div class="mb-4 grid grid-cols-2 bg-simipa-2 p-4 h-[20vh] rounded-md sm:h-[30vh] sm:p-8">
             <div class="h-full flex flex-col justify-end gap-2">
-                <p class="text-4xl font-sans text-simipa-5 mb-2 sm:text-6xl">{{ $todayDay }}</p>
+                <p class="text-4xl font-sans text-simipa-5  sm:text-6xl">{{ $todayDay }}</p>
                 <p class="font-mono text-simipa-5 sm:text-2xl ">{{ $todayDate }}</p>
             </div>
 
-            <div>
-                {{-- isi apapun nanti --}}
+            <div class="h-full flex flex-col justify-start items-end">
+                <p class="text-white font-bold">Menu Kehadiran</p>
             </div>
 
         </div>

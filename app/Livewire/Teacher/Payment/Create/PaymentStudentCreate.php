@@ -33,8 +33,8 @@ class PaymentStudentCreate extends Component
                 $this->redirect('/teacher/payment', navigate: true);
             }
 
-            $paymentTypeId = PaymentType::find($this->paymentTypeId);
-            if (!$paymentTypeId) {
+            $paymentType = PaymentType::find($this->paymentTypeId);
+            if (!$paymentType) {
                 session()->flash('error', "Tipe pembayaran tidak tersedia untuk kelas ini");
                 $this->redirect('/teacher/payment', navigate: true);
             }
@@ -43,7 +43,7 @@ class PaymentStudentCreate extends Component
             $gradeFee = DB::table('grade_fees')
                 ->where('grade_id', $gradeId)
                 ->where('payment_type_id', $this->paymentTypeId)
-                ->count();
+                ->first();
             if (!$gradeFee) {
                 session()->flash('error', "Tipe tagihan pembayaran tidak tersedia untuk kelas ini");
                 $this->redirect('/teacher/payment', navigate: true);
@@ -57,10 +57,20 @@ class PaymentStudentCreate extends Component
 
 
 
-            return view('livewire.teacher.payment.create.payment-student-create');
+            return view('livewire.teacher.payment.create.payment-student-create', [
+                'students' => $students,
+                'group' => $group,
+                'paymentType' => $paymentType,
+                'gradeFee' => $gradeFee,
+            ]);
         } catch (Exception $e) {
             session()->flash('error', 'Error sistem payment: ' . $e->getMessage());
             $this->redirect('/teacher/payment', navigate: true);
         }
+    }
+
+    public function showModalPayment($studentId)
+    {
+        dd($studentId);
     }
 }

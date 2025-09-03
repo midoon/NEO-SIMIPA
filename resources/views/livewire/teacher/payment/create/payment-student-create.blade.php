@@ -1,5 +1,5 @@
 <div class="mx-4">
-    <div>
+    <div class="sm:max-w-[1200px] sm:mx-auto">
 
         {{-- banner --}}
         <div class="flex flex-col justify-between mb-4 bg-simipa-2 p-4 min-h-[20vh] rounded-md sm:min-h-[30vh] sm:p-8">
@@ -32,13 +32,13 @@
             @foreach ($students as $s)
                 <div class="flex justify-between items-center mb-3 border-2 border-slate-400 p-2 rounded-md">
                     <div>
-                        <p class="font-medium text-sm text-simipa-2">{{ $s->name }}</p>
+                        <p class="font-medium text-sm text-simipa-2 sm:text-md">{{ $s->name }}</p>
                         <p class="text-xs font-light">NISN: {{ $s->nisn }}</p>
                     </div>
 
                     <div>
                         <button wire:click="showModalPayment({{ $s->id }})"
-                            class="px-3 py-1 rounded-lg bg-simipa-1 text-simipa-5 hover:bg-simipa-2 ">Bayar</button>
+                            class="px-3 py-1 rounded-lg bg-simipa-1 text-simipa-5 hover:bg-simipa-2 sm:px-6 sm:py-2">Bayar</button>
                     </div>
                 </div>
             @endforeach

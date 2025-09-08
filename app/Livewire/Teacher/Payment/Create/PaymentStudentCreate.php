@@ -71,6 +71,6 @@ class PaymentStudentCreate extends Component
 
     public function showModalPayment($studentId)
     {
-        dd($studentId);
+        $this->dispatch('openCreateForm', studentId: $studentId, paymentTypeId: $this->paymentTypeId);
     }
 }

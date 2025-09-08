@@ -46,4 +46,7 @@
 
 
     </div>
+
+    <livewire:teacher.payment.create.create-form />
+
 </div>

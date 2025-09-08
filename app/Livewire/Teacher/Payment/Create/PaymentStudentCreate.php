@@ -23,6 +23,9 @@ class PaymentStudentCreate extends Component
         'groupId' => 'required',
         'paymentTypeId' => 'required',
     ];
+
+    protected $listeners = ['refreshParent' => '$refresh'];
+
     public function render()
     {
         try {

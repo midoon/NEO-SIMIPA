@@ -30,6 +30,7 @@ use App\Livewire\Teacher\Attendance\Read\AttendanceStudentRead;
 use App\Livewire\Teacher\Attendance\Report\AttendanceStudentReport;
 use App\Livewire\Teacher\Attendance\TeacherAttendanceMenu;
 use App\Livewire\Teacher\Payment\Create\PaymentStudentCreate;
+use App\Livewire\Teacher\Payment\Read\PaymentStudentRead;
 use App\Livewire\Teacher\Payment\TeacherPaymentMenu;
 
 
@@ -77,6 +78,7 @@ Route::middleware(TeacherMiddleware::class)->group(function () {
 
     Route::get('/teacher/payment', TeacherPaymentMenu::class);
     Route::get('/teacher/payment/create', PaymentStudentCreate::class);
+    Route::get('/teacher/payment/read', PaymentStudentRead::class);
 });
 
 

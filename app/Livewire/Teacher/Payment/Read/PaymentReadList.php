@@ -32,7 +32,10 @@ class PaymentReadList extends Component
         $student = Student::find($this->studentId);
         $fee = DB::table("fees")->where("student_id", $this->studentId)->where("payment_type_id", $this->paymentTypeId)->first();
         $paymentType = PaymentType::find($this->paymentTypeId);
-        $payments = Payment::orderBy("created_at")->where("student_id", $this->studentId)->where("fee_id", $fee->id)->get();
+        $payments = Payment::where('student_id', $this->studentId)
+            ->where('fee_id', $fee->id)
+            ->orderBy('created_at', 'desc') // terbaru duluan
+            ->get();
         return view('livewire.teacher.payment.read.payment-read-list', [
             "student" => $student,
             "fee" => $fee,

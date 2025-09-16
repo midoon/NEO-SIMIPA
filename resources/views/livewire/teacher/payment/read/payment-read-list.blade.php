@@ -37,7 +37,7 @@
             <div class="flex  justify-between items-center gap-2 mb-5 sm:items-start">
                 <div>
                     <p class="text-lg font-sans text-simipa-5  sm:text-4xl">{{ $student->name }}</p>
-                    <p class="text-sm font-sans text-simipa-5  sm:text-4xl">Tipe Pembayaran: {{ $paymentType->name }}
+                    <p class="text-sm font-sans text-simipa-5  sm:text-2xl">Tipe Pembayaran: {{ $paymentType->name }}
                     </p>
 
                 </div>
@@ -67,7 +67,12 @@
                     <div class="max-w-[50%]">
                         <p class="font-medium text-xl text-simipa-2 sm:text-md">
                             Rp. {{ number_format($p->amount, 0, ',', '.') }}</p>
-                        <p class="text-xs font-light"> {{ $p->description }} pada tanggal {{ $p->payment_date }}</p>
+                        <p class="text-xs font-light flex flex-wrap gap-x-1">
+                            {{ $p->description }} pada tanggal
+                            <span class="font-bold">
+                                {{ \Carbon\Carbon::parse($p->payment_date)->format('d-m-Y') }}
+                            </span>
+                        </p>
                     </div>
 
 

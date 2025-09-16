@@ -20,6 +20,8 @@ class PaymentStudentRead extends Component
     #[Url()] // mengambil nilai dari query param dan ditaruh langsung ke $grade_id
     public $groupId, $paymentTypeId;
 
+    public $feeId;
+
     protected $rules = [
         'groupId' => 'required',
         'paymentTypeId' => 'required',
@@ -77,8 +79,13 @@ class PaymentStudentRead extends Component
         }
     }
 
-    public function showModalPaymentRead($studentId)
+    public function detailPayment($studentId)
     {
-        dd($studentId);
+        $params = [
+            'studentId' => $studentId,
+            'paymentTypeId' => $this->paymentTypeId,
+        ];
+
+        return redirect()->to('/teacher/payment/read/detail?' . http_build_query($params));
     }
 }

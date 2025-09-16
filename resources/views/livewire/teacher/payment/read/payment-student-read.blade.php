@@ -69,7 +69,7 @@
                     </div>
 
                     <div>
-                        <button wire:click="showModalPaymentRead({{ $s->id }})"
+                        <button wire:click="detailPayment({{ $s->id }})"
                             class="px-3 py-1 rounded-lg bg-simipa-1 text-simipa-5 hover:bg-simipa-2 sm:px-6 sm:py-2">Lihat</button>
                     </div>
                 </div>

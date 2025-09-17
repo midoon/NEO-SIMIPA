@@ -5,6 +5,8 @@ Bug Section:
     - Bug error message upload file [session not detected]
     - event trigger for crate student and fee
 
+    - lihat pembayaran untuk tipe pembayaran dan rombel yang belum ada pada grade fee
+
 
 Feature:
 - Attendance: persentase attendance, [harian] => ditaruh di halaman lihat presensi, || [bulanan or tahunan] => ditaruh di bagian rekap

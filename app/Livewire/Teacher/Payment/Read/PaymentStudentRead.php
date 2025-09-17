@@ -20,14 +20,14 @@ class PaymentStudentRead extends Component
     #[Url()] // mengambil nilai dari query param dan ditaruh langsung ke $grade_id
     public $groupId, $paymentTypeId;
 
-    public $feeId;
+    public $group, $students, $paymentType, $gradeFee;
 
     protected $rules = [
         'groupId' => 'required',
         'paymentTypeId' => 'required',
     ];
 
-    public function render()
+    public function mount()
     {
         try {
             $this->validate();
@@ -40,43 +40,45 @@ class PaymentStudentRead extends Component
 
             if ($correctGroup == 0) {
                 session()->flash('error', 'Anda tidak memiliki akses ke kelas ini');
-                $this->redirect('/teacher/payment', navigate: true);
+                return $this->redirect('/teacher/payment', navigate: true);
             }
 
-            $students = Student::orderBy('name')->where('group_id', $this->groupId)->get();
-            $paymentType = PaymentType::find($this->paymentTypeId);
-            if (!$paymentType) {
+            $this->students = Student::orderBy('name')->where('group_id', $this->groupId)->get();
+            $this->paymentType = PaymentType::find($this->paymentTypeId);
+            if (!$this->paymentType) {
                 session()->flash('error', "Tipe pembayaran tidak tersedia untuk kelas ini");
-                $this->redirect('/teacher/payment', navigate: true);
+                return $this->redirect('/teacher/payment', navigate: true);
             }
 
-            $group = Group::find($this->groupId);
-            if (!$group) {
+            $this->group = Group::find($this->groupId);
+            if (!$this->group) {
                 session()->flash('error', "Kelas tidak ditemukan");
-                $this->redirect('/teacher/payment', navigate: true);
+                return $this->redirect('/teacher/payment', navigate: true);
             }
 
-            $gradeId = $group->grade_id;
-            $gradeFee = DB::table('grade_fees')
+            $gradeId = $this->group->grade_id;
+            $this->gradeFee = DB::table('grade_fees')
                 ->where('grade_id', $gradeId)
                 ->where('payment_type_id', $this->paymentTypeId)
                 ->first();
-            if (!$gradeFee) {
+            if (!$this->gradeFee) {
                 session()->flash('error', "Tipe tagihan pembayaran tidak tersedia untuk kelas ini");
-                $this->redirect('/teacher/payment', navigate: true);
+                return $this->redirect('/teacher/payment', navigate: true);
             }
-
-
-            return view('livewire.teacher.payment.read.payment-student-read', [
-                'students' => $students,
-                'group' => $group,
-                'paymentType' => $paymentType,
-                'gradeFee' => $gradeFee,
-            ]);
         } catch (Exception $e) {
             session()->flash('error', $e->getMessage());
-            $this->redirect('/teacher/payment', navigate: true);
+            return $this->redirect('/teacher/payment', navigate: true);
         }
+    }
+
+    public function render()
+    {
+        return view('livewire.teacher.payment.read.payment-student-read', [
+            'students' => $this->students,
+            'group' => $this->group,
+            'paymentType' => $this->paymentType,
+            'gradeFee' => $this->gradeFee,
+        ]);
     }
 
     public function detailPayment($studentId)

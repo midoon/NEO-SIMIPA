@@ -26,6 +26,8 @@ class PaymentReadList extends Component
         'paymentTypeId' => 'required',
     ];
 
+    public $isPaidFull = false;
+
     protected $listeners = ['refreshParent' => '$refresh'];
 
     // menampilkan list payment yg telah dilakukan siswa
@@ -38,6 +40,10 @@ class PaymentReadList extends Component
             ->where('fee_id', $fee->id)
             ->orderBy('created_at', 'desc') // terbaru duluan
             ->get();
+
+        if ($fee->status == "paid") {
+            $this->isPaidFull = true;
+        }
         return view('livewire.teacher.payment.read.payment-read-list', [
             "student" => $student,
             "fee" => $fee,

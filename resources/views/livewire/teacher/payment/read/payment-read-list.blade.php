@@ -52,9 +52,11 @@
             <div class="flex gap-2 items-center justify-between">
                 <p class="text-simipa-5 sm:font-medium sm:text-xl">
                     Tagihan: Rp. {{ number_format($fee->amount - $fee->paid_amount, 0, ',', '.') }}</p>
-                <div class="text-simipa-4 bg-simipa-1 px-4 py-2 rounded-lg">
-                    Kuwitansi
-                </div>
+                @if ($isPaidFull)
+                    <div class="text-simipa-4 bg-simipa-1 px-4 py-2 rounded-lg">
+                        <span class="hidden md:inline">Download </span>Kuwitansi
+                    </div>
+                @endif
 
             </div>
 

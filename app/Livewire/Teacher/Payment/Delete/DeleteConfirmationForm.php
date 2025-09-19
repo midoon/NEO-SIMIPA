@@ -4,6 +4,7 @@ namespace App\Livewire\Teacher\Payment\Delete;
 
 use App\Models\Fee;
 use App\Models\Payment;
+use App\Models\Receipt;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
@@ -49,6 +50,9 @@ class DeleteConfirmationForm extends Component
                 $fee->save();
 
                 $payment->delete();
+
+                // delete reciept
+                Receipt::where("fee_id", $fee->id)->delete();
             });
 
             $this->showModal = false;

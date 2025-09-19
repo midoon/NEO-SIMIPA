@@ -26,6 +26,8 @@ class PaymentReadList extends Component
         'paymentTypeId' => 'required',
     ];
 
+    protected $listeners = ['refreshParent' => '$refresh'];
+
     // menampilkan list payment yg telah dilakukan siswa
     public function render()
     {

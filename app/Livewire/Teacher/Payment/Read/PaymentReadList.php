@@ -43,4 +43,9 @@ class PaymentReadList extends Component
             "paymentType" => $paymentType
         ]);
     }
+
+    public function deleteConnfirmation($id)
+    {
+        $this->dispatch("openModalDeleteEvent", id: $id);
+    }
 }

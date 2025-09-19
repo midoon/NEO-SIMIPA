@@ -64,12 +64,12 @@
         <div class="mb-[15vh] ">
             @foreach ($payments as $p)
                 <div class="flex justify-between items-center mb-3 border-2 border-slate-400 px-4 py-3 rounded-md">
-                    <div class="max-w-[50%]">
-                        <p class="font-medium text-xl text-simipa-2 sm:text-md">
+                    <div class="max-w-[80%]">
+                        <p class="font-bold text-xl text-simipa-2 sm:text-md">
                             Rp. {{ number_format($p->amount, 0, ',', '.') }}</p>
-                        <p class="text-xs font-light flex flex-wrap gap-x-1">
+                        <p class="text-xs font-light ">
                             {{ $p->description }} pada tanggal
-                            <span class="font-bold">
+                            <span class="">
                                 {{ \Carbon\Carbon::parse($p->payment_date)->format('d-m-Y') }}
                             </span>
                         </p>
@@ -78,34 +78,17 @@
 
 
 
-                    <div x-data="{ open: false }" class="relative inline-block text-left">
-                        <button @click="open = !open"
-                            class="px-4 py-2 rounded-md bg-simipa-1 text-simipa-5 hover:bg-simipa-2 sm:px-6 sm:py-2">
-                            Opsi
-                            <svg class="w-4 h-4 inline-block ml-2" fill="none" stroke="currentColor"
+                    <div class="border p-2 rounded hover:border-red-400 group"
+                        wire:click="deleteConnfirmation({{ $p->id }})">
+                        <button class="group-hover:cursor-pointer">
+                            <svg class="w-6 h-6 text-simipa-3 group-hover:text-red-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                 viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
                             </svg>
                         </button>
-
-                        <div x-show="open" @click.away="open = false"
-                            class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg z-10">
-                            <ul class="py-1">
-                                <li>
-                                    <button wire:click="detailPayment({{ $p->id }})"
-                                        class="block px-4 py-4 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
-                                        Hapus
-                                    </button>
-                                </li>
-                                <li>
-                                    <button wire:click="editPayment({{ $p->id }})"
-                                        class="block px-4 py-4 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
-                                        Edit
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             @endforeach
@@ -116,5 +99,5 @@
 
 
 
-
+    <livewire:teacher.payment.delete.delete-confirmation-form />
 </div>

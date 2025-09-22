@@ -47,6 +47,6 @@ class FeeFormFilter extends Component
 
         ];
 
-        return redirect()->to('/teacher/fee/read?' . http_build_query($params));
+        return redirect()->to('/teacher/payment/fee?' . http_build_query($params));
     }
 }

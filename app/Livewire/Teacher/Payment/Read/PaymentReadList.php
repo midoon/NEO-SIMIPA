@@ -20,11 +20,12 @@ class PaymentReadList extends Component
     #[Title('Teacher Payment Read')]
 
     #[Url()] // mengambil nilai dari query param dan ditaruh langsung ke $grade_id
-    public $studentId, $paymentTypeId;
+    public $studentId, $paymentTypeId, $feeId;
     protected $rules = [
         'studentId' => 'required',
         'paymentTypeId' => 'required',
     ];
+
 
     public $isPaidFull = false;
 
@@ -41,6 +42,7 @@ class PaymentReadList extends Component
             ->orderBy('created_at', 'desc') // terbaru duluan
             ->get();
 
+        $this->feeId = $fee->id;
         if ($fee->status == "paid") {
             $this->isPaidFull = true;
         }
@@ -55,5 +57,15 @@ class PaymentReadList extends Component
     public function deleteConnfirmation($id)
     {
         $this->dispatch("openModalDeleteEvent", id: $id);
+    }
+
+    public function downloadReceipt()
+    {
+        $params = [
+            'feeId' => $this->feeId,
+        ];
+        return redirect()->to(
+            '/teacher/payment/receipt/generate?' . http_build_query($params)
+        );
     }
 }

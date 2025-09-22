@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminStudentController;
 use App\Http\Controllers\AdminSubjectController;
 use App\Http\Controllers\AdminTeacherController;
 use App\Http\Controllers\TeacherAttendanceController;
+use App\Http\Controllers\TeacherPaymentController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\TeacherMiddleware;
 use App\Livewire\Admin\Activity\AdminActivityList;
@@ -81,6 +82,7 @@ Route::middleware(TeacherMiddleware::class)->group(function () {
     Route::get('/teacher/payment/create', PaymentStudentCreate::class);
     Route::get('/teacher/payment/read', PaymentStudentRead::class);
     Route::get('/teacher/payment/read/detail', PaymentReadList::class);
+    Route::get('/teacher/payment/receipt/generate', [TeacherPaymentController::class, 'genereateReceipt']);
 });
 
 

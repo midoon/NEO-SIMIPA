@@ -53,7 +53,8 @@
                 <p class="text-simipa-5 sm:font-medium sm:text-xl">
                     Tagihan: Rp. {{ number_format($fee->amount - $fee->paid_amount, 0, ',', '.') }}</p>
                 @if ($isPaidFull)
-                    <div class="text-simipa-4 bg-simipa-1 px-4 py-2 rounded-lg">
+                    <div wire:click="downloadReceipt"
+                        class="text-simipa-4 bg-simipa-1 px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-slate-500">
                         <span class="hidden md:inline">Download </span>Kuwitansi
                     </div>
                 @endif

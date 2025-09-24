@@ -35,7 +35,7 @@
 
         {{-- banner --}}
         <div class="flex flex-col justify-end mb-4 bg-simipa-2 p-4 min-h-[20vh] rounded-md sm:min-h-[30vh] sm:p-8">
-            <p class="text-2xl font-sans text-simipa-5  sm:text-4xl">{{ $group->name }}</p>
+            <p class="text-2xl font-sans text-simipa-5  sm:text-4xl">{{ $student->name }}</p>
             <p class="text-sm font-sans text-simipa-5  sm:text-4xl">Lihat Daftar Tagihan Pembayaran</p>
 
 
@@ -43,16 +43,22 @@
 
 
         <div class="mb-[15vh] ">
-            @foreach ($students as $s)
-                <div class="flex justify-between items-center mb-3 border-2 border-slate-400 p-2 rounded-md">
+            @foreach ($fees as $f)
+                <div
+                    class="flex justify-between items-center mb-3 border-2 border-slate-400 p-2 rounded-md sm:px-10 sm:py-4">
                     <div>
-                        <p class="font-medium text-sm text-simipa-2 sm:text-md">{{ $s->name }}</p>
-                        <p class="text-xs font-light">NISN: {{ $s->nisn }}</p>
+                        <p class="font-medium text-md mb-2 text-simipa-2 sm:text-xl">{{ $f->paymentType->name }}</p>
+                        <p class="text-xs font-light sm:text-md">Total Nominal: {{ $f->amount }}</p>
+                        <p class="text-xs font-light sm:text-md">Sisa Tagihan: {{ $f->amount - $f->paid_amount }}</p>
+                        <p class="text-xs font-light sm:text-md">Tenggat Waktu: {{ $f->due_date }}</p>
                     </div>
 
-                    <div>
-                        <button wire:click="detailFee({{ $s->id }})"
-                            class="px-3 py-1 rounded-lg bg-simipa-1 text-simipa-5 hover:bg-simipa-2 sm:px-6 sm:py-2">Lihat</button>
+                    <div
+                        class="px-4 py-4 rounded-lg sm:px-6 sm:py-4 border
+    {{ $f->status === 'paid' ? 'border-green-500 text-green-500' : '' }}
+    {{ $f->status === 'partial' ? 'border-yellow-500 text-yellow-500' : '' }}
+    {{ $f->status === 'unpaid' ? 'border-red-500 text-red-500' : '' }}">
+                        {{ ucfirst($f->status) }}
                     </div>
                 </div>
             @endforeach

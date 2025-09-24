@@ -56,6 +56,6 @@ class PaymentFeeList extends Component
 
         ];
 
-        return redirect()->to('/teacher/payment/fee/detail?' . http_build_query($params));
+        return $this->redirect('/teacher/payment/fee/detail?' . http_build_query($params), navigate: true);
     }
 }

@@ -35,14 +35,16 @@
         {{-- banner --}}
         <div
             class="flex  justify-center items-center mb-4 bg-simipa-2 p-4 min-h-[25vh] rounded-md sm:w-[30vw] sm:h-[60vh] sm:p-8 sm:mb-0">
-            <p class="text-2xl font-sans text-simipa-5  sm:text-4xl">Nama</p>
+            <img src="{{ asset('img/lk-icon.PNG') }}" alt="Profile photo"
+                class="w-32 h-32 rounded-full ring-4 ring-white object-cover" />
 
 
 
         </div>
 
         <form
-            class="bg-white shadow-2xl rounded-lg w-full max-w-md p-6 border border-slate-200 sm:shadow-none sm:h-[60vh] ">
+            class="bg-white shadow-2xl rounded-lg w-full p-6 border border-slate-200
+         sm:shadow-none sm:h-[60vh] sm:max-w-[30vw] sm:flex sm:flex-col">
             <div class="mb-4 border-b border-gray-200 pb-2">
                 <label class="text-gray-500 text-sm block">Nama</label>
                 <input type="text" name="username" value="Amanda Jane"
@@ -55,25 +57,30 @@
             </div>
             <div class="mb-4 border-b border-gray-200 pb-2">
                 <label class="text-gray-500 text-sm block">Jenis Kelamin</label>
-                <select id="jenis-kelamin" name="jenis_kelamin">
+                <select id="jenis-kelamin" name="jenis_kelamin" class="w-full">
                     <option value="lk">Laki-laki</option>
                     <option value="pr">Perempuan</option>
                 </select>
             </div>
 
-
-
-            <button type="submit" class=" bg-simipa-3 text-white px-4 py-2 rounded hover:bg-simipa-1">
+            <button type="submit"
+                class="bg-simipa-3 text-white px-4 py-2 rounded hover:bg-simipa-1 hover:cursor-pointer sm:w-fit">
                 Simpan Perubahan
             </button>
 
-            <div class=" mt-8 border-gray-200 group  w-fit py-1 ">
-                <button class=" flex"><svg class="w-6 h-6 text-red-300 transition-colors group-hover:text-simipa-3"
+            <!-- tombol logout di bawah -->
+            <div class="mt-10 border-gray-200 group w-fit py-1 hover:cursor-pointer sm:mt-auto">
+                <button class="flex">
+                    <svg class="w-6 h-6 text-red-300 transition-colors group-hover:text-simipa-3 group-hover:cursor-pointer"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M18 18V6h-5v12h5Zm0 0h2M4 18h2.5m3.5-5.5V12M6 6l7-2v16l-7-2V6Z" />
-                    </svg><span class="text-red-400 transition-colors group-hover:text-simipa-3">Logout</span></button>
+                    </svg>
+                    <span class="text-red-400 transition-colors group-hover:text-simipa-3 group-hover:cursor-pointer">
+                        Logout
+                    </span>
+                </button>
             </div>
         </form>
 

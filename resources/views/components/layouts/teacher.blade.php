@@ -63,7 +63,7 @@
 
             </nav>
 
-            <a href="#" class=" p-1 hover:bg-simipa-4 rounded-full">
+            <a wire:navigate href="/teacher/profile" class=" p-1 hover:bg-simipa-4 rounded-full">
                 <svg class="w-10 h-10 sm:w-10 sm:h-14 text-simipa-2 " aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

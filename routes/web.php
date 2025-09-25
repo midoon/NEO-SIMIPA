@@ -35,6 +35,7 @@ use App\Livewire\Teacher\Payment\Fee\PaymentFeeDetail;
 use App\Livewire\Teacher\Payment\Fee\PaymentFeeList;
 use App\Livewire\Teacher\Payment\Read\PaymentReadList;
 use App\Livewire\Teacher\Payment\Read\PaymentStudentRead;
+use App\Livewire\Teacher\Payment\Report\PaymentReportList;
 use App\Livewire\Teacher\Payment\TeacherPaymentMenu;
 
 
@@ -87,6 +88,7 @@ Route::middleware(TeacherMiddleware::class)->group(function () {
     Route::get('/teacher/payment/receipt/generate', [TeacherPaymentController::class, 'genereateReceipt']);
     Route::get('/teacher/payment/fee', PaymentFeeList::class);
     Route::get('/teacher/payment/fee/detail', PaymentFeeDetail::class);
+    Route::get('/teacher/payment/report', PaymentReportList::class);
 });
 
 

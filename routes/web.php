@@ -89,6 +89,7 @@ Route::middleware(TeacherMiddleware::class)->group(function () {
     Route::get('/teacher/payment/fee', PaymentFeeList::class);
     Route::get('/teacher/payment/fee/detail', PaymentFeeDetail::class);
     Route::get('/teacher/payment/report', PaymentReportList::class);
+    Route::get('/teacher/payment/report/generate', [TeacherPaymentController::class, 'generateReport']);
 });
 
 

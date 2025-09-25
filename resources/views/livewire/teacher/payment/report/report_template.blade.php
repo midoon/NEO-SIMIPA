@@ -88,7 +88,7 @@
 
 <body>
     <div class="header">
-        <h1>REKAPITULASI KEHADIRAN SISWA</h1>
+        <h1>REKAPITULASI PEMBAYARAN SISWA</h1>
         <h1>MI PANCASILA MOJOSARI MOJOKERTO</h1>
     </div>
 
@@ -96,22 +96,22 @@
         <div class="row">
             <span style="width:10%;">Rombel</span>
             <span style="width: 1%; text-align: center;">:</span>
-            <span style="width: 89%;">{{ $groupName }}</span>
+            <span style="width: 89%;">{{ $group->name }}</span>
         </div>
         <div class="row">
-            <span style="width:10%;">Jenis</span>
+            <span style="width:10%;">Tipe Pembayaran</span>
             <span style="width: 1%; text-align: center;">:</span>
-            <span style="width: 89%;">{{ $activityName }}</span>
+            <span style="width: 89%;">{{ $paymentType->name }}</span>
         </div>
         <div class="row">
-            <span style="width:10%;">Tanggal Awal</span>
+            <span style="width:10%;">Total Tagihan</span>
             <span style="width: 1%; text-align: center;">:</span>
-            <span style="width: 89%;">{{ \Carbon\Carbon::parse($dateStart)->format('d-m-Y') }}</span>
+            <span style="width: 89%;">{{ $totalAmount }}</span>
         </div>
         <div class="row">
-            <span style="width:10%;">Tanggal Akhir</span>
+            <span style="width:10%;">Total Terbayar</span>
             <span style="width: 1%; text-align: center;">:</span>
-            <span style="width: 89%;">{{ \Carbon\Carbon::parse($dateEnd)->format('d-m-Y') }}</span>
+            <span style="width: 89%;">{{ $totalPaid }}</span>
         </div>
     </div>
 
@@ -119,23 +119,22 @@
         <table>
             <thead>
                 <tr>
-                    <th class="no-column">No</th>
-                    <th>Nama</th>
-                    <th class="status-column">Hadir</th>
-                    <th class="status-column">Alpha</th>
-                    <th class="status-column">Izin</th>
-                    <th class="status-column">Sakit</th>
+                    <th class="no-column">Nisn</th>
+                    <th class="status-column">Nama</th>
+                    <th class="status-column">Tagihan</th>
+                    <th class="status-column">Terbayar</th>
+                    <th class="status-column">Status</th>
+
                 </tr>
             </thead>
             <tbody>
-                @foreach ($reportMap as $student_id => $data)
+                @foreach ($studentFees as $sf)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $data['name'] }}</td>
-                        <td>{{ $data['hadir'] }}</td>
-                        <td>{{ $data['alpha'] }}</td>
-                        <td>{{ $data['izin'] }}</td>
-                        <td>{{ $data['sakit'] }}</td>
+                        <td>{{ $sf->student_nisn }}</td>
+                        <td>{{ $sf->student_name }}</td>
+                        <td>{{ $sf->amount }}</td>
+                        <td>{{ $sf->paid_amount }}</td>
+                        <td>{{ $sf->status }}</td>
                     </tr>
                 @endforeach
             </tbody>

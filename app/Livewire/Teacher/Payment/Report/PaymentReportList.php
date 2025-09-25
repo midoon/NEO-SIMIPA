@@ -60,4 +60,9 @@ class PaymentReportList extends Component
             'paymentType' => $this->paymentType,
         ]);
     }
+
+    public function reportDownload()
+    {
+        return redirect()->to('/teacher/payment/report/generate?groupId=' . $this->groupId . '&paymentTypeId=' . $this->paymentTypeId);
+    }
 }

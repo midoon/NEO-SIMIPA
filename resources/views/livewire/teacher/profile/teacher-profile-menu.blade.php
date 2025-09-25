@@ -30,17 +30,19 @@
         </div>
     @endif
 
-    <div class="sm:max-w-[1200px] sm:mx-auto">
+    <div class="sm:max-w-[80vw]  min-h-[80vh] sm:mx-auto sm:flex sm:justify-center sm:items-center ">
 
         {{-- banner --}}
-        <div class="flex flex-col justify-end mb-4 bg-simipa-2 p-4 min-h-[25vh] rounded-md sm:min-h-[30vh] sm:p-8">
+        <div
+            class="flex  justify-center items-center mb-4 bg-simipa-2 p-4 min-h-[25vh] rounded-md sm:w-[30vw] sm:h-[60vh] sm:p-8 sm:mb-0">
             <p class="text-2xl font-sans text-simipa-5  sm:text-4xl">Nama</p>
-            <p class="text-sm font-sans text-simipa-5  sm:text-4xl">Lihat Daftar Tagihan Pembayaran</p>
+
 
 
         </div>
 
-        <form class="bg-white shadow-2xl rounded-lg w-full max-w-md p-6 ">
+        <form
+            class="bg-white shadow-2xl rounded-lg w-full max-w-md p-6 border border-slate-200 sm:shadow-none sm:h-[60vh] ">
             <div class="mb-4 border-b border-gray-200 pb-2">
                 <label class="text-gray-500 text-sm block">Nama</label>
                 <input type="text" name="username" value="Amanda Jane"

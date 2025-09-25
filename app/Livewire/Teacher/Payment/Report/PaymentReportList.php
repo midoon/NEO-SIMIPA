@@ -3,6 +3,7 @@
 namespace App\Livewire\Teacher\Payment\Report;
 
 use App\Models\Group;
+use App\Models\PaymentType;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
@@ -18,13 +19,14 @@ class PaymentReportList extends Component
     #[Url()]
     public $groupId, $paymentTypeId;
 
-    public $studentFees, $totalAmount = 0, $totalPaid = 0, $group;
+    public $studentFees, $totalAmount = 0, $totalPaid = 0, $group, $paymentType;
 
     public function mount()
     {
         try {
 
             $this->group = Group::find($this->groupId);
+            $this->paymentType = PaymentType::find($this->paymentTypeId);
 
             $this->studentFees = DB::table('fees')->join('students', 'fees.student_id', '=', 'students.id')->select('fees.*', 'students.name as student_name', 'students.nisn as student_nisn')->join('groups', 'students.group_id', '=', 'groups.id')->where('groups.id', $this->groupId)->where('fees.payment_type_id', $this->paymentTypeId)->orderBy('students.name', 'asc')->get();
 
@@ -55,6 +57,7 @@ class PaymentReportList extends Component
             'totalAmount' => $this->totalAmount,
             'totalPaid' => $this->totalPaid,
             'group' => $this->group,
+            'paymentType' => $this->paymentType,
         ]);
     }
 }

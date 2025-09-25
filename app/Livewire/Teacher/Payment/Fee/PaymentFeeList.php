@@ -34,7 +34,7 @@ class PaymentFeeList extends Component
                 return $this->redirect('/teacher/payment', navigate: true);
             }
 
-            $this->students = Student::where('group_id', $this->groupId)->get();
+            $this->students = Student::orderBy('name')->where('group_id', $this->groupId)->get();
             $this->group = Group::find($this->groupId);
         } catch (Exception $e) {
             session()->flash('error', $e->getMessage());

@@ -14,6 +14,8 @@ class TeacherProfileMenu extends Component
 
     public $name, $nik, $gender;
 
+    protected $listeners = ['refreshParent' => '$refresh'];
+
     public function mount()
     {
         $teacherId = session('teacher')['teacherId'];
@@ -29,8 +31,8 @@ class TeacherProfileMenu extends Component
         return view('livewire.teacher.profile.teacher-profile-menu');
     }
 
-    public function updateProfile()
+    public function edit()
     {
-        dd($this->name, $this->nik, $this->gender);
+        $this->dispatch('updateConfirmation', name: $this->name, nik: $this->nik, gender: $this->gender);
     }
 }

@@ -63,7 +63,7 @@
                 </select>
             </div>
 
-            <button wire:click.prevent="updateProfile"
+            <button wire:click.prevent="edit"
                 class="bg-simipa-3 text-white px-4 py-2 rounded hover:bg-simipa-1 hover:cursor-pointer sm:w-fit">
                 Simpan Perubahan
             </button>
@@ -84,9 +84,8 @@
             </div>
         </form>
 
-
-
-
-
     </div>
+
+
+    <livewire:teacher.profile.profile-update-confirmation />
 </div>

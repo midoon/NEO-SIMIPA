@@ -35,7 +35,7 @@
         {{-- banner --}}
         <div
             class="flex  justify-center items-center mb-4 bg-simipa-2 p-4 min-h-[25vh] rounded-md sm:w-[30vw] sm:h-[60vh] sm:p-8 sm:mb-0">
-            <img src="{{ asset('img/lk-icon.PNG') }}" alt="Profile photo"
+            <img src="{{ asset($gender === 'perempuan' ? 'img/pr-icon.png' : 'img/lk-icon.png') }}" alt="Profile photo"
                 class="w-32 h-32 rounded-full ring-4 ring-white object-cover" />
 
 
@@ -47,23 +47,23 @@
          sm:shadow-none sm:h-[60vh] sm:max-w-[30vw] sm:flex sm:flex-col">
             <div class="mb-4 border-b border-gray-200 pb-2">
                 <label class="text-gray-500 text-sm block">Nama</label>
-                <input type="text" name="username" value="Amanda Jane"
+                <input wire:model="name" type="text" name="name"
                     class="w-full text-gray-800 text-base focus:outline-none">
             </div>
             <div class="mb-4 border-b border-gray-200 pb-2">
                 <label class="text-gray-500 text-sm block">NIK</label>
-                <input type="email" name="email" value="amanda@gmail.com"
+                <input wire:model="nik" type="text" name="nik"
                     class="w-full text-gray-800 text-base focus:outline-none">
             </div>
             <div class="mb-4 border-b border-gray-200 pb-2">
                 <label class="text-gray-500 text-sm block">Jenis Kelamin</label>
-                <select id="jenis-kelamin" name="jenis_kelamin" class="w-full">
-                    <option value="lk">Laki-laki</option>
-                    <option value="pr">Perempuan</option>
+                <select wire:model="gender" id="gender" name="gender" class="w-full">
+                    <option value="laki-laki">Laki-laki</option>
+                    <option value="perempuan">Perempuan</option>
                 </select>
             </div>
 
-            <button type="submit"
+            <button wire:click.prevent="updateProfile"
                 class="bg-simipa-3 text-white px-4 py-2 rounded hover:bg-simipa-1 hover:cursor-pointer sm:w-fit">
                 Simpan Perubahan
             </button>

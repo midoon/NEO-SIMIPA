@@ -5,7 +5,7 @@
         <div class="flex justify-between items-center px-4 border-2 rounded-2xl border-simipa-2 mb-6 sm:px-16 sm:py8">
             <div class="">
                 <h1 class="font-bold text-md text-simipa-1 sm:text-4xl">Selamat Datang!</h1>
-                <p class="font-medium text-sm sm:text-2xl">{{ session('teacher')['name'] }}</p>
+                <p class="font-medium text-sm sm:text-2xl">{{ $teacher->name }}</p>
             </div>
 
             <img src="{{ asset('img/book-asset.PNG') }}" alt="logo.png" class="w-30 sm:w-60">

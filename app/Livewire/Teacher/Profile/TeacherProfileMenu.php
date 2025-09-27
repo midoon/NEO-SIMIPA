@@ -35,4 +35,9 @@ class TeacherProfileMenu extends Component
     {
         $this->dispatch('updateConfirmation', name: $this->name, nik: $this->nik, gender: $this->gender);
     }
+
+    public function logoutAlert()
+    {
+        $this->dispatch('logoutConfirmation');
+    }
 }

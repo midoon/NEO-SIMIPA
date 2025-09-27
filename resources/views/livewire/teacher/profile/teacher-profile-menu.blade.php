@@ -42,7 +42,8 @@
 
         </div>
 
-        <form
+        {{-- form --}}
+        <div
             class="bg-white shadow-2xl rounded-lg w-full p-6 border border-slate-200
          sm:shadow-none sm:h-[60vh] sm:max-w-[30vw] sm:flex sm:flex-col">
             <div class="mb-4 border-b border-gray-200 pb-2">
@@ -69,23 +70,24 @@
             </button>
 
             <!-- tombol logout di bawah -->
-            <div class="mt-10 border-gray-200 group w-fit py-1 hover:cursor-pointer sm:mt-auto">
-                <button class="flex">
+            <div class="mt-10 border-gray-200 group w-fit py-1 hover:cursor-pointer sm:mt-auto ">
+                <button wire:click="logoutAlert" class="flex">
                     <svg class="w-6 h-6 text-red-300 transition-colors group-hover:text-simipa-3 group-hover:cursor-pointer"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M18 18V6h-5v12h5Zm0 0h2M4 18h2.5m3.5-5.5V12M6 6l7-2v16l-7-2V6Z" />
                     </svg>
-                    <span class="text-red-400 transition-colors group-hover:text-simipa-3 group-hover:cursor-pointer">
+                    <span class="text-red-500 transition-colors group-hover:text-simipa-3 group-hover:cursor-pointer">
                         Logout
                     </span>
                 </button>
             </div>
-        </form>
+        </div>
 
     </div>
 
 
     <livewire:teacher.profile.profile-update-confirmation />
+    <livewire:teacher.profile.logout-confirmation />
 </div>

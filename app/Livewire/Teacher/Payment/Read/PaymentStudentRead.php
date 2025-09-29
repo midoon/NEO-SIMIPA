@@ -34,14 +34,20 @@ class PaymentStudentRead extends Component
 
             // pengecekkan akses
             $teacherId = session('teacher')['teacherId'];
-            $correctGroup = Group::whereHas('schedules', function ($query) use ($teacherId) {
-                $query->where('teacher_id', $teacherId);
-            })->where('id', $this->groupId)->count();
 
-            if ($correctGroup == 0) {
-                session()->flash('error', 'Anda tidak memiliki akses ke kelas ini');
-                return $this->redirect('/teacher/payment', navigate: true);
+
+            if (!collect(session('teacher')['role'])->contains('bendahara')) {
+                $correctGroup = Group::whereHas('schedules', function ($query) use ($teacherId) {
+                    $query->where('teacher_id', $teacherId);
+                })->where('id', $this->groupId)->count();
+
+                if ($correctGroup == 0) {
+                    session()->flash('error', 'Anda tidak memiliki akses ke kelas ini');
+                    return $this->redirect('/teacher/payment', navigate: true);
+                }
             }
+
+
 
             $this->students = Student::orderBy('name')->where('group_id', $this->groupId)->get();
             $this->paymentType = PaymentType::find($this->paymentTypeId);

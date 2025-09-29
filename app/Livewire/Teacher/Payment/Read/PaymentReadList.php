@@ -27,13 +27,16 @@ class PaymentReadList extends Component
     ];
 
 
-    public $isPaidFull = false;
+    public $isPaidFull = false, $isBendahara = false;
 
     protected $listeners = ['refreshParent' => '$refresh'];
 
     // menampilkan list payment yg telah dilakukan siswa
     public function render()
     {
+        if (collect(session('teacher')['role'])->contains('bendahara')) {
+            $this->isBendahara = true;
+        }
         $student = Student::find($this->studentId);
         $fee = DB::table("fees")->where("student_id", $this->studentId)->where("payment_type_id", $this->paymentTypeId)->first();
         $paymentType = PaymentType::find($this->paymentTypeId);

@@ -15,9 +15,15 @@ class ReportFormFilter extends Component
     public function render()
     {
         $teacherId = session('teacher')['teacherId'];
+        $role = session('teacher')['role'];
+
         $groups =  Group::whereHas('schedules', function ($query) use ($teacherId) {
             $query->where('teacher_id', $teacherId);
         })->orderBy('name')->get();
+
+        if (collect(session('teacher')['role'])->contains('bendahara')) {
+            $groups = Group::orderBy('name')->get();
+        }
         $paymentTypes = PaymentType::orderBy('name')->get();
         return view('livewire.teacher.payment.report-form-filter',  ['groups' => $groups, 'paymentTypes' => $paymentTypes]);
     }

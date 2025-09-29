@@ -15,9 +15,14 @@ class FeeFormFilter extends Component
     public function render()
     {
         $teacherId = session('teacher')['teacherId'];
+
         $groups =  Group::whereHas('schedules', function ($query) use ($teacherId) {
             $query->where('teacher_id', $teacherId);
         })->orderBy('name')->get();
+
+        if (collect(session('teacher')['role'])->contains('bendahara')) {
+            $groups = Group::orderBy('name')->get();
+        }
         return view('livewire.teacher.payment.fee-form-filter', ['groups' => $groups]);
     }
 

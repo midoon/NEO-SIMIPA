@@ -15,8 +15,14 @@ class TeacherPaymentMenu extends Component
     public $todayDate;
     public $todayDay;
 
+    public $isBendahara = false;
+
     public function mount()
     {
+        if (collect(session('teacher')['role'])->contains('bendahara')) {
+            $this->isBendahara = true;
+        }
+
         $this->todayDate = Carbon::now()->format('d-m-Y'); // contoh: 17-08-2025
         $this->todayDay  = Carbon::now()->translatedFormat('l'); // contoh: Minggu
     }

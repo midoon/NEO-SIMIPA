@@ -142,7 +142,7 @@
 
                 {{-- nav bawah --}}
                 <div>
-                    <a href="#"
+                    <a wire:navigate href="/admin/setting"
                         class="text-simipa-3 font-semibold transition-colors hover:text-simipa-5 block py-3 px-4 rounded-lg hover:bg-simipa-2 group">
                         <div class="flex ml-1">
 

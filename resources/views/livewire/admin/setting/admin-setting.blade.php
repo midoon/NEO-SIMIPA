@@ -33,32 +33,46 @@
     @endif
 
 
-    <div class="border border-simipa-4 p-4  ">
-        <form action="" class="">
+    <div class="border border-simipa-4 py-4 px-8  ">
+        <form wire:submit.prevent="updatePassword">
             <div class="mb-4">
                 <label for="username" class="block mb-2 font-medium text-simipa-3">Username</label>
-                <input type="text" id="username" name="username"
+                <input wire:model="username" type="text" id="username" name="username"
                     class="p-2.5 text-sm text-simipa-2 bg-slate-100 rounded-sm border border-simipa-4 focus:ring-simipa-1 focus:border-simipa-1 w-full">
+                @error('username')
+                    <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-4">
                 <label for="password_old" class="block mb-2 font-medium text-simipa-3">Password Lama</label>
-                <input type="password" id="password_old" name="password_old"
+                <input wire:model="password_old" type="password" id="password_old" name="password_old"
                     class="p-2.5 text-sm text-simipa-2 bg-slate-100 rounded-sm border border-simipa-4 focus:ring-simipa-1 focus:border-simipa-1 w-full">
+                @error('password_old')
+                    <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-4">
                 <label for="password" class="block mb-2 font-medium text-simipa-3">Password Baru</label>
-                <input type="password" id="password" name="password"
+                <input wire:model="password" type="password" id="password" name="password"
                     class="p-2.5 text-sm text-simipa-2 bg-slate-100 rounded-sm border border-simipa-4 focus:ring-simipa-1 focus:border-simipa-1 w-full">
+                @error('password')
+                    <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
             <div class="mb-8">
                 <label for="password" class="block mb-2 font-medium text-simipa-3">Konfirmasi Password Baru</label>
-                <input type="password" id="password" name="password"
+                <input wire:model="confirm_password" type="password" id="password" name="password"
                     class="p-2.5 text-sm text-simipa-2 bg-slate-100 rounded-sm border border-simipa-4 focus:ring-simipa-1 focus:border-simipa-1 w-full">
+                @error('confirm_password')
+                    <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
             <div>
-                <button class="py-2 px-4 rounded bg-simipa-3 text-simipa-5">Update Credential</button>
+                <button
+                    class="py-2 px-4 rounded bg-simipa-3 text-simipa-5 hover:cursor-pointer hover:bg-simipa-1">Update
+                    Kredensial</button>
             </div>
         </form>
     </div>

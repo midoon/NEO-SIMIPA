@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\AdminCredential;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -22,6 +24,30 @@ class AdminLogin extends Component
     public function login()
     {
         try {
+
+            $adminDb = AdminCredential::first();
+
+            if ($adminDb) {
+                if (!Hash::check($this->password, $adminDb->password)) {
+                    session()->flash('error', 'Username atau password salah.');
+                    return $this->redirect('/admin/login', navigate: true);
+                }
+
+                if ($this->username !== $adminDb->username) {
+                    session()->flash('error', 'Username atau password salah.');
+                    return $this->redirect('/admin/login', navigate: true);
+                }
+                $dataSession = [
+                    'username' => $this->username,
+                    'role' => "admin"
+                ];
+
+                session(['user_admin' => $dataSession]);
+
+                return $this->redirect('/admin/dashboard', navigate: true);
+            }
+
+
             $envUsername = env('DEFAULT_ADMIN_USERNAME');
             $envPassword = env('DEFAULT_ADMIN_PASSWORD');
 

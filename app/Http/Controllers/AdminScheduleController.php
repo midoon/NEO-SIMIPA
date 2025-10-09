@@ -46,6 +46,7 @@ class AdminScheduleController extends Controller
 
 
 
+
             foreach ($data as $schedule) {
                 $validator = Validator::make($schedule, [
                     'group' => 'required',
@@ -93,7 +94,7 @@ class AdminScheduleController extends Controller
                     'group_id' => $group->id,
                     'subject_id' => $subject->id,
                     'teacher_id' => $teacher->id,
-                    'day_of_week' => $schedule['day'],
+                    'day' => $schedule['day'],
                     'start_time' => $schedule['start_time'],
                     'end_time' => $schedule['end_time']
                 ];

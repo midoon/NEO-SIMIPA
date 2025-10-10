@@ -10,6 +10,7 @@ Bug Section:
 
 
 Feature:
+- Admin-Delete-Multiple: ketika dilakukan pencarian (filter), dn select all, maka yang terselect hanyalah yang terfilter
 - Attendance: persentase attendance, [harian] => ditaruh di halaman lihat presensi, || [bulanan or tahunan] => ditaruh di bagian rekap
 - Ketika pembayaran melalui pyamnet gaterway, harus ada event trigger untuk generate receipt ketika lunass
 - pengecekkan hak akses untuk lihat pembayaran siswa sesuai rombel guru; jika bendahara maka allow semua akses ke semua rombel

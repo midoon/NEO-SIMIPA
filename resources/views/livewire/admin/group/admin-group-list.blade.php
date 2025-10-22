@@ -128,10 +128,13 @@
     <livewire:admin.group.admin-group-delete-multiple />
 
 
-
-
-
-
-
+    <script>
+        window.addEventListener('confirmDelete', event => {
+            const message = event.detail[0].message;
+            if (confirm(message + "\nApakah anda yakin ingin menghapus rombel ini?")) {
+                Livewire.dispatch('forceDelete');
+            }
+        });
+    </script>
 
 </div>

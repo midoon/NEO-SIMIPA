@@ -157,6 +157,13 @@
 
 
 
-
+    <script>
+        window.addEventListener('confirmDelete', event => {
+            const message = event.detail[0].message;
+            if (confirm(message + "\nApakah anda yakin ingin menghapus guru ini?")) {
+                Livewire.dispatch('forceDelete');
+            }
+        });
+    </script>
 
 </div>

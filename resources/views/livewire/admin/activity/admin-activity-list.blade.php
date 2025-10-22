@@ -120,11 +120,12 @@
     <livewire:admin.activity.admin-activity-delete-multiple />
     <livewire:admin.activity.admin-activity-upload />
 
-
-
-
-
-
-
-
+    <script>
+        window.addEventListener('confirmDelete', event => {
+            const message = event.detail[0].message;
+            if (confirm(message + "\nApakah anda yakin ingin menghapus kegiatan ini?")) {
+                Livewire.dispatch('forceDelete');
+            }
+        });
+    </script>
 </div>

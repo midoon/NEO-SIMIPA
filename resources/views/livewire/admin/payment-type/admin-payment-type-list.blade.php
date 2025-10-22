@@ -120,4 +120,13 @@
     <livewire:admin.payment-type.admin-payment-type-delete-multiple />
     <livewire:admin.payment-type.admin-payment-type-upload />
 
+    <script>
+        window.addEventListener('confirmDelete', event => {
+            const message = event.detail[0].message;
+            if (confirm(message + "\nApakah anda yakin ingin menghapus tipe pembayaran ini?")) {
+                Livewire.dispatch('forceDelete');
+            }
+        });
+    </script>
+
 </div>

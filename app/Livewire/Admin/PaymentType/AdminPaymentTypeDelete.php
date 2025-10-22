@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\PaymentType;
 
 use App\Models\PaymentType;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -26,6 +27,20 @@ class AdminPaymentTypeDelete extends Component
     public function delete()
     {
         try {
+            $existData = [];
+            if (DB::table('fees')->where('payment_type_id', $this->paymentTypeId)->exists()) {
+                array_push($existData, 'tagihan');
+            }
+
+
+
+            if (count($existData) != 0) {
+                $this->dispatch('confirmDelete', [
+                    'message' => "Data tipe pembayaran yang ingin anda hapus masih digunakan di data " . implode(", ", $existData)
+                ]);
+                return;
+            }
+
             PaymentType::findOrFail($this->paymentTypeId)->delete();
             session()->flash('success', 'Data tipe pembayaran berhasil dihapus.');
             $this->showModal = false;
@@ -34,5 +49,14 @@ class AdminPaymentTypeDelete extends Component
             session()->flash('error', 'Error sistem delete: ' . $e->getMessage());
             return $this->redirect('/admin/payment/type', navigate: true);
         }
+    }
+
+    #[On('forceDelete')]
+    public function forceDelete()
+    {
+        PaymentType::findOrFail($this->paymentTypeId)->delete();
+        session()->flash('success', 'Data tipe pembayaran berhasil dihapus.');
+        $this->showModal = false;
+        return $this->redirect('/admin/payment/type', navigate: true);
     }
 }

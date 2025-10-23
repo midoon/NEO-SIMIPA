@@ -52,4 +52,9 @@ class AdminAssessmentTypeList extends Component
     {
         $this->dispatch('openModalCreateEvent');
     }
+
+    public function triggerModalEdit($id)
+    {
+        $this->dispatch('openModalEditEvent', id: $id);
+    }
 }

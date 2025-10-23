@@ -115,6 +115,8 @@
     </div>
 
 
+    <livewire:admin.assessment-type.admin-assessment-type-create />
+    <livewire:admin.assessment-type.admin-assessment-type-edit />
 
     <script>
         window.addEventListener('confirmDelete', event => {
@@ -125,6 +127,6 @@
         });
     </script>
 
-    <livewire:admin.assessment-type.admin-assessment-type-create />
+
 
 </div>

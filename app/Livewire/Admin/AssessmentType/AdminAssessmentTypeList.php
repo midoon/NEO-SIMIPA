@@ -62,4 +62,26 @@ class AdminAssessmentTypeList extends Component
     {
         $this->dispatch('openModalDeleteEvent', id: $id);
     }
+
+    public function updatedSelectAll($value)
+    {
+
+        if ($value) {
+            // Select all student IDs
+            $this->selected = AssessmentType::pluck('id')->toArray();
+        } else {
+            // Unselect all
+            $this->selected = [];
+        }
+    }
+
+    public function triggerModalDeleteMultiple()
+    {
+        if (count($this->selected) === 0) {
+            session()->flash('error', 'Tidak ada data yang dipilih untuk dihapus.');
+            return $this->redirect('/admin/assessment/type', navigate: true);
+        }
+
+        $this->dispatch('openModalDeleteMultipleEvent', selected: $this->selected);
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminActivityController;
+use App\Http\Controllers\AdminAssessmentTypeController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminGradeController;
 use App\Http\Controllers\AdminGroupController;
@@ -15,6 +16,7 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\TeacherMiddleware;
 use App\Livewire\Admin\Activity\AdminActivityList;
 use App\Livewire\Admin\AdminDashboard;
+use App\Livewire\Admin\AssessmentType\AdminAssessmentTypeList;
 use App\Livewire\Admin\Grade\AdminGradeList;
 use App\Livewire\Admin\GradeFee\AdminGradeFeeList;
 use App\Livewire\Admin\Group\AdminGroupList;
@@ -63,6 +65,7 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     Route::get('/admin/payment/type', AdminPaymentTypeList::class);
     Route::get('/admin/fee/grade', AdminGradeFeeList::class);
     Route::get('/admin/setting', AdminSetting::class);
+    Route::get('/admin/assessment/type', AdminAssessmentTypeList::class);
 
     // file upload route
     Route::post('/admin/teacher/upload', [AdminTeacherController::class, 'uploadFile']);
@@ -73,6 +76,7 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     Route::post('/admin/schedule/upload', [AdminScheduleController::class, 'uploadFile']);
     Route::post('/admin/activity/upload', [AdminActivityController::class, 'uploadFile']);
     Route::post('/admin/payment/type/upload', [AdminPaymentTypeController::class, 'uploadFile']);
+    Route::post('/admin/assessment/type/upload', [AdminAssessmentTypeController::class, 'uploadFile']);
 });
 
 Route::middleware(TeacherMiddleware::class)->group(function () {

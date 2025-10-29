@@ -136,6 +136,35 @@
                                 Kelas</a>
                         </div>
                     </div>
+
+                    {{-- penilaian --}}
+                    <div x-data="{ openPayment: false }">
+                        <button @click="openPayment = !openPayment"
+                            class="w-full text-left text-simipa-3 font-semibold transition-colors hover:cursor-pointer hover:text-simipa-5 py-3 px-4 rounded-lg hover:bg-simipa-2 flex items-center justify-between group">
+                            <div class="flex ml-1 items-center">
+                                <svg class="w-6 h-6 text-simipa-3 transition-colors group-hover:text-simipa-1"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M10 3v4a1 1 0 0 1-1 1H5m4 10v-2m3 2v-6m3 6v-3m4-11v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z" />
+                                </svg>
+
+                                <span class="ml-2">Penilaian</span>
+                            </div>
+                            <svg :class="{ 'rotate-90': openPayment }" class="w-4 h-4 transform transition-transform"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                        <div x-show="openPayment" x-transition class="ml-10 mt-1 space-y-1">
+                            <a wire:navigate href="/admin/assessment/type"
+                                class="block py-2 px-4 text-sm text-simipa-3 hover:bg-simipa-2 hover:text-white rounded">Tipe
+                                Penilaian</a>
+
+                        </div>
+                    </div>
                 </div>
 
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminActivityController;
+use App\Http\Controllers\AdminAssessmentTypeController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminGradeController;
 use App\Http\Controllers\AdminGroupController;
@@ -75,6 +76,7 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     Route::post('/admin/schedule/upload', [AdminScheduleController::class, 'uploadFile']);
     Route::post('/admin/activity/upload', [AdminActivityController::class, 'uploadFile']);
     Route::post('/admin/payment/type/upload', [AdminPaymentTypeController::class, 'uploadFile']);
+    Route::post('/admin/assessment/type/upload', [AdminAssessmentTypeController::class, 'uploadFile']);
 });
 
 Route::middleware(TeacherMiddleware::class)->group(function () {

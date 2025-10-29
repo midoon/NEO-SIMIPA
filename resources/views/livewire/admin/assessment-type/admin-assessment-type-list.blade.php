@@ -119,6 +119,7 @@
     <livewire:admin.assessment-type.admin-assessment-type-edit />
     <livewire:admin.assessment-type.admin-assessment-type-delete />
     <livewire:admin.assessment-type.admin-assessment-type-delete-multiple />
+    <livewire:admin.assessment-type.admin-assessment-type-upload />
 
     <script>
         window.addEventListener('confirmDelete', event => {

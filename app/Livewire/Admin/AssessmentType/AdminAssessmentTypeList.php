@@ -84,4 +84,9 @@ class AdminAssessmentTypeList extends Component
 
         $this->dispatch('openModalDeleteMultipleEvent', selected: $this->selected);
     }
+
+    public function triggerModalUpload()
+    {
+        $this->dispatch('openModalUploadEvent');
+    }
 }

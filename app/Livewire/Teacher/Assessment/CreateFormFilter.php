@@ -24,8 +24,8 @@ class CreateFormFilter extends Component
         $groups =  Group::whereHas('schedules', function ($query) use ($teacherId) {
             $query->where('teacher_id', $teacherId);
         })->orderBy('name')->get();
-        $assessmentType = AssessmentType::orderBy('name')->gey();
-        return view('livewire.teacher.assessment.create-form-filter', ['groups' => $groups, 'assessmentType' => $assessmentType]);
+        $assessmentTypes = AssessmentType::orderBy('name')->get();
+        return view('livewire.teacher.assessment.create-form-filter', ['groups' => $groups, 'assessmentTypes' => $assessmentTypes]);
     }
 
     #[On('openFilterCreate')]
@@ -44,12 +44,15 @@ class CreateFormFilter extends Component
 
     public function create()
     {
+
         // validasi
         $this->validate([
             'groupId' => 'required|exists:groups,id',
             'assessmentTypeId' => 'required|exists:assessment_types,id',
             'date' => 'required|date',
         ]);
+
+
 
         $params = [
             'groupId' => $this->groupId,

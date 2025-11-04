@@ -29,6 +29,7 @@ use App\Livewire\Admin\Teacher\AdminTeacherList;
 use App\Livewire\Auth\AdminLogin;
 use App\Livewire\Auth\TeacherLogin;
 use App\Livewire\Auth\TeacherRegister;
+use App\Livewire\Teacher\Assessment\TeacherAssessmentMenu;
 use App\Livewire\Teacher\Attendance\Create\AttendanceStudentList;
 use App\Livewire\Teacher\Attendance\Read\AttendanceStudentRead;
 use App\Livewire\Teacher\Attendance\Report\AttendanceStudentReport;
@@ -42,8 +43,6 @@ use App\Livewire\Teacher\Payment\Report\PaymentReportList;
 use App\Livewire\Teacher\Payment\TeacherPaymentMenu;
 use App\Livewire\Teacher\Profile\TeacherProfileMenu;
 use App\Livewire\Teacher\TeacherDashboard;
-use App\Models\AdminCredential;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -96,6 +95,8 @@ Route::middleware(TeacherMiddleware::class)->group(function () {
     Route::get('/teacher/payment/fee/detail', PaymentFeeDetail::class);
     Route::get('/teacher/payment/report', PaymentReportList::class);
     Route::get('/teacher/payment/report/generate', [TeacherPaymentController::class, 'generateReport']);
+
+    Route::get('/teacher/assessment', TeacherAssessmentMenu::class);
 
     Route::get('/teacher/profile', TeacherProfileMenu::class);
 });

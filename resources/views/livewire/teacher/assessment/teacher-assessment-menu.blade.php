@@ -1,5 +1,4 @@
 <div class="mx-4">
-
     {{-- notifikasi --}}
     @if (session()->has('success'))
         <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 500);
@@ -39,10 +38,10 @@
             </div>
 
             <div class="h-full flex flex-col justify-start items-end">
-                <p class="text-white font-bold sm:text-4xl">Menu Kehadiran</p>
+                <p class="text-white font-bold sm:text-4xl">Menu Penilaian</p>
             </div>
         </div>
-        <p class="mb-2 font-medium text-simipa-3 sm:text-2xl">Daftar menu kehadiran siswa</p>
+        <p class="mb-2 font-medium text-simipa-3 sm:text-2xl">Daftar menu penilaian siswa</p>
         <div class="grid grid-cols-2 gap-2 items-stretch sm:grid-cols-3 sm:gap-4">
             <div wire:click="triggerFilterRead"
                 class="border-1 border-slate-200 flex flex-col justify-center items-center p-4 rounded-md gap-2 hover:cursor-pointer hover:bg-simipa-3 sm:py-10 sm:border-slate-300 group">
@@ -51,7 +50,7 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-3 5h3m-6 0h.01M12 16h3m-6 0h.01M10 3v4h4V3h-4Z" />
                 </svg>
-                <p class="font-medium text-simipa-2 text-center group-hover:text-simipa-5">Lihat Kehadiran</p>
+                <p class="font-medium text-simipa-2 text-center group-hover:text-simipa-5">Lihat Penilaian</p>
 
             </div>
 
@@ -63,7 +62,7 @@
                         d="M18 5V4a1 1 0 0 0-1-1H8.914a1 1 0 0 0-.707.293L4.293 7.207A1 1 0 0 0 4 7.914V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5M9 3v4a1 1 0 0 1-1 1H4m11.383.772 2.745 2.746m1.215-3.906a2.089 2.089 0 0 1 0 2.953l-6.65 6.646L9 17.95l.739-3.692 6.646-6.646a2.087 2.087 0 0 1 2.958 0Z" />
                 </svg>
 
-                <p class="font-medium text-simipa-2 text-center group-hover:text-simipa-5">Catat Kehadiran</p>
+                <p class="font-medium text-simipa-2 text-center group-hover:text-simipa-5">Catat Penilaian</p>
 
             </div>
 
@@ -76,14 +75,10 @@
                 </svg>
 
 
-                <p class="font-medium text-simipa-2 text-center group-hover:text-simipa-5">Rekapitulasi Kehadiran</p>
+                <p class="font-medium text-simipa-2 text-center group-hover:text-simipa-5">Rekapitulasi Penilaian</p>
 
             </div>
 
         </div>
     </div>
-
-    <livewire:teacher.attendance.create-form-filter />
-    <livewire:teacher.attendance.read-form-filter />
-    <livewire:teacher.attendance.report-form-filter />
 </div>

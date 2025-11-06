@@ -4,6 +4,7 @@ namespace App\Livewire\Teacher\Assessment;
 
 use App\Models\AssessmentType;
 use App\Models\Group;
+use App\Models\Subject;
 use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -11,7 +12,7 @@ use Livewire\Component;
 class CreateFormFilter extends Component
 {
     public $showModal = false;
-    public $groupId, $assessmentTypeId, $date = [];
+    public $groupId, $assessmentTypeId, $date, $subjectId = [];
 
     public function mount()
     {
@@ -24,8 +25,11 @@ class CreateFormFilter extends Component
         $groups =  Group::whereHas('schedules', function ($query) use ($teacherId) {
             $query->where('teacher_id', $teacherId);
         })->orderBy('name')->get();
+        $subjects = Subject::whereHas('schedules', function ($query) use ($teacherId) {
+            $query->where('teacher_id', $teacherId);
+        })->orderBy('name')->get();
         $assessmentTypes = AssessmentType::orderBy('name')->get();
-        return view('livewire.teacher.assessment.create-form-filter', ['groups' => $groups, 'assessmentTypes' => $assessmentTypes]);
+        return view('livewire.teacher.assessment.create-form-filter', ['groups' => $groups, 'assessmentTypes' => $assessmentTypes, 'subjects' => $subjects]);
     }
 
     #[On('openFilterCreate')]
@@ -49,6 +53,7 @@ class CreateFormFilter extends Component
         $this->validate([
             'groupId' => 'required|exists:groups,id',
             'assessmentTypeId' => 'required|exists:assessment_types,id',
+            'subjectId' => 'required|exists:subjects,id',
             'date' => 'required|date',
         ]);
 
@@ -57,6 +62,7 @@ class CreateFormFilter extends Component
         $params = [
             'groupId' => $this->groupId,
             'assessmentTypeId' => $this->assessmentTypeId,
+            'subjectId' => $this->subjectId,
             'date' => $this->date,
         ];
 

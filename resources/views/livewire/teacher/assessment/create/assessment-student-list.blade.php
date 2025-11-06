@@ -37,7 +37,7 @@
             <div class="flex  justify-between items-center gap-2 mb-5 sm:items-start">
                 <div>
                     <p class="text-2xl font-sans text-simipa-5  sm:text-4xl">{{ $group->name }}</p>
-                    <p class="text-sm font-sans text-simipa-5  sm:text-4xl">{{ $assessmentType->name }}</p>
+                    <p class="text-sm font-sans text-simipa-5  sm:text-4xl">{{ $subject->name }}</p>
 
                 </div>
                 <div class="">

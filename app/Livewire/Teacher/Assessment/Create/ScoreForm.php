@@ -11,17 +11,18 @@ class ScoreForm extends Component
     public $showModal = false;
     public $score;
 
-    public $studentId, $assessmentTypeId;
+    public $studentId, $assessmentTypeId, $subjectId;
     public function render()
     {
         return view('livewire.teacher.assessment.create.score-form');
     }
 
     #[On('openModalInputScore')]
-    public function createForm($studentId, $assessmentTypeId)
+    public function createForm($studentId, $assessmentTypeId, $subjectId)
     {
         $this->studentId = $studentId;
         $this->assessmentTypeId = $assessmentTypeId;
+        $this->subjectId = $subjectId;
         $this->showModal = true;
     }
 
@@ -32,17 +33,18 @@ class ScoreForm extends Component
         ]);
 
         $isEsistingScore = AssessmentScore::where('student_id', $this->studentId)
-            ->where('assessment_type_id', $this->assessmentTypeId)
+            ->where('assessment_type_id', $this->assessmentTypeId)->where('subject_id', $this->subjectId)
             ->count();
         if ($isEsistingScore) {
             $this->showModal = false;
-            session()->flash('error', 'Pembayaran berhasil disimpan.');
+            session()->flash('error', 'Score for this student and assessment type already exists.');
             return redirect(request()->header('Referer'));
         }
 
         AssessmentScore::create([
             'student_id' => $this->studentId,
             'assessment_type_id' => $this->assessmentTypeId,
+            'subject_id' => $this->subjectId,
             'score' => $this->score,
         ]);
 

@@ -18,10 +18,10 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="assessmentTypeId" class="block font-semibold mb-1">Tipe Kegiatan</label>
+                        <label for="assessmentTypeId" class="block font-semibold mb-1">Tipe Penilaian</label>
                         <select wire:model="assessmentTypeId" id="assessmentTypeId"
                             class="border w-full rounded-sm px-2 py-1.5" required>
-                            <option value="" selected>Pilih Kegiatan</option>
+                            <option value="" selected>Pilih Penilaian</option>
                             @foreach ($assessmentTypes as $assessmentType)
                                 <option value="{{ $assessmentType->id }}">{{ $assessmentType->name }} :
                                     {{ $assessmentType->code }}</option>
@@ -31,6 +31,21 @@
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <label for="subjectId" class="block font-semibold mb-1">Mata Pelajaran</label>
+                        <select wire:model="subjectId" id="subjectId" class="border w-full rounded-sm px-2 py-1.5"
+                            required>
+                            <option value="" selected>Pilih Penilaian</option>
+                            @foreach ($subjects as $subject)
+                                <option value="{{ $subject->id }}">{{ $subject->name }} :
+                                    {{ $subject->code }}</option>
+                            @endforeach
+                        </select>
+                        @error('subjectId')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+
 
                     <div class="mb-7">
                         <label for="date" class="block font-semibold mb-1">Tanggal</label>

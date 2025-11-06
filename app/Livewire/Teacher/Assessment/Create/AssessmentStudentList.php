@@ -4,6 +4,7 @@ namespace App\Livewire\Teacher\Assessment\Create;
 
 use App\Models\AssessmentType;
 use App\Models\Group;
+use App\Models\Subject;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -16,12 +17,13 @@ class AssessmentStudentList extends Component
     #[Title('Teacher Payment')]
 
     #[Url()]
-    public $groupId, $assessmentTypeId, $date;
+    public $groupId, $assessmentTypeId, $date, $subjectId;
 
-    public $group, $assessmentType, $students;
+    public $group, $assessmentType, $students, $subject;
     protected $rules = [
         'groupId' => 'required',
         'assessmentTypeId' => 'required',
+        'subjectId' => 'required',
         'date' => 'required',
     ];
 
@@ -43,6 +45,12 @@ class AssessmentStudentList extends Component
             return $this->redirect('/teacher/assessment', navigate: true);
         }
 
+        $this->subject = Subject::find($this->subjectId);
+        if (!$this->subject) {
+            session()->flash('error', "Mata pelajaran tidak tersedia untuk kelas ini");
+            return $this->redirect('/teacher/assessment', navigate: true);
+        }
+
         $this->students = DB::table('students')
             ->join('groups', 'students.group_id', '=', 'groups.id')
             ->where('students.group_id', $this->groupId)
@@ -56,12 +64,13 @@ class AssessmentStudentList extends Component
             'students' => $this->students,
             'group' => $this->group,
             'assessmentType' => $this->assessmentType,
+            'subject' => $this->subject,
             'date' => $this->date,
         ]);
     }
 
     public function showModalScore($studentId)
     {
-        $this->dispatch('openModalInputScore', $studentId, $this->assessmentTypeId);
+        $this->dispatch('openModalInputScore', $studentId, $this->assessmentTypeId, $this->subjectId);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Teacher\Assessment\Create;
+namespace App\Livewire\Teacher\Assessment\Read;
 
 use App\Models\AssessmentType;
 use App\Models\Group;
@@ -11,7 +11,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 
-class AssessmentStudentList extends Component
+class AssessmentStudentRead extends Component
 {
     #[Layout('components.layouts.teacher')]
     #[Title('Teacher Payment')]
@@ -20,6 +20,9 @@ class AssessmentStudentList extends Component
     public $groupId, $assessmentTypeId,  $subjectId;
 
     public $group, $assessmentType, $students, $subject;
+
+    public $studentScore = [];
+
     protected $rules = [
         'groupId' => 'required',
         'assessmentTypeId' => 'required',
@@ -56,21 +59,30 @@ class AssessmentStudentList extends Component
             ->where('students.group_id', $this->groupId)
             ->select('students.*', 'groups.name as group_name')
             ->orderBy('students.name')->get();
+
+        foreach ($this->students as $student) {
+            $score = DB::table('assessment_scores')
+                ->where('student_id', $student->id)
+                ->where('assessment_type_id', $this->assessmentTypeId)
+                ->where('subject_id', $this->subjectId)
+                ->first();
+
+            $this->studentScore[$student->id] = [
+                'student_name' => $student->name,
+                'student_nisn' => $student->nisn,
+                'score' => $score ? $score->score : 0,
+            ];
+        }
     }
 
     public function render()
     {
-        return view('livewire.teacher.assessment.create.assessment-student-list', [
-            'students' => $this->students,
+        return view('livewire.teacher.assessment.read.assessment-student-read',  [
+            'studentScores' => $this->studentScore,
             'group' => $this->group,
             'assessmentType' => $this->assessmentType,
             'subject' => $this->subject,
 
         ]);
-    }
-
-    public function showModalScore($studentId)
-    {
-        $this->dispatch('openModalInputScore', $studentId, $this->assessmentTypeId, $this->subjectId);
     }
 }

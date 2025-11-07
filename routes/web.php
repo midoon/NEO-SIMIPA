@@ -30,6 +30,7 @@ use App\Livewire\Auth\AdminLogin;
 use App\Livewire\Auth\TeacherLogin;
 use App\Livewire\Auth\TeacherRegister;
 use App\Livewire\Teacher\Assessment\Create\AssessmentStudentList;
+use App\Livewire\Teacher\Assessment\Read\AssessmentStudentRead;
 use App\Livewire\Teacher\Assessment\TeacherAssessmentMenu;
 use App\Livewire\Teacher\Attendance\Create\AttendanceStudentList;
 use App\Livewire\Teacher\Attendance\Read\AttendanceStudentRead;
@@ -99,6 +100,7 @@ Route::middleware(TeacherMiddleware::class)->group(function () {
 
     Route::get('/teacher/assessment', TeacherAssessmentMenu::class);
     Route::get('/teacher/assessment/create', AssessmentStudentList::class);
+    Route::get('/teacher/assessment/read', AssessmentStudentRead::class);
 
     Route::get('/teacher/profile', TeacherProfileMenu::class);
 });

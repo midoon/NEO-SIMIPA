@@ -5,16 +5,13 @@ namespace App\Livewire\Teacher\Assessment;
 use App\Models\AssessmentType;
 use App\Models\Group;
 use App\Models\Subject;
-use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class CreateFormFilter extends Component
+class ReadFormFilter extends Component
 {
     public $showModal = false;
     public $groupId, $assessmentTypeId,  $subjectId = [];
-
-
 
     public function render()
     {
@@ -26,13 +23,14 @@ class CreateFormFilter extends Component
             $query->where('teacher_id', $teacherId);
         })->orderBy('name')->get();
         $assessmentTypes = AssessmentType::orderBy('name')->get();
-        return view('livewire.teacher.assessment.create-form-filter', ['groups' => $groups, 'assessmentTypes' => $assessmentTypes, 'subjects' => $subjects]);
+
+        return view('livewire.teacher.assessment.read-form-filter', ['groups' => $groups, 'assessmentTypes' => $assessmentTypes, 'subjects' => $subjects]);
     }
 
-    #[On('openFilterCreate')]
-    public function createModal()
+    #[On('openFilterRead')]
+    public function readModal()
     {
-        // $this->resetInputFields();
+        $this->resetInputFields();
         $this->showModal = true;
     }
 
@@ -42,26 +40,21 @@ class CreateFormFilter extends Component
         $this->assessmentTypeId = '';
     }
 
-    public function create()
+    public function read()
     {
-
         // validasi
         $this->validate([
             'groupId' => 'required|exists:groups,id',
             'assessmentTypeId' => 'required|exists:assessment_types,id',
             'subjectId' => 'required|exists:subjects,id',
-
         ]);
-
-
 
         $params = [
             'groupId' => $this->groupId,
             'assessmentTypeId' => $this->assessmentTypeId,
             'subjectId' => $this->subjectId,
-
         ];
 
-        return redirect()->to('/teacher/assessment/create?' . http_build_query($params));
+        return redirect()->to('/teacher/assessment/read?' . http_build_query($params));
     }
 }

@@ -2,9 +2,9 @@
     @if ($showModal)
         <div class="fixed inset-0 bg-black/40 flex items-center justify-center px-4 z-50">
             <div class="bg-white rounded-md w-full p-6 sm:w-1/3">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Tambah Daftar Pnelinaian</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Lihat Daftar Pnelinaian</h2>
 
-                <form wire:submit.prevent="create">
+                <form wire:submit.prevent="read">
                     <div class="mb-3">
                         <label for="groupId" class="block font-semibold mb-1">Rombongan Belajar</label>
                         <select wire:model="groupId" id="groupId" class="border w-full rounded-sm px-2 py-1.5" required>

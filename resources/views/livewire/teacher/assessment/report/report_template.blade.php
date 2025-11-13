@@ -94,21 +94,25 @@
 
     <div class="info">
         <div class="row">
-            <span style="width:10%;">Rombel</span>
+            <span style="width:30%;">Rombel</span>
             <span style="width: 1%; text-align: center;">:</span>
-            <span style="width: 89%;">{{ $group->name }}</span>
+            <span style="width: 69%;">{{ $group->name }}</span>
         </div>
         <div class="row">
-            <span style="width:10%;">Tipe Penilaian</span>
+            <span style="width:30%;">Tipe Penilaian</span>
             <span style="width: 1%; text-align: center;">:</span>
-            <span style="width: 89%;">{{ $assessmentType->name }}</span>
+            <span style="width: 69%;">{{ $assessmentType->name }}</span>
         </div>
         <div class="row">
-            <span style="width:10%;">Kode Penilaian</span>
+            <span style="width:30%;">Kode Penilaian</span>
             <span style="width: 1%; text-align: center;">:</span>
-            <span style="width: 89%;">{{ $assessmentType->code }}</span>
+            <span style="width: 69%;">{{ $assessmentType->code }}</span>
         </div>
-
+        <div class="row">
+            <span style="width:30%;">Mata Pelajaran</span>
+            <span style="width: 1%; text-align: center;">:</span>
+            <span style="width: 69%;">{{ $subject->name }} : {{ $subject->code }}</span>
+        </div>
     </div>
 
     <div class="table-container">

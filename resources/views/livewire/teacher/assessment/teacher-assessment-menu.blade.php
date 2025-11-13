@@ -84,4 +84,5 @@
 
     <livewire:teacher.assessment.create-form-filter />
     <livewire:teacher.assessment.read-form-filter />
+    <livewire:teacher.assessment.report-form-filter />
 </div>

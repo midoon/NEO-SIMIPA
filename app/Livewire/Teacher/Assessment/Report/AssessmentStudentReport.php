@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Teacher\Assessment\Read;
+namespace App\Livewire\Teacher\Assessment\Report;
 
 use App\Models\AssessmentType;
 use App\Models\Group;
@@ -11,7 +11,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 
-class AssessmentStudentRead extends Component
+class AssessmentStudentReport extends Component
 {
     #[Layout('components.layouts.teacher')]
     #[Title('Teacher Assessment')]
@@ -77,12 +77,22 @@ class AssessmentStudentRead extends Component
 
     public function render()
     {
-        return view('livewire.teacher.assessment.read.assessment-student-read',  [
+        return view('livewire.teacher.assessment.report.assessment-student-report',  [
             'studentScores' => $this->studentScore,
             'group' => $this->group,
             'assessmentType' => $this->assessmentType,
             'subject' => $this->subject,
 
         ]);
+    }
+
+    public function reportDownload()
+    {
+        $params = [
+            'groupId' => $this->groupId,
+            'assessmentTypeId' => $this->assessmentTypeId,
+            'subjectId' => $this->subjectId,
+        ];
+        return redirect()->to('/teacher/assessment/report/generate?' . http_build_query($params));
     }
 }

@@ -14,7 +14,7 @@ use Livewire\Component;
 class AssessmentStudentList extends Component
 {
     #[Layout('components.layouts.teacher')]
-    #[Title('Teacher Payment')]
+    #[Title('Teacher Assessment')]
 
     #[Url()]
     public $groupId, $assessmentTypeId,  $subjectId;

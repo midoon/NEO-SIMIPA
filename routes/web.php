@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminScheduleController;
 use App\Http\Controllers\AdminStudentController;
 use App\Http\Controllers\AdminSubjectController;
 use App\Http\Controllers\AdminTeacherController;
+use App\Http\Controllers\TeacherAssessmentController;
 use App\Http\Controllers\TeacherAttendanceController;
 use App\Http\Controllers\TeacherPaymentController;
 use App\Http\Middleware\AdminMiddleware;
@@ -31,6 +32,7 @@ use App\Livewire\Auth\TeacherLogin;
 use App\Livewire\Auth\TeacherRegister;
 use App\Livewire\Teacher\Assessment\Create\AssessmentStudentList;
 use App\Livewire\Teacher\Assessment\Read\AssessmentStudentRead;
+use App\Livewire\Teacher\Assessment\Report\AssessmentStudentReport;
 use App\Livewire\Teacher\Assessment\TeacherAssessmentMenu;
 use App\Livewire\Teacher\Attendance\Create\AttendanceStudentList;
 use App\Livewire\Teacher\Attendance\Read\AttendanceStudentRead;
@@ -101,6 +103,8 @@ Route::middleware(TeacherMiddleware::class)->group(function () {
     Route::get('/teacher/assessment', TeacherAssessmentMenu::class);
     Route::get('/teacher/assessment/create', AssessmentStudentList::class);
     Route::get('/teacher/assessment/read', AssessmentStudentRead::class);
+    Route::get('/teacher/assessment/report', AssessmentStudentReport::class);
+    Route::get('/teacher/assessment/report/generate', [TeacherAssessmentController::class, 'generateReport']);
 
     Route::get('/teacher/profile', TeacherProfileMenu::class);
 });

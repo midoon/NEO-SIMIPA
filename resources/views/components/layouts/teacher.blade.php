@@ -48,6 +48,19 @@
                     </p>
 
                 </a>
+                <a wire:navigate href="/teacher/assessment"
+                    class="flex-1 flex flex-col items-center justify-center h-full  p-2 hover:bg-simipa-4">
+                    <svg class="w-6 h-6 text-simipa-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 3v4a1 1 0 0 1-1 1H5m4 10v-2m3 2v-6m3 6v-3m4-11v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z" />
+                    </svg>
+                    <p class="text-simipa-2 font-bold">
+                        Penilaian
+                    </p>
+
+                </a>
+
                 <a wire:navigate href="/teacher/payment"
                     class="flex-1 flex flex-col items-center justify-center p-2 hover:bg-simipa-4"><svg
                         class="w-6 h-6 text-simipa-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -107,10 +120,22 @@
                 </p>
 
             </a>
+            <a wire:navigate href="/teacher/assessment"
+                class="flex-1 flex flex-col items-center justify-center h-full  p-2 hover:bg-simipa-4"> <svg
+                    class="w-6 h-6 text-simipa-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 3v4a1 1 0 0 1-1 1H5m4 10v-2m3 2v-6m3 6v-3m4-11v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z" />
+                </svg>
+                <p class="text-simipa-2 font-bold text-xs">
+                    Penilaian
+                </p>
+
+            </a>
             <a wire:navigate href="/teacher/payment"
                 class="flex-1 flex flex-col items-center justify-center p-2 hover:bg-simipa-4"><svg
-                    class="w-6 h-6 text-simipa-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                    height="24" fill="none" viewBox="0 0 24 24">
+                    class="w-6 h-6 text-simipa-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
                         d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
                 </svg>

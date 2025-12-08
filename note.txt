@@ -18,3 +18,7 @@ Feature:
 
 Minor Feature:
 - Success message auth
+
+
+
+- nilai raport: terdiri dari UAS + UH123. UAS 60%, UH40%

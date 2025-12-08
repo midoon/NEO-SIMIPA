@@ -84,7 +84,7 @@
 
 
 
-                    @if ($isBendahara)
+                    @if ($isBendahara && $p->description != 'PAYMENT_METHOD=SELF_PAYMENT')
                         <div class="border p-2 rounded hover:border-red-400 group"
                             wire:click="deleteConnfirmation({{ $p->id }})">
                             <button class="group-hover:cursor-pointer">

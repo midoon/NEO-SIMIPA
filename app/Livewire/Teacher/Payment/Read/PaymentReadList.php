@@ -27,7 +27,7 @@ class PaymentReadList extends Component
     ];
 
 
-    public $isPaidFull = false, $isBendahara = false;
+    public $isPaidFull = false, $isBendahara = false, $isFromMidtrans = false;
 
     protected $listeners = ['refreshParent' => '$refresh'];
 

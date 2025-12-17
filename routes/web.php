@@ -17,6 +17,7 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\TeacherMiddleware;
 use App\Livewire\Admin\Activity\AdminActivityList;
 use App\Livewire\Admin\AdminDashboard;
+use App\Livewire\Admin\AssessmentFormula\AssessmentFormulaList;
 use App\Livewire\Admin\AssessmentType\AdminAssessmentTypeList;
 use App\Livewire\Admin\Grade\AdminGradeList;
 use App\Livewire\Admin\GradeFee\AdminGradeFeeList;
@@ -69,6 +70,8 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     Route::get('/admin/fee/grade', AdminGradeFeeList::class);
     Route::get('/admin/setting', AdminSetting::class);
     Route::get('/admin/assessment/type', AdminAssessmentTypeList::class);
+    Route::get('/admin/assessment/formula', AssessmentFormulaList::class);
+
 
     // file upload route
     Route::post('/admin/teacher/upload', [AdminTeacherController::class, 'uploadFile']);

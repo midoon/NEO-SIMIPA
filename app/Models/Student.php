@@ -27,4 +27,9 @@ class Student extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function assessmentScores(): HasMany
+    {
+        return $this->hasMany(AssessmentScore::class);
+    }
 }

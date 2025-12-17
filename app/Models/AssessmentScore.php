@@ -12,4 +12,14 @@ class AssessmentScore extends Model
     {
         return $this->belongsTo(AssessmentType::class);
     }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
 }

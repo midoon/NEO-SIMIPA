@@ -164,6 +164,12 @@
                                 Penilaian</a>
 
                         </div>
+                        <div x-show="openPayment" x-transition class="ml-10 mt-1 space-y-1">
+                            <a wire:navigate href="/admin/assessment/formula"
+                                class="block py-2 px-4 text-sm text-simipa-3 hover:bg-simipa-2 hover:text-white rounded">Formula
+                                Penilaian</a>
+
+                        </div>
                     </div>
                 </div>
 
